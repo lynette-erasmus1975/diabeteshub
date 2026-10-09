@@ -1891,7 +1891,36 @@ const BREAKTHROUGHS=[
   {date:"December 2025",source:"Joslin Diabetes Center / Nature Medicine",tag:"Longevity Research",title:"50-Year Joslin Medalists Show Genetic Protection Against Diabetic Complications",body:"New genomic research on Joslin 50-Year Medalists (people who have lived with Type 1 diabetes for 50+ years) has identified specific genetic variants associated with protection against retinopathy, nephropathy, and neuropathy. These findings are guiding new drug development targeting the same protective pathways — with the goal of conferring protection to all people with diabetes.",link:"https://joslin.org"},
 ];
 
-function showS(id,btn){
+// URL path for each section, e.g. /newly-diagnosed
+const SECTION_SLUGS={
+  home:'',emergency:'emergency',signs:'signs',newlydiag:'newly-diagnosed',journal:'journal',
+  wellness:'wellness',hba1c:'hba1c',nutrition:'nutrition',acronyms:'acronyms',devices:'devices',
+  family:'family',gpfinder:'gp-finder',hospitals:'hospitals',funding:'funding',medals:'medals',
+  heroes:'role-models',awareness:'awareness',breakthroughs:'breakthroughs',services:'services',
+  campaigns:'campaigns',factors:'42-factors',
+};
+// Other spellings people might type or share
+const SLUG_ALIASES={emergencies:'emergency',gp:'gpfinder'};
+const BASE_TITLE=document.title;
+function sectionFromUrl(){
+  // Old shared links used /#/slug, so still read the hash first
+  const raw=location.hash.replace(/^#\/?/,'')||location.pathname.replace(/^\/+|\/+$/g,'');
+  const slug=decodeURIComponent(raw).toLowerCase();
+  if(!slug)return 'home';
+  for(const id in SECTION_SLUGS){
+    if(SECTION_SLUGS[id]===slug||id===slug)return id;
+  }
+  return SLUG_ALIASES[slug]||'home';
+}
+function sectionTitle(id){
+  if(id==='home')return BASE_TITLE;
+  const b=document.querySelector(`#desknav button[onclick="showS('${id}',this)"]`)||document.querySelector(`.bnb[onclick="showS('${id}',this)"]`)||document.querySelector(`[onclick^="showS('${id}'"]`);
+  const label=b?(b.querySelector('.ql')||b).textContent.replace(/^[^A-Za-z0-9]+/,'').trim():id;
+  return label+' · '+BASE_TITLE;
+}
+
+function showS(id,btn,fromUrl){
+  if(!document.getElementById(id))id='home';
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   document.querySelectorAll('#desknav button').forEach(b=>b.classList.remove('active'));
@@ -1900,9 +1929,20 @@ function showS(id,btn){
     btn.classList.add('active');
     if(btn.tagName==='BUTTON'&&btn.closest('#desknav'))btn.classList.add('active');
   }
-  window.scrollTo({top:0,behavior:'smooth'});
+  // Also highlight the matching nav buttons when navigating from a link, the More menu or the URL
+  document.querySelectorAll(`#desknav button[onclick="showS('${id}',this)"], .bnb[onclick="showS('${id}',this)"]`).forEach(b=>b.classList.add('active'));
   document.querySelectorAll('.bnb,#desknav button').forEach(b=>b.removeAttribute('aria-current'));
   document.querySelectorAll('.bnb.active,#desknav button.active').forEach(b=>b.setAttribute('aria-current','page'));
+  // Set the title before pushState so analytics records the right page title
+  document.title=sectionTitle(id);
+  const path='/'+(SECTION_SLUGS[id]||'');
+  if(fromUrl){
+    // Tidy old /#/slug links and aliases into the canonical path
+    if(location.pathname!==path||location.hash)history.replaceState(null,'',path+location.search);
+  }else if(location.pathname!==path||location.hash){
+    history.pushState(null,'',path+location.search);
+  }
+  window.scrollTo({top:0,behavior:fromUrl?'auto':'smooth'});
   if(id==='wellness')renderWellness();
   if(id==='gpfinder'){renderGPs();filterGPs();}
   if(id==='hospitals')renderH('all');
@@ -2478,7 +2518,14 @@ function dismissOnboarding(){
 }
 window.addEventListener('load', checkFirstLaunch);
 window.addEventListener('load', function(){ setTimeout(maybeAskTheme,400); });
-window.addEventListener('load', function(){ showSectionTip('home'); });
+// Open the section named in the URL (shared links / bookmarks) and follow back/forward
+const initialSection=sectionFromUrl();
+if(initialSection!=='home'||location.pathname!=='/'||location.hash) showS(initialSection,null,true);
+else window.addEventListener('load', function(){ showSectionTip('home'); });
+window.addEventListener('popstate', function(){
+  closeMoreMenu();
+  showS(sectionFromUrl(),null,true);
+});
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
