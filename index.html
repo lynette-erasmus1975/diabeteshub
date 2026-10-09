@@ -1487,6 +1487,11 @@ a.tcall{font-weight:700;}
     <p id="shareHelp" style="font-size:12.5px;color:var(--muted);margin:2px 0 12px;"></p>
     <label for="shareName" style="font-weight:600;font-size:11.5px;display:block;margin-bottom:5px;">First name or initials (optional)</label>
     <input type="text" id="shareName" class="gp-input" maxlength="40" autocomplete="off" placeholder="e.g. Aoife, or A." style="width:100%;padding:9px 11px;margin-bottom:12px;">
+    <div id="shareEmailRow" style="margin-bottom:12px;">
+      <label for="shareEmail" style="font-weight:600;font-size:11.5px;display:block;margin-bottom:5px;">Your email (optional)</label>
+      <input type="email" id="shareEmail" class="gp-input" maxlength="120" autocomplete="email" inputmode="email" placeholder="So I can follow up or check details with you" style="width:100%;padding:9px 11px;">
+      <p style="font-size:11.5px;color:var(--muted);margin-top:5px;">Only used to reply about your suggestion, for example to check a detail. It is never shared or published.</p>
+    </div>
     <label for="shareTxt" style="font-weight:600;font-size:12px;display:block;margin-bottom:6px;">Your message</label>
     <textarea class="jta" id="shareTxt" maxlength="1200" placeholder="" oninput="document.getElementById('shareErr').classList.remove('show')"></textarea>
     <div id="shareConsentRow" style="display:none;margin-top:11px;">
@@ -2570,6 +2575,7 @@ function shareMode(m,btn){
   document.getElementById('shareHelp').textContent=SHARE_TXT[m].help;
   document.getElementById('shareTxt').placeholder=SHARE_TXT[m].ph;
   document.getElementById('shareConsentRow').style.display=(m==='thanks')?'block':'none';
+  document.getElementById('shareEmailRow').style.display=(m==='thanks')?'none':'block';
   document.getElementById('shareErr').classList.remove('show');
   document.getElementById('shareNote').textContent='';
 }
@@ -2580,9 +2586,11 @@ function shareBuild(){
   err.classList.remove('show');
   if(msg.length<5){err.textContent='Please write a short message first.';err.classList.add('show');return null;}
   const thanks=_shareMode==='thanks';
+  const em=document.getElementById('shareEmail').value.trim();
+  if(!thanks&&em&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){err.textContent='That email address does not look right. Please check it or leave it blank.';err.classList.add('show');return null;}
   const ok=document.getElementById('shareConsent').checked;
   const subject=thanks?'DiabetesHub thank you':'DiabetesHub suggestion';
-  const body=(thanks?'Thank you message':'Suggestion')+'\n\n'+msg+'\n\nName: '+(nm||'(not given)')+
+  const body=(thanks?'Thank you message':'Suggestion')+'\n\n'+msg+'\n\nName: '+(nm||'(not given)')+(thanks?'':'\nEmail for follow up: '+(em||'(not given)'))+
     (thanks?'\nPermission to share on the site (first name or initials only): '+(ok?'YES':'NO'):'');
   return {subject,body};
 }
