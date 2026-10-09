@@ -564,6 +564,19 @@ a.tcall{font-weight:700;}
 .thx-f.fade blockquote,.thx-f.fade figcaption{opacity:0;}
 .thx-f blockquote,.thx-f figcaption{transition:opacity .35s;}
 @media(prefers-reduced-motion:reduce){.thx-f blockquote,.thx-f figcaption{transition:none;}}
+
+/* Macro timing chart */
+.mxc{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:14px 14px 8px;margin-bottom:16px;}
+.mxr{display:grid;grid-template-columns:118px 1fr;column-gap:10px;align-items:center;margin-bottom:10px;}
+.mxl{font-size:13px;font-weight:600;color:var(--ink-b);}
+.mxt{position:relative;height:16px;background:var(--surface);border:1px solid var(--border);border-radius:9px;}
+.mxb{position:absolute;top:0;bottom:0;border-radius:9px;}
+.mx-c{background:#3B82F6;}.mx-p{background:#16A34A;}.mx-f{background:#F59E0B;}
+.mxn{grid-column:2;font-size:11.5px;color:var(--muted);margin-top:3px;}
+.mxa{display:grid;grid-template-columns:118px 1fr;column-gap:10px;}
+.mxh{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:15px;color:var(--ink-b);margin:6px 0 10px;}
+.mxs{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);}
+@media(max-width:520px){.mxr{grid-template-columns:1fr;}.mxn{grid-column:1;}.mxl{margin-bottom:4px;}.mxa{grid-template-columns:1fr;}.mxa>span{display:none;}}
 </style>
 </head>
 <body>
@@ -1134,13 +1147,15 @@ a.tcall{font-weight:700;}
 </div>
 
 <div id="nutrition" class="section">
-  <div class="sh2"><span class="ic">🍏</span><h2>Nutrition &amp; Carb Counting</h2></div>
+  <div class="sh2"><span class="ic">🍏</span><h2>Nutrition, Carbs &amp; Blood Glucose</h2></div>
   <p style="color:var(--muted);font-size:13px;margin-bottom:16px;">Carb counting is the single most useful skill for managing insulin doses and blood sugar. It takes practice — most people get more accurate over months, not days. Be patient with yourself.</p>
   <div class="tb">
     <button class="tbtn active" onclick="showT('nutrition','nu1',this)">🔢 Carb Counting Basics</button>
     <button class="tbtn" onclick="showT('nutrition','nu2',this)">🍽️ The Plate Method</button>
     <button class="tbtn" onclick="showT('nutrition','nu3',this)">🏷️ Reading Labels</button>
     <button class="tbtn" onclick="showT('nutrition','nu4',this)">📱 Apps That Help</button>
+    <button class="tbtn" onclick="showT('nutrition','nu5',this)">⏱️ How Food Affects Glucose</button>
+    <button class="tbtn" onclick="showT('nutrition','nu6',this)">🍕 Mixed Meals</button>
   </div>
   <div id="nu1" class="tc active">
     <div class="ip">
@@ -1191,6 +1206,54 @@ a.tcall{font-weight:700;}
         <div class="card cp"><h3><a href="https://www.myfitnesspal.com" target="_blank" rel="noopener noreferrer">MyFitnessPal</a></h3><p>General food and nutrition tracker with a large food database — many people with diabetes use it alongside a dedicated carb-counting app.</p></div>
       </div>
       <div class="hbox"><strong>💡 Tip:</strong> No single app is perfect for every food. Many people with diabetes use two — one for packaged/branded food (barcode scanning) and one for homemade meals (photo estimation or a manual carb reference).</div>
+    </div>
+  </div>
+  <div id="nu5" class="tc">
+    <div class="ip">
+      <h3>⏱️ How Carbs, Protein and Fat Affect Blood Glucose</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:12px;line-height:1.7;">Each one reaches your bloodstream at a different speed. That is why the same carb count can give very different readings, and why pizza so often catches people out hours later. Rough timing after a meal is below, and your own readings or CGM trace are the real guide.</p>
+      <div class="hbox">⚠️ <strong>General education only.</strong> Insulin doses and mealtime changes are personal. Talk to your diabetes team or a dietitian before changing how you dose for protein or fat. In an emergency call <a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a>.</div>
+      <div class="mxc" role="img" aria-label="Chart of typical timing after eating. Carbohydrate raises glucose from about 15 minutes to 3 hours. Protein, in large amounts, from about 3 to 5 hours. Fat slows digestion and can keep glucose raised from about 3 to 6 hours or longer.">
+        <div class="mxr"><div class="mxl">🍞 Carbohydrate</div><div class="mxt"><span class="mxb mx-c" style="left:4%;width:46%"></span></div><div class="mxn">15 min to 3 hrs</div></div>
+        <div class="mxr"><div class="mxl">🥩 Protein</div><div class="mxt"><span class="mxb mx-p" style="left:50%;width:33.3%"></span></div><div class="mxn">3 to 5 hrs, large amounts</div></div>
+        <div class="mxr"><div class="mxl">🧈 Fat</div><div class="mxt"><span class="mxb mx-f" style="left:50%;width:50%"></span></div><div class="mxn">3 to 6+ hrs, delays carbs</div></div>
+        <div class="mxa"><span></span><div class="mxs"><span>0</span><span>1 hr</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6 hrs</span></div></div>
+      </div>
+      <h4 class="mxh">🍞 Carbohydrate: the main driver</h4>
+      <div class="cg">
+        <div class="card cb"><h3>It Has The Biggest Effect</h3><p>Starch and sugar are broken down into glucose. Carbs are counted because the amount you eat matters more than almost anything else on the plate.</p></div>
+        <div class="card cg2"><h3>Fast Versus Slow</h3><p>Fruit juice, sugary drinks and white bread raise glucose quickly. Porridge oats, wholegrain bread, beans and lentils are digested more slowly and give a gentler rise.</p></div>
+        <div class="card ca"><h3>Fibre Helps</h3><p>Vegetables, pulses, wholegrains and the skin on fruit and potatoes slow absorption, so the peak is lower and later.</p></div>
+        <div class="card cgrey"><h3>Carbs And Hypos</h3><p>When glucose is low, fast-acting carbohydrate is the treatment. Follow your hypo plan, and see the Emergency Guide for the steps.</p></div>
+      </div>
+      <h4 class="mxh">🥩 Protein: small effect, late timing</h4>
+      <div class="cg">
+        <div class="card cb"><h3>Usually Not A Big Deal</h3><p>Eggs, fish, chicken, meat, tofu and dairy in normal portions have little immediate effect on glucose, which is why protein is a good partner for carbs.</p></div>
+        <div class="card cg2"><h3>Large Amounts Can Matter</h3><p>In people who use insulin, a very large protein meal (roughly 50g or more of protein at once, such as a big steak) can cause a later rise as the liver makes glucose from it, often 3 to 5 hours after eating.</p></div>
+        <div class="card cp"><h3>Do Not Treat A Hypo With It</h3><p>Protein will not bring glucose up quickly. Use fast-acting carbohydrate for a low, then eat a longer-acting snack if your team advises it.</p></div>
+        <div class="card cr"><h3>Not The Same As Carbs</h3><p>Protein bars and shakes often contain a lot of carbohydrate too. Read the label and count what is there.</p></div>
+      </div>
+      <h4 class="mxh">🧈 Fat: the slow burn</h4>
+      <div class="cg">
+        <div class="card cb"><h3>Delays The Peak</h3><p>Fat slows how fast the stomach empties. Carbs from a fatty meal reach your blood later, so a reading that looks fine at 2 hours can climb at 4 or 5.</p></div>
+        <div class="card cg2"><h3>Can Last Longer</h3><p>High-fat meals can leave glucose raised for several hours, and some people need more insulin than the carbs alone suggest. This is very individual.</p></div>
+        <div class="card ca"><h3>Common Culprits</h3><p>Pizza, chips, creamy pasta, curry with rice, fry-ups and takeaway meals. They combine plenty of carbs with plenty of fat.</p></div>
+        <div class="card cp"><h3>Chocolate Is Not A Hypo Treatment</h3><p>Because fat slows absorption, chocolate and similar foods raise glucose too slowly to treat a low. Use fast-acting glucose.</p></div>
+      </div>
+    </div>
+  </div>
+  <div id="nu6" class="tc">
+    <div class="ip">
+      <h3>🍕 Mixed Meals: Putting It Together</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:12px;line-height:1.7;">Real meals are mixtures. Carb type, fibre, fat, protein, portion size, stress and activity all change the result.</p>
+      <div class="cg">
+        <div class="card cb"><h3>Same Carbs, Different Result</h3><p>Dry toast and a slice of pizza can have similar carbs. The pizza adds fat and protein, so the rise is slower, later and often longer.</p></div>
+        <div class="card cg2"><h3>Eat In A Smart Order</h3><p>Vegetables and protein before the starchy part of a meal can soften the glucose rise for many people.</p></div>
+        <div class="card ca"><h3>Take A Walk</h3><p>A gentle 10 to 15 minute walk after eating helps your muscles use glucose, and lowers the post-meal rise for many people. If you use insulin, be alert for lows.</p></div>
+        <div class="card cp"><h3>Look At The Trend</h3><p>If you have a CGM, the arrow and the shape of the curve after a meal tell you more than a single number. Spot your own patterns.</p></div>
+        <div class="card cr"><h3>Type 1 Versus Type 2</h3><p>Type 1 means matching insulin to food, so timing and mixed meals matter most. Type 2 often focuses on portion size, fibre, activity and weight, as well as any medication.</p></div>
+        <div class="card cgrey"><h3>Get Expert Help</h3><p>Ask your GP or team for a referral to a dietitian. <a href="https://diabeteseducation.ie" target="_blank" rel="noopener noreferrer">DAFNE and DISCOVER</a> are free HSE programmes, and <a href="https://www.diabetes.ie" target="_blank" rel="noopener noreferrer">Diabetes Ireland</a> has food and nutrition guidance.</p></div>
+      </div>
     </div>
   </div>
 </div>
@@ -1855,7 +1918,7 @@ const SECTION_TIPS={
   emergency:'🚨 Tip: save this page — the call buttons work instantly, no dialling needed.',
   journal:'📔 Tip: log a mood even without a note — it still feeds your Monthly Wellness page.',
   wellness:'🌸 Tip: this page is built entirely from your Journal — nothing here is pre-filled.',
-  nutrition:'🍏 Tip: use the tabs above — Carb Counting Basics is a good place to start if you\'re new to this.',
+  nutrition:'🍏 Tip: use the tabs above. Carb Counting Basics is a good place to start, and How Food Affects Glucose explains why pizza spikes late.',
   hba1c:'📉 Tip: tap through the tabs — Food, Movement, Medication, Sleep, Technology, and Tracking.',
   acronyms:'🔤 Tip: this page is a glossary — bookmark it for whenever you hit an unfamiliar term.',
   devices:'📡 Tip: use the tabs above to browse CGMs, pumps, closed loop, and apps separately.',
@@ -2313,7 +2376,7 @@ const MORE_ITEMS=[
   {id:'hospitals',ic:'🏥',label:'Hospitals'},
   {id:'journal',ic:'📔',label:'My Journal'},
   {id:'wellness',ic:'🌸',label:'Monthly Wellness'},
-  {id:'nutrition',ic:'🍏',label:'Nutrition & Carb Counting'},
+  {id:'nutrition',ic:'🍏',label:'Nutrition, Carbs & Blood Glucose'},
   {id:'hba1c',ic:'📉',label:'Lower HbA1c'},
   {id:'factors',ic:'📊',label:'42 Factors Affecting Blood Sugar'},
   {id:'acronyms',ic:'🔤',label:'Acronyms Explained'},
@@ -2464,7 +2527,7 @@ function toggleQn(){
   b.textContent=o?'Show fewer ▴':'Show all sections ▾';
   b.setAttribute('aria-expanded',o?'true':'false');
 }
-const SEARCH_LABELS={signs:'See The Signs',emergency:'Emergency Guide',newlydiag:'Newly Diagnosed',journal:'My Journal',wellness:'Wellness',hba1c:'Lower HbA1c',nutrition:'Nutrition & Carb Counting',acronyms:'Acronyms Explained',devices:'Devices & Technology',family:'Family, Teachers & SNAs',gpfinder:'Find a GP',hospitals:'Hospitals',funding:'Funding & Entitlements',medals:'Milestone Medals',heroes:'Role Models',awareness:'World Diabetes Day & Awareness',breakthroughs:'Research Breakthroughs',services:'Support Services',campaigns:'Awareness Campaigns',factors:'42 Factors Affecting Blood Sugar',share:'Share & Say Thanks'};
+const SEARCH_LABELS={signs:'See The Signs',emergency:'Emergency Guide',newlydiag:'Newly Diagnosed',journal:'My Journal',wellness:'Wellness',hba1c:'Lower HbA1c',nutrition:'Nutrition, Carbs & Blood Glucose',acronyms:'Acronyms Explained',devices:'Devices & Technology',family:'Family, Teachers & SNAs',gpfinder:'Find a GP',hospitals:'Hospitals',funding:'Funding & Entitlements',medals:'Milestone Medals',heroes:'Role Models',awareness:'World Diabetes Day & Awareness',breakthroughs:'Research Breakthroughs',services:'Support Services',campaigns:'Awareness Campaigns',factors:'42 Factors Affecting Blood Sugar',share:'Share & Say Thanks'};
 let _searchIdx=null;
 function homeSearch(q){
   const box=document.getElementById('hsRes');
