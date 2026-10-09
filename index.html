@@ -702,7 +702,7 @@ a.tcall{font-weight:700;}
     <button class="qnb" onclick="showS('breakthroughs',null)"><span class="qi">🔬</span><span class="ql">Breakthroughs</span></button>
     <button class="qnb" onclick="showS('services',null)"><span class="qi">🤝</span><span class="ql">Services</span></button>
     <button class="qnb" onclick="showS('campaigns',null)"><span class="qi">📢</span><span class="ql">Campaigns</span></button>
-    <button class="qnb" onclick="showS('share',null)"><span class="qi">💌</span><span class="ql">Share</span></button>
+    <button class="qnb" onclick="showS('share',null)"><span class="qi">💌</span><span class="ql">Feedback</span></button>
     <button class="qnb" onclick="showS('factors',null)"><span class="qi">📊</span><span class="ql">42 Factors</span></button>
   </div>
   <button class="qn-toggle" id="qnToggle" onclick="toggleQn()" aria-expanded="false">Show all sections ▾</button>
@@ -1539,7 +1539,7 @@ a.tcall{font-weight:700;}
 </div>
 
 <div id="share" class="section">
-  <div class="sh2"><span class="ic">💌</span><h2>Share &amp; Say Thanks</h2></div>
+  <div class="sh2"><span class="ic">💌</span><h2>Feedback &amp; Thanks</h2></div>
   <div class="gbox">💙 <strong>This site grows with the community.</strong> Tell me what would make it more useful, or tell me how it helped you. Nothing goes live automatically: every message comes to me first, and I only share a thank you with your clear permission.</div>
   <div class="ja">
     <label style="font-weight:600;font-size:12px;display:block;margin-bottom:7px;">What would you like to send?</label>
@@ -2395,7 +2395,7 @@ const MORE_ITEMS=[
   {id:'heroes',ic:'🌟',label:'Sports Heroes & Role Models'},
   {id:'awareness',ic:'💙',label:'World Diabetes Day & Awareness'},
   {id:'campaigns',ic:'📢',label:'Awareness Campaigns'},
-  {id:'share',ic:'💌',label:'Share & Say Thanks'},
+  {id:'share',ic:'💌',label:'Feedback & Thanks'},
   {id:'breakthroughs',ic:'🔬',label:'Research Breakthroughs'},
   {id:'__theme',ic:'🎨',label:'Appearance: Light / Dark'},
 ];
@@ -2533,7 +2533,7 @@ function toggleQn(){
   b.textContent=o?'Show fewer ▴':'Show all sections ▾';
   b.setAttribute('aria-expanded',o?'true':'false');
 }
-const SEARCH_LABELS={signs:'See The Signs',emergency:'Emergency Guide',newlydiag:'Newly Diagnosed',journal:'My Journal',wellness:'Wellness',hba1c:'Lower HbA1c',nutrition:'Nutrition, Carbs & Blood Glucose',acronyms:'Acronyms Explained',devices:'Devices & Technology',family:'Family, Teachers & SNAs',gpfinder:'Find a GP',hospitals:'Hospitals',funding:'Funding & Entitlements',medals:'Milestone Medals',heroes:'Role Models',awareness:'World Diabetes Day & Awareness',breakthroughs:'Research Breakthroughs',services:'Support Services',campaigns:'Awareness Campaigns',factors:'42 Factors Affecting Blood Sugar',share:'Share & Say Thanks'};
+const SEARCH_LABELS={signs:'See The Signs',emergency:'Emergency Guide',newlydiag:'Newly Diagnosed',journal:'My Journal',wellness:'Wellness',hba1c:'Lower HbA1c',nutrition:'Nutrition, Carbs & Blood Glucose',acronyms:'Acronyms Explained',devices:'Devices & Technology',family:'Family, Teachers & SNAs',gpfinder:'Find a GP',hospitals:'Hospitals',funding:'Funding & Entitlements',medals:'Milestone Medals',heroes:'Role Models',awareness:'World Diabetes Day & Awareness',breakthroughs:'Research Breakthroughs',services:'Support Services',campaigns:'Awareness Campaigns',factors:'42 Factors Affecting Blood Sugar',share:'Feedback & Thanks'};
 let _searchIdx=null;
 function homeSearch(q){
   const box=document.getElementById('hsRes');
@@ -2631,7 +2631,7 @@ function maybeAskTheme(){
 if(window.matchMedia){try{window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',syncThemeUI);}catch(e){}}
 document.addEventListener('DOMContentLoaded',syncThemeUI);
 
-/* Share & Say Thanks: composes an email only, nothing is stored or sent by the page */
+/* Feedback & Thanks: composes an email only, nothing is stored or sent by the page */
 let _shareMode='suggest';
 const SHARE_TXT={
   suggest:{help:'Spotted something missing, unclear, or out of date? Tell me what would make DiabetesHub more useful.',ph:'e.g. It would help to have a section on... / The hospital number for... has changed...'},
@@ -2651,7 +2651,7 @@ function shareMode(m,btn){
   document.getElementById('shareEmailHelp').textContent=(m==='bug')
     ?'Only used to ask you to test the fix once it is ready. I will not use it for anything else, and it is never shared or published.'
     :'Only used to reply about your suggestion, for example to check a detail. It is never shared or published.';
-  if(m==='bug'){const w=document.getElementById('shareWhere');if(!w.options.length){const o=[['Not sure','Not sure / whole site'],['home','Home page'],['share','Share & Say Thanks']];Object.keys(SEARCH_LABELS).forEach(k=>{if(k!=='share')o.push([k,SEARCH_LABELS[k]]);});o.forEach(x=>{const e=document.createElement('option');e.value=x[1];e.textContent=x[1];w.appendChild(e);});}}
+  if(m==='bug'){const w=document.getElementById('shareWhere');if(!w.options.length){const o=[['Not sure','Not sure / whole site'],['home','Home page'],['share','Feedback & Thanks']];Object.keys(SEARCH_LABELS).forEach(k=>{if(k!=='share')o.push([k,SEARCH_LABELS[k]]);});o.forEach(x=>{const e=document.createElement('option');e.value=x[1];e.textContent=x[1];w.appendChild(e);});}}
   document.getElementById('shareErr').classList.remove('show');
   document.getElementById('shareNote').textContent='';
 }
