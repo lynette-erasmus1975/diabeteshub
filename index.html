@@ -665,7 +665,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
       <div>
         <h4 style="color:#1877F2;">Families of Children with Type 1 Diabetes Ireland</h4>
         <p>A warm, supportive Facebook group for Irish parents and families of children living with Type 1 diabetes. Share experiences, ask questions, celebrate wins, and find others who truly understand. One of the most active diabetes parent communities in Ireland.</p>
-        <a href="https://www.facebook.com/groups/familiesofchildrenwithtype1diabetesireland" target="_blank" class="sl" style="font-size:12px;font-weight:700;color:#1877F2;">Join the Facebook Group →</a>
+        <a href="https://www.facebook.com/share/g/1EajccKckF/" target="_blank" class="sl" style="font-size:12px;font-weight:700;color:#1877F2;">Join the Facebook Group →</a>
       </div>
     </div>
   </div>
@@ -1504,7 +1504,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 <div id="services" class="section">
   <div class="sh2"><span class="ic">🤝</span><h2>Support Services in Ireland</h2></div>
-  <div class="sc" style="border-left:4px solid #1877F2;"><div class="sic" style="background:#E7F3FF;">📘</div><div><h4>Families of Children with Type 1 Diabetes Ireland (Facebook)</h4><p>Active Irish parent community on Facebook — 24/7 peer support from parents who genuinely understand.</p><a class="sl" href="https://www.facebook.com/groups/familiesofchildrenwithtype1diabetesireland" target="_blank" style="color:#1877F2;">Join Group →</a></div></div>
+  <div class="sc" style="border-left:4px solid #1877F2;"><div class="sic" style="background:#E7F3FF;">📘</div><div><h4>Families of Children with Type 1 Diabetes Ireland (Facebook)</h4><p>Active Irish parent community on Facebook — 24/7 peer support from parents who genuinely understand.</p><a class="sl" href="https://www.facebook.com/share/g/1EajccKckF/" target="_blank" style="color:#1877F2;">Join Group →</a></div></div>
   <div class="sc"><div class="sic" style="background:var(--blue-pp);">💙</div><div><h4>Diabetes Ireland</h4><p>National charity. Peer support, counselling referrals, youth camps, advocacy and helpline.</p><a class="sl" href="https://www.diabetes.ie" target="_blank">diabetes.ie →</a></div></div>
   <div class="sc"><div class="sic" style="background:var(--blue-pp);">🏛️</div><div><h4>HSE National Clinical Programme for Diabetes</h4><p>Free structured education: DISCOVER (Type 2), CODE, DAFNE (Type 1). HSE Live: 1800 700 700.</p><a class="sl" href="https://www.hse.ie" target="_blank">hse.ie →</a></div></div>
   <div class="sc"><div class="sic" style="background:var(--green-pp);">🏥</div><div><h4>Integrated Care Diabetes Hubs</h4><p>Community hubs with podiatry, dietitian, nursing closer to home. 58% reduction in waiting lists in pilot areas.</p><a class="sl" href="https://www2.hse.ie/conditions/diabetes/" target="_blank">hse.ie/diabetes →</a></div></div>
@@ -1723,32 +1723,7 @@ const BREAKTHROUGHS=[
   {date:"December 2025",source:"Joslin Diabetes Center / Nature Medicine",tag:"Longevity Research",title:"50-Year Joslin Medalists Show Genetic Protection Against Diabetic Complications",body:"New genomic research on Joslin 50-Year Medalists (people who have lived with Type 1 diabetes for 50+ years) has identified specific genetic variants associated with protection against retinopathy, nephropathy, and neuropathy. These findings are guiding new drug development targeting the same protective pathways — with the goal of conferring protection to all people with diabetes.",link:"https://joslin.org"},
 ];
 
-// URL slug for each section, e.g. /#/newly-diagnosed
-const SECTION_SLUGS={
-  home:'',emergency:'emergency',signs:'signs',newlydiag:'newly-diagnosed',journal:'journal',
-  wellness:'wellness',hba1c:'hba1c',nutrition:'nutrition',acronyms:'acronyms',devices:'devices',
-  family:'family',gpfinder:'gp-finder',hospitals:'hospitals',funding:'funding',medals:'medals',
-  heroes:'role-models',awareness:'awareness',breakthroughs:'breakthroughs',services:'services',
-  campaigns:'campaigns',factors:'42-factors',
-};
-const BASE_TITLE=document.title;
-function sectionFromHash(){
-  const slug=decodeURIComponent(location.hash.replace(/^#\/?/,'')).toLowerCase();
-  if(!slug)return 'home';
-  for(const id in SECTION_SLUGS){
-    if(SECTION_SLUGS[id]===slug||id===slug)return id;
-  }
-  return 'home';
-}
-function sectionTitle(id){
-  if(id==='home')return BASE_TITLE;
-  const b=document.querySelector(`#desknav button[onclick="showS('${id}',this)"]`)||document.querySelector(`.bnb[onclick="showS('${id}',this)"]`);
-  const label=b?b.textContent.replace(/^[^A-Za-z0-9]+/,'').trim():id;
-  return label+' · '+BASE_TITLE;
-}
-
-function showS(id,btn,fromUrl){
-  if(!document.getElementById(id))id='home';
+function showS(id,btn){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   document.querySelectorAll('#desknav button').forEach(b=>b.classList.remove('active'));
@@ -1757,17 +1732,9 @@ function showS(id,btn,fromUrl){
     btn.classList.add('active');
     if(btn.tagName==='BUTTON'&&btn.closest('#desknav'))btn.classList.add('active');
   }
-  // Also highlight the matching nav buttons when navigating from a link, the More menu or the URL
-  document.querySelectorAll(`#desknav button[onclick="showS('${id}',this)"], .bnb[onclick="showS('${id}',this)"]`).forEach(b=>b.classList.add('active'));
+  window.scrollTo({top:0,behavior:'smooth'});
   document.querySelectorAll('.bnb,#desknav button').forEach(b=>b.removeAttribute('aria-current'));
   document.querySelectorAll('.bnb.active,#desknav button.active').forEach(b=>b.setAttribute('aria-current','page'));
-  // Set the title before pushState so analytics records the right page title
-  document.title=sectionTitle(id);
-  const hash=SECTION_SLUGS[id]?'#/'+SECTION_SLUGS[id]:'';
-  if(!fromUrl&&location.hash!==hash){
-    history.pushState(null,'',hash||location.pathname+location.search);
-  }
-  window.scrollTo({top:0,behavior:fromUrl?'auto':'smooth'});
   if(id==='wellness')renderWellness();
   if(id==='gpfinder'){renderGPs();filterGPs();}
   if(id==='hospitals')renderH('all');
@@ -2341,14 +2308,7 @@ function dismissOnboarding(){
 }
 window.addEventListener('load', checkFirstLaunch);
 window.addEventListener('load', function(){ setTimeout(maybeAskTheme,400); });
-// Open the section named in the URL (shared links / bookmarks) and follow back/forward
-const initialSection=sectionFromHash();
-if(initialSection!=='home') showS(initialSection,null,true);
-else window.addEventListener('load', function(){ showSectionTip('home'); });
-window.addEventListener('popstate', function(){
-  closeMoreMenu();
-  showS(sectionFromHash(),null,true);
-});
+window.addEventListener('load', function(){ showSectionTip('home'); });
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
