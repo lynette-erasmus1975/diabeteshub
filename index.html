@@ -577,6 +577,15 @@ a.tcall{font-weight:700;}
 .mxh{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:15px;color:var(--ink-b);margin:6px 0 10px;}
 .mxs{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);}
 @media(max-width:520px){.mxr{grid-template-columns:1fr;}.mxn{grid-column:1;}.mxl{margin-bottom:4px;}.mxa{grid-template-columns:1fr;}.mxa>span{display:none;}}
+
+/* Mobile fixes: stop iPhone auto-zoom on form fields, keep layout inside the screen */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+body{overflow-x:clip;}
+@media(max-width:900px),(pointer:coarse){
+  input,select,textarea,.gp-input,.jta,.hsearch input{font-size:16px !important;}
+  input[type=checkbox],input[type=radio],input[type=file]{font-size:14px !important;}
+  body.kbd-open .bottom-nav{display:none !important;}
+}
 </style>
 </head>
 <body>
@@ -2745,6 +2754,13 @@ const THANKS_MAX=8;
   ['mouseleave','focusout'].forEach(e=>wrap.addEventListener(e,()=>{paused=false;}));
   if(list.length<2){document.getElementById('thxPrev').style.visibility='hidden';document.getElementById('thxNext').style.visibility='hidden';dots.style.display='none';}
   show(0);restart();
+})();
+
+/* Hide the bottom bar while the on-screen keyboard is open (prevents it floating mid-screen on iPhone) */
+(function(){
+  const isField=e=>e&&e.matches&&e.matches('input:not([type=checkbox]):not([type=radio]):not([type=file]),textarea,select');
+  document.addEventListener('focusin',e=>{if(isField(e.target))document.body.classList.add('kbd-open');});
+  document.addEventListener('focusout',()=>{setTimeout(()=>{if(!isField(document.activeElement))document.body.classList.remove('kbd-open');},120);});
 })();
 </script>
 
