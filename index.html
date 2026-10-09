@@ -1565,14 +1565,17 @@ a.tcall{font-weight:700;}
     <div id="shareConsentRow" style="display:none;margin-top:11px;">
       <label style="font-size:12.5px;display:flex;gap:9px;align-items:flex-start;cursor:pointer;"><input type="checkbox" id="shareConsent" style="margin-top:3px;"><span>You may share my thank you on DiabetesHub using my first name or initials only.</span></label>
     </div>
-    <div id="sharePicRow" class="bluebox" style="display:none;margin-top:12px;">📷 <strong>Adding a picture:</strong> a screenshot really helps. This page cannot attach files itself, so after your email app opens, tap its paperclip or photo button and add your screenshot. If you used Copy message, paste it into a new email and attach the picture there. Please do not screenshot anything with names, blood sugar readings or other personal details, or blur them first. Your Journal is private, so please leave it out.</div>
+    <div id="sharePicRow" class="bluebox" style="display:none;margin-top:12px;">
+      <div id="sharePicNo">📷 <strong>Pictures:</strong> you cannot upload a picture here yet, so please describe what you can see. If I need a screenshot, I will ask for one at the email address you give. Please do not screenshot names, blood sugar readings or other personal details, and leave out your private Journal.</div>
+      <div id="sharePicYes" style="display:none;"><label for="sharePic" style="font-weight:600;display:block;margin-bottom:6px;">📷 Add a screenshot (optional, one image, up to 5 MB)</label><input type="file" id="sharePic" accept="image/*" style="max-width:100%;"><p style="margin-top:6px;">Please do not include names, blood sugar readings or other personal details, and leave out your private Journal.</p></div>
+    </div>
     <div class="ferr" id="shareErr" role="alert"></div>
+    <input type="checkbox" id="shareBot" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;">
     <div style="display:flex;gap:8px;margin-top:13px;flex-wrap:wrap;">
-      <button type="button" class="btn btn-b" onclick="shareSend()">✉️ Send by email</button>
-      <button type="button" class="btn btn-o" onclick="shareCopy()">📋 Copy message</button>
+      <button type="button" class="btn btn-b" id="shareBtn" onclick="shareSend()">✉️ Send</button>
     </div>
     <p id="shareNote" style="font-size:12px;color:var(--muted);margin-top:11px;" role="status"></p>
-    <p style="font-size:11.5px;color:var(--muted);margin-top:11px;">🔒 This page stores nothing and sends nothing by itself. For a problem report, the email also includes your device and browser type so I can reproduce the issue, and you can read it before you send. "Send by email" opens an email to <strong>diabeteshub.ie@gmail.com</strong> in your own email app. Please do not include surnames, hospital numbers, or other details that could identify you or your child. This is not a place for medical questions, so please speak to your diabetes team for those. In an emergency call <a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a>.</p>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:11px;">🔒 This site does not store your message. When you tap Send, it goes through a secure form service (Web3Forms) which emails it to me. A problem report also includes your device and browser type so I can reproduce the issue. Please do not include surnames, hospital numbers, or other details that could identify you or your child. This is not a place for medical questions, so please speak to your diabetes team for those. In an emergency call <a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a>. See the <a href="/privacy.html">Privacy page</a>.</p>
   </div>
 </div>
 
@@ -2631,7 +2634,7 @@ function maybeAskTheme(){
 if(window.matchMedia){try{window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',syncThemeUI);}catch(e){}}
 document.addEventListener('DOMContentLoaded',syncThemeUI);
 
-/* Feedback & Thanks: composes an email only, nothing is stored or sent by the page */
+/* Feedback & Thanks: sends via Web3Forms; nothing is stored by the site */
 let _shareMode='suggest';
 const SHARE_TXT={
   suggest:{help:'Spotted something missing, unclear, or out of date? Tell me what would make DiabetesHub more useful.',ph:'e.g. It would help to have a section on... / The hospital number for... has changed...'},
@@ -2648,6 +2651,8 @@ function shareMode(m,btn){
   document.getElementById('shareEmailRow').style.display=(m==='thanks')?'none':'block';
   document.getElementById('shareBugRow').style.display=(m==='bug')?'block':'none';
   document.getElementById('sharePicRow').style.display=(m==='bug')?'block':'none';
+  document.getElementById('sharePicNo').style.display=FEEDBACK_ATTACH?'none':'block';
+  document.getElementById('sharePicYes').style.display=FEEDBACK_ATTACH?'block':'none';
   document.getElementById('shareEmailHelp').textContent=(m==='bug')
     ?'Only used to ask you to test the fix once it is ready. I will not use it for anything else, and it is never shared or published.'
     :'Only used to reply about your suggestion, for example to check a detail. It is never shared or published.';
@@ -2673,18 +2678,39 @@ function shareBuild(){
     (thanks?'\nPermission to share on the site (first name or initials only): '+(ok?'YES':'NO'):'');
   return {subject,body};
 }
-function shareSend(){
+/* Set FEEDBACK_KEY to the Web3Forms access key (it is public by design). Until it is set, Send falls back to the visitor's email app. */
+const FEEDBACK_KEY='PASTE_WEB3FORMS_ACCESS_KEY_HERE';
+const FEEDBACK_ATTACH=false; /* set true only on a Web3Forms Pro plan, which allows file uploads */
+let _shareLast=0;
+function shareMailto(m){window.location.href='mailto:diabeteshub.ie@gmail.com?subject='+encodeURIComponent(m.subject)+'&body='+encodeURIComponent(m.body);}
+async function shareSend(){
   const m=shareBuild();if(!m)return;
-  window.location.href='mailto:diabeteshub.ie@gmail.com?subject='+encodeURIComponent(m.subject)+'&body='+encodeURIComponent(m.body);
-  document.getElementById('shareNote').textContent='If your email app did not open, tap Copy message and send it to diabeteshub.ie@gmail.com from any email.';
-}
-function shareCopy(){
-  const m=shareBuild();if(!m)return;
-  const note=document.getElementById('shareNote');
-  const t=m.body;
-  const done=()=>{note.textContent='Copied. Paste it into an email to diabeteshub.ie@gmail.com.';};
-  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,()=>{note.textContent='Could not copy automatically. Please select the text in the box and copy it.';});}
-  else{note.textContent='Could not copy automatically. Please select the text in the box and copy it.';}
+  const note=document.getElementById('shareNote'),err=document.getElementById('shareErr'),btn=document.getElementById('shareBtn');
+  if(FEEDBACK_KEY.indexOf('PASTE_')===0){shareMailto(m);note.textContent='Your email app should open. If not, please send this to diabeteshub.ie@gmail.com.';return;}
+  if(document.getElementById('shareBot').checked){note.textContent='Thank you, your message has been sent.';return;}
+  if(Date.now()-_shareLast<20000){err.textContent='Please wait a few seconds before sending another message.';err.classList.add('show');return;}
+  const fd=new FormData();
+  fd.append('access_key',FEEDBACK_KEY);
+  fd.append('subject',m.subject);
+  fd.append('from_name','DiabetesHub website');
+  fd.append('message',m.body);
+  const nm=document.getElementById('shareName').value.trim();if(nm)fd.append('name',nm);
+  const em=document.getElementById('shareEmail').value.trim();if(em&&_shareMode!=='thanks')fd.append('email',em);
+  if(FEEDBACK_ATTACH&&_shareMode==='bug'){const f=document.getElementById('sharePic').files[0];if(f){if(f.size>5*1024*1024||!/^image\//.test(f.type)){err.textContent='Please choose an image under 5 MB.';err.classList.add('show');return;}fd.append('attachment',f);}}
+  btn.disabled=true;btn.textContent='Sending...';note.textContent='';
+  try{
+    const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});
+    const j=await r.json();
+    if(!r.ok||!j.success)throw new Error('send failed');
+    _shareLast=Date.now();
+    document.getElementById('shareTxt').value='';document.getElementById('shareConsent').checked=false;
+    const pic=document.getElementById('sharePic');if(pic)pic.value='';
+    note.textContent=_shareMode==='thanks'?'Thank you. Your message means a lot, and it has been sent.':'Thank you, your message has been sent.';
+  }catch(e){
+    err.textContent='Sorry, that did not send. Please check your connection and try again, or ';
+    const a=document.createElement('a');a.href='#';a.textContent='email us instead';a.onclick=function(ev){ev.preventDefault();shareMailto(m);};
+    err.appendChild(a);err.appendChild(document.createTextNode('.'));err.classList.add('show');
+  }finally{btn.disabled=false;btn.textContent='✉️ Send';}
 }
 document.addEventListener('DOMContentLoaded',()=>shareMode('suggest',null));
 
