@@ -514,12 +514,45 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 #themeBtn{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:18px;line-height:1;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
 #themeBtn:hover{background:rgba(255,255,255,.26);}
 @media(max-width:768px){#themeBtn{position:absolute;top:10px;right:14px;}}
+
+/* tap-to-call links: clearly clickable */
+a.tcall,.foot a[href^="tel:"],.sc a[href^="tel:"]:not(.btn),.hbox a[href^="tel:"],.card a[href^="tel:"]:not(.btn){text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1.5px;cursor:pointer;}
+a.tcall{font-weight:700;}
+.hbox a.tcall,.card a.tcall,.si a.tcall,.gbox a.tcall,.ibox a.tcall{color:inherit;}
+.ebar .ei{display:inline-block;white-space:nowrap;}
+.ebar .esep{margin:0 6px;}
+.ebar a{text-decoration:underline;text-underline-offset:2px;}
+@media(max-width:640px){
+  .ebar{padding:8px 10px;font-size:12px;line-height:1.7;}
+  .ebar .esep{display:none;}
+  .ebar .ei{margin:0 7px;}
+}
+/* desktop: centre headings, callouts and card text */
+@media(min-width:900px){
+  .sh2{justify-content:center;text-align:center;}
+  .sh2 h2{text-align:center;}
+  .hbox,.gbox,.ibox,.bluebox,.tipb,.foot{text-align:center;}
+  .cg .card{text-align:center;}
+  .cg .card .ci{display:block;text-align:center;}
+  .card ul,.card ol,.card table,.card li{text-align:left;}
+  .cg,.cg-tight,.sg,.qn,.qn-more.open{display:flex;flex-wrap:wrap;justify-content:center;}
+  .cg>*,.cg-tight>*{flex:1 1 250px;max-width:292px;}
+  .sg>*{flex:1 1 200px;max-width:262px;}
+  .qn>*,.qn-more.open>*{flex:0 0 132px;}
+  .si{text-align:left;}
+  .tb{justify-content:center;}
+  .section>p{text-align:center;}
+  .sc,.fund-card,.edu-card{max-width:920px;margin-left:auto;margin-right:auto;}
+  .section>div>h4,.section h4[style*="text-transform:uppercase"]{text-align:center;}
+
+  .card ul,.card ol{display:inline-block;max-width:100%;}
+}
 </style>
 </head>
 <body>
 
 <div class="ebar">
-  🚨 Emergency: <a href="tel:112">112</a> / <a href="tel:999">999</a> &nbsp;|&nbsp; HSE Live: <a href="tel:18007007007">1800 700 700</a> &nbsp;|&nbsp; Samaritans: <a href="tel:116123">116 123</a>
+  <span class="ei">🚨 Emergency: <a href="tel:112" class="tcall">112</a> / <a href="tel:999" class="tcall">999</a></span><span class="esep"> | </span><span class="ei">HSE Live: <a href="tel:18007007007" class="tcall">1800 700 700</a></span><span class="esep"> | </span><span class="ei">Samaritans: <a href="tel:116123" class="tcall">116 123</a></span>
 </div>
 
 <header>
@@ -684,7 +717,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 <div id="emergency" class="section">
   <div class="sh2"><span class="ic">🚨</span><h2>Emergency Guide</h2></div>
-  <div class="hbox" style="background:linear-gradient(135deg,#FFE4E6,#FECDD3);border-color:var(--rose);"><strong style="color:#9F1239;">⏱️ If in doubt, call 112 now.</strong> Don't wait to see if it gets worse.</div>
+  <div class="hbox" style="background:linear-gradient(135deg,#FFE4E6,#FECDD3);border-color:var(--rose);"><strong style="color:#9F1239;">⏱️ If in doubt, call <a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a> now.</strong> Don't wait to see if it gets worse.</div>
   <div class="bluebox"><strong>📞 For urgent but non-999 concerns</strong> — dose questions, sick-day advice, equipment issues — contact your local hospital's endocrinology/diabetes team directly. See the card below to find your hospital's number.</div>
 
   <div class="ip" style="border-left:5px solid #65A30D;margin-bottom:12px;">
@@ -693,15 +726,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   </div>
   <div class="ip" style="border-left:5px solid #D97706;margin-bottom:12px;">
     <h3 style="color:#92400E;">🟠 Moderate Hypo — Confused or Uncooperative <span class="pill" style="background:#FEF3C7;color:#92400E;margin-left:4px;">Below 3.0 mmol/L</span></h3>
-    <p style="font-size:13px;color:var(--muted);line-height:1.65;">Try glucose gel (GlucoGel) inside the cheek if safe. Do NOT force liquid — choking risk. Call 112 if no improvement within 5 minutes.</p>
+    <p style="font-size:13px;color:var(--muted);line-height:1.65;">Try glucose gel (GlucoGel) inside the cheek if safe. Do NOT force liquid — choking risk. Call <a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a> if no improvement within 5 minutes.</p>
   </div>
   <div class="ip" style="border-left:5px solid var(--rose);margin-bottom:12px;">
     <h3 style="color:#9F1239;">🔴 Severe Hypo — Unconscious or Fitting <span class="pill" style="background:#FFE4E6;color:#9F1239;margin-left:4px;">Any level — defined by symptoms</span></h3>
-    <p style="font-size:13px;color:var(--muted);line-height:1.65;"><strong>Call 112 immediately.</strong> Do NOT give food or drink. Administer glucagon if trained (nasal Baqsimi or IM injection). Recovery position. Stay until the ambulance arrives.</p>
+    <p style="font-size:13px;color:var(--muted);line-height:1.65;"><strong>Call <a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a> immediately.</strong> Do NOT give food or drink. Administer glucagon if trained (nasal Baqsimi or IM injection). Recovery position. Stay until the ambulance arrives.</p>
   </div>
   <div class="ip" style="border-left:5px solid #7F1D1D;margin-bottom:20px;">
     <h3 style="color:#7F1D1D;">⚫ DKA Warning — Fruity Breath, Vomiting, Heavy Breathing <span class="pill" style="background:#E5E7EB;color:#374151;margin-left:4px;">Usually above 11 mmol/L</span></h3>
-    <p style="font-size:13px;color:var(--muted);line-height:1.65;">Diabetic Ketoacidosis — a life-threatening emergency. <strong>Call 112 immediately.</strong> Requires hospital treatment with IV fluids and insulin.</p>
+    <p style="font-size:13px;color:var(--muted);line-height:1.65;">Diabetic Ketoacidosis — a life-threatening emergency. <strong>Call <a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a> immediately.</strong> Requires hospital treatment with IV fluids and insulin.</p>
   </div>
 
   <div class="sh2" style="margin-top:4px;"><span class="ic">☎️</span><h2 style="font-size:18px;">Call Now</h2></div>
@@ -743,7 +776,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     <div class="si"><div><h4>👁️ Blurred Vision</h4><p>High blood sugar temporarily changes the shape of the eye's lens.</p></div></div>
     <div class="si"><div><h4>🤕 Recurring Infections</h4><p>Thrush, skin infections, or cuts that are slow to heal.</p></div></div>
     <div class="si"><div><h4>😠 Mood Changes</h4><p>Irritability in children, sometimes mistaken for behavioural issues.</p></div></div>
-    <div class="si" style="border-left:4px solid var(--rose);"><div><h4 style="color:var(--rose);">⚫ DKA Warning</h4><p>Fruity breath, vomiting, heavy breathing — a life-threatening emergency. <strong>Call 112 immediately.</strong></p></div></div>
+    <div class="si" style="border-left:4px solid var(--rose);"><div><h4 style="color:var(--rose);">⚫ DKA Warning</h4><p>Fruity breath, vomiting, heavy breathing — a life-threatening emergency. <strong>Call <a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a> immediately.</strong></p></div></div>
   </div>
   <div class="gbox" style="margin-bottom:4px;">⏱️ Type 1 symptoms can develop within days to weeks in children and young people — it often appears suddenly, unlike Type 2.</div>
 
@@ -1232,7 +1265,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     <div class="edu-q">"Diabetes is a full-time job with no days off. The kindest thing you can do is try to understand what that means."</div>
     <div class="cg">
       <div class="card cb"><h3>Never Say "Can You Eat That?"</h3><p>People with diabetes can eat almost everything, with awareness. This question creates shame.</p></div>
-      <div class="card cg2"><h3>Learn to Recognise a Hypo</h3><p>Pale, sweaty, shaky, confused, irritable. Have fast-acting sugar available. Know when to call 112.</p></div>
+      <div class="card cg2"><h3>Learn to Recognise a Hypo</h3><p>Pale, sweaty, shaky, confused, irritable. Have fast-acting sugar available. Know when to call <a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a>.</p></div>
       <div class="card ca"><h3>Skip Unsolicited Advice</h3><p>"Have you tried cinnamon?" isn't helpful when someone has a full medical team.</p></div>
       <div class="card cp"><h3>Don't Panic About Devices</h3><p>CGM sensors, pumps, and finger pricks are part of normal life — react with calm, not alarm.</p></div>
       <div class="card cr"><h3>Celebrate Wins</h3><p>A great HbA1c, a full week in range, a night out managed safely — these deserve recognition.</p></div>
@@ -1317,7 +1350,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     <button class="tbtn" onclick="filterH('ulster',this)">Ulster/Border</button>
   </div>
   <div id="hospList"></div>
-  <div class="hbox" style="margin-top:8px;"><strong>🚑 Emergency:</strong> If you or your child is in DKA or severe hypoglycaemia — go directly to your nearest Emergency Department or call <strong>112</strong>. Do not wait for an appointment.</div>
+  <div class="hbox" style="margin-top:8px;"><strong>🚑 Emergency:</strong> If you or your child is in DKA or severe hypoglycaemia — go directly to your nearest Emergency Department or call <strong><a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a></strong>. Do not wait for an appointment.</div>
 </div>
 
 <div id="funding" class="section">
@@ -1641,7 +1674,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <div class="foot" style="max-width:1240px;margin:0 auto;padding:0 16px 20px;">
   <p>💙 Built by a mom who learned all this the hard way, so you don't have to. Inspired by my warrior daughter, and for everyone in Ireland living with diabetes - whether you are 1 or 105 years old!</p>
   <p style="margin-top:4px;">Information and support only. Always consult your diabetes healthcare team for medical decisions.</p>
-  <p style="margin-top:4px;"><strong>Emergency: 112 or 999</strong> &nbsp;|&nbsp; HSE Live: <a href="tel:18007007007">1800 700 700</a> &nbsp;|&nbsp; Samaritans: <a href="tel:116123">116 123</a> &nbsp;|&nbsp; <a href="https://www.diabetes.ie" rel="noopener noreferrer">diabetes.ie</a></p>
+  <p style="margin-top:4px;"><strong>Emergency: <a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a></strong> &nbsp;|&nbsp; HSE Live: <a href="tel:18007007007" class="tcall">1800 700 700</a> &nbsp;|&nbsp; Samaritans: <a href="tel:116123" class="tcall">116 123</a> &nbsp;|&nbsp; <a href="https://www.diabetes.ie" rel="noopener noreferrer">diabetes.ie</a></p>
   <p style="margin-top:8px;font-size:12px;">© 2026 DiabetesHub Ireland. All rights reserved. &nbsp;|&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;|&nbsp; <a href="mailto:diabeteshub.ie@gmail.com">Contact</a></p>
 </div>
 
@@ -1655,12 +1688,12 @@ const ACRONYMS=[
   {a:'AIT',f:'Active Insulin Time (also known as DIA — Duration of Insulin Action)',d:'How long rapid-acting insulin stays active in your body after an injection or bolus. Typically 2–4 hours. Important for preventing "insulin stacking" — dosing again before the previous dose has fully acted.'},
   {a:'ICR',f:'Insulin to Carbohydrate Ratio',d:'How many grams of carbohydrate are covered by 1 unit of insulin. Example: ICR of 1:15 means 1 unit of insulin covers 15g of carbohydrate. Varies by person, time of day, and many other factors.'},
   {a:'ISF',f:'Insulin Sensitivity Factor (also called Correction Factor)',d:'How much 1 unit of insulin lowers your blood sugar (in mmol/L). Example: ISF of 2.5 means 1 unit lowers blood sugar by 2.5 mmol/L. Used to calculate correction doses when blood sugar is above target.'},
-  {a:'DKA',f:'Diabetic Ketoacidosis',d:'A life-threatening emergency. When there is not enough insulin, the body breaks down fat, producing acidic ketones. Symptoms: fruity breath, nausea, heavy breathing, vomiting. Call 112 immediately. Requires hospital IV treatment.'},
+  {a:'DKA',f:'Diabetic Ketoacidosis',d:'A life-threatening emergency. When there is not enough insulin, the body breaks down fat, producing acidic ketones. Symptoms: fruity breath, nausea, heavy breathing, vomiting. Call <a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a> immediately. Requires hospital IV treatment.'},
   {a:'HCL',f:'Hybrid Closed Loop',d:'The most advanced available insulin delivery system — also called the artificial pancreas. A CGM and insulin pump work together automatically, adjusting insulin delivery every few minutes based on real-time glucose data.'},
   {a:'APS',f:'Automated Pancreas System (or Artificial Pancreas System)',d:'Another term for Hybrid Closed Loop or fully automated insulin delivery. Systems like CamAPS FX, Omnipod 5, and MiniMed 780G are APS systems.'},
   {a:'basal',f:'Basal Insulin',d:'Long-acting background insulin that keeps blood sugar stable between meals and overnight. On MDI: Lantus, Levemir, Toujeo, or Tresiba. On a pump: continuous tiny doses of rapid-acting insulin.'},
   {a:'bolus',f:'Bolus Insulin',d:'Fast-acting insulin given at mealtimes or to correct a high blood sugar. On MDI: NovoRapid, Humalog, Fiasp. On a pump: delivered as a manual dose (mealtime or correction bolus).'},
-  {a:'hypo',f:'Hypoglycaemia',d:'Low blood sugar — below 3.9 mmol/L. Symptoms: shaking, sweating, pale skin, confusion, irritability. Treat immediately with 15g fast-acting carbohydrates. Severe hypo (unconscious) — call 112.'},
+  {a:'hypo',f:'Hypoglycaemia',d:'Low blood sugar — below 3.9 mmol/L. Symptoms: shaking, sweating, pale skin, confusion, irritability. Treat immediately with 15g fast-acting carbohydrates. Severe hypo (unconscious) — call <a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a>.'},
   {a:'hyper',f:'Hyperglycaemia',d:'High blood sugar — above 10 mmol/L. Symptoms: thirst, frequent urination, fatigue, blurred vision. Above 14 mmol/L: check for ketones. Contact your team.'},
   {a:'LADA',f:'Latent Autoimmune Diabetes in Adults (Type 1.5)',d:'An autoimmune diabetes that develops slowly in adults, often misdiagnosed as Type 2. Requires insulin eventually. If you were diagnosed Type 2 and don\'t respond to Type 2 medications, ask about LADA antibody testing.'},
   {a:'MODY',f:'Maturity-Onset Diabetes of the Young',d:'A group of rare single-gene disorders causing diabetes. Accounts for about 1–5% of all diabetes. Often misdiagnosed as Type 1 or Type 2. Genetic testing confirms it. Treatment varies by type.'},
