@@ -547,6 +547,23 @@ a.tcall{font-weight:700;}
 
   .card ul,.card ol{display:inline-block;max-width:100%;}
 }
+
+/* Thank-you carousel */
+.thx{max-width:760px;margin:0 auto 18px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px 14px 12px;box-shadow:var(--sh);text-align:center;}
+.thx[hidden]{display:none;}
+.thx-h{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.thx-row{display:flex;align-items:center;gap:8px;}
+.thx-f{flex:1;margin:0;min-height:84px;display:flex;flex-direction:column;justify-content:center;}
+.thx-f blockquote{margin:0;font-size:15px;line-height:1.55;font-style:italic;color:var(--text);overflow-wrap:anywhere;}
+.thx-f figcaption{margin-top:7px;font-size:12.5px;font-weight:600;color:var(--muted);}
+.thx-b{flex:0 0 auto;width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:none;font-size:22px;line-height:1;cursor:pointer;color:var(--ink-l);}
+.thx-b:hover{background:var(--blue-pp);}
+.thx-dots{display:flex;justify-content:center;gap:7px;margin-top:8px;}
+.thx-dots button{width:9px;height:9px;padding:0;border-radius:50%;border:none;background:var(--border);cursor:pointer;}
+.thx-dots button.on{background:var(--blue);}
+.thx-f.fade blockquote,.thx-f.fade figcaption{opacity:0;}
+.thx-f blockquote,.thx-f figcaption{transition:opacity .35s;}
+@media(prefers-reduced-motion:reduce){.thx-f blockquote,.thx-f figcaption{transition:none;}}
 </style>
 </head>
 <body>
@@ -637,6 +654,16 @@ a.tcall{font-weight:700;}
     <p>From age 1 to 105 — newly diagnosed to decades living with it. Your safe space, information hub, GP finder, hospital guide, and community. Every person on this island managing diabetes belongs here.</p>
   </div>
 
+  <div class="thx" id="thxWrap" hidden aria-roledescription="carousel" aria-label="Thank you messages from the community">
+    <div class="thx-h">💙 Kind words from the community</div>
+    <div class="thx-row">
+      <button type="button" class="thx-b" id="thxPrev" aria-label="Previous message">‹</button>
+      <figure class="thx-f"><blockquote id="thxQ"></blockquote><figcaption id="thxN"></figcaption></figure>
+      <button type="button" class="thx-b" id="thxNext" aria-label="Next message">›</button>
+    </div>
+    <div class="thx-dots" id="thxDots"></div>
+  </div>
+
   <div class="hsearch" role="search">
     <input type="search" id="hSearch" placeholder="🔍  What do you need? Try “hypo”, “insulin”, “school”…" aria-label="Search DiabetesHub" oninput="homeSearch(this.value)" autocomplete="off">
     <div class="hs-res" id="hsRes" aria-live="polite"></div>
@@ -662,6 +689,7 @@ a.tcall{font-weight:700;}
     <button class="qnb" onclick="showS('breakthroughs',null)"><span class="qi">🔬</span><span class="ql">Breakthroughs</span></button>
     <button class="qnb" onclick="showS('services',null)"><span class="qi">🤝</span><span class="ql">Services</span></button>
     <button class="qnb" onclick="showS('campaigns',null)"><span class="qi">📢</span><span class="ql">Campaigns</span></button>
+    <button class="qnb" onclick="showS('share',null)"><span class="qi">💌</span><span class="ql">Share</span></button>
     <button class="qnb" onclick="showS('factors',null)"><span class="qi">📊</span><span class="ql">42 Factors</span></button>
   </div>
   <button class="qn-toggle" id="qnToggle" onclick="toggleQn()" aria-expanded="false">Show all sections ▾</button>
@@ -1444,6 +1472,33 @@ a.tcall{font-weight:700;}
     <div class="cc"><div class="cn">Sonia Sotomayor</div><div class="ct2">US Supreme Court Justice</div><p class="cq">Diagnosed with Type 1 at age 7, and has spoken about diabetes management shaping her discipline and independence from childhood.</p><a class="sl" href="https://www.supremecourt.gov/about/biographies.aspx" target="_blank" rel="noopener noreferrer">supremecourt.gov →</a></div>
     <div class="cc"><div class="cn">Alexander "Sasha" Zverev</div><div class="ct2">German tennis player, career-high World No. 2</div><p class="cq">Diagnosed with Type 1 as a toddler and told by doctors he'd never make it as an athlete — went public in 2022 and founded the Alexander Zverev Foundation to support children with T1D.</p><a class="sl" href="https://www.alex-zverev.com" target="_blank" rel="noopener noreferrer">alex-zverev.com →</a></div>
     <div class="cc"><div class="cn">Stephen Clancy</div><div class="ct2">Irish professional cyclist, Team Novo Nordisk</div><p class="cq">From Limerick, diagnosed with Type 1 at 19 during a training camp — went on to join Team Novo Nordisk, the world's first all-diabetes professional cycling team.</p><a class="sl" href="https://www.teamnovonordisk.com" target="_blank" rel="noopener noreferrer">teamnovonordisk.com →</a></div>
+  </div>
+</div>
+
+<div id="share" class="section">
+  <div class="sh2"><span class="ic">💌</span><h2>Share &amp; Say Thanks</h2></div>
+  <div class="gbox">💙 <strong>This site grows with the community.</strong> Tell me what would make it more useful, or tell me how it helped you. Nothing goes live automatically: every message comes to me first, and I only share a thank you with your clear permission.</div>
+  <div class="ja">
+    <label style="font-weight:600;font-size:12px;display:block;margin-bottom:7px;">What would you like to send?</label>
+    <div class="mr" id="shareType">
+      <button type="button" class="mb sel" onclick="shareMode('suggest',this)">💡 A suggestion</button>
+      <button type="button" class="mb" onclick="shareMode('thanks',this)">🙏 A thank you</button>
+    </div>
+    <p id="shareHelp" style="font-size:12.5px;color:var(--muted);margin:2px 0 12px;"></p>
+    <label for="shareName" style="font-weight:600;font-size:11.5px;display:block;margin-bottom:5px;">First name or initials (optional)</label>
+    <input type="text" id="shareName" class="gp-input" maxlength="40" autocomplete="off" placeholder="e.g. Aoife, or A." style="width:100%;padding:9px 11px;margin-bottom:12px;">
+    <label for="shareTxt" style="font-weight:600;font-size:12px;display:block;margin-bottom:6px;">Your message</label>
+    <textarea class="jta" id="shareTxt" maxlength="1200" placeholder="" oninput="document.getElementById('shareErr').classList.remove('show')"></textarea>
+    <div id="shareConsentRow" style="display:none;margin-top:11px;">
+      <label style="font-size:12.5px;display:flex;gap:9px;align-items:flex-start;cursor:pointer;"><input type="checkbox" id="shareConsent" style="margin-top:3px;"><span>You may share my thank you on DiabetesHub using my first name or initials only.</span></label>
+    </div>
+    <div class="ferr" id="shareErr" role="alert"></div>
+    <div style="display:flex;gap:8px;margin-top:13px;flex-wrap:wrap;">
+      <button type="button" class="btn btn-b" onclick="shareSend()">✉️ Send by email</button>
+      <button type="button" class="btn btn-o" onclick="shareCopy()">📋 Copy message</button>
+    </div>
+    <p id="shareNote" style="font-size:12px;color:var(--muted);margin-top:11px;" role="status"></p>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:11px;">🔒 This page stores nothing and sends nothing by itself. "Send by email" opens an email to <strong>diabeteshub.ie@gmail.com</strong> in your own email app. Please do not include surnames, hospital numbers, or other details that could identify you or your child. This is not a place for medical questions, so please speak to your diabetes team for those. In an emergency call <a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a>.</p>
   </div>
 </div>
 
@@ -2266,6 +2321,7 @@ const MORE_ITEMS=[
   {id:'heroes',ic:'🌟',label:'Sports Heroes & Role Models'},
   {id:'awareness',ic:'💙',label:'World Diabetes Day & Awareness'},
   {id:'campaigns',ic:'📢',label:'Awareness Campaigns'},
+  {id:'share',ic:'💌',label:'Share & Say Thanks'},
   {id:'breakthroughs',ic:'🔬',label:'Research Breakthroughs'},
   {id:'__theme',ic:'🎨',label:'Appearance: Light / Dark'},
 ];
@@ -2403,7 +2459,7 @@ function toggleQn(){
   b.textContent=o?'Show fewer ▴':'Show all sections ▾';
   b.setAttribute('aria-expanded',o?'true':'false');
 }
-const SEARCH_LABELS={signs:'See The Signs',emergency:'Emergency Guide',newlydiag:'Newly Diagnosed',journal:'My Journal',wellness:'Wellness',hba1c:'Lower HbA1c',nutrition:'Nutrition & Carb Counting',acronyms:'Acronyms Explained',devices:'Devices & Technology',family:'Family, Teachers & SNAs',gpfinder:'Find a GP',hospitals:'Hospitals',funding:'Funding & Entitlements',medals:'Milestone Medals',heroes:'Role Models',awareness:'World Diabetes Day & Awareness',breakthroughs:'Research Breakthroughs',services:'Support Services',campaigns:'Awareness Campaigns',factors:'42 Factors Affecting Blood Sugar'};
+const SEARCH_LABELS={signs:'See The Signs',emergency:'Emergency Guide',newlydiag:'Newly Diagnosed',journal:'My Journal',wellness:'Wellness',hba1c:'Lower HbA1c',nutrition:'Nutrition & Carb Counting',acronyms:'Acronyms Explained',devices:'Devices & Technology',family:'Family, Teachers & SNAs',gpfinder:'Find a GP',hospitals:'Hospitals',funding:'Funding & Entitlements',medals:'Milestone Medals',heroes:'Role Models',awareness:'World Diabetes Day & Awareness',breakthroughs:'Research Breakthroughs',services:'Support Services',campaigns:'Awareness Campaigns',factors:'42 Factors Affecting Blood Sugar',share:'Share & Say Thanks'};
 let _searchIdx=null;
 function homeSearch(q){
   const box=document.getElementById('hsRes');
@@ -2500,6 +2556,83 @@ function maybeAskTheme(){
 }
 if(window.matchMedia){try{window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',syncThemeUI);}catch(e){}}
 document.addEventListener('DOMContentLoaded',syncThemeUI);
+
+/* Share & Say Thanks: composes an email only, nothing is stored or sent by the page */
+let _shareMode='suggest';
+const SHARE_TXT={
+  suggest:{help:'Spotted something missing, unclear, or out of date? Tell me what would make DiabetesHub more useful.',ph:'e.g. It would help to have a section on... / The hospital number for... has changed...'},
+  thanks:{help:'Did something here help you or someone you love? A few words means a lot, and may encourage the next person who lands here.',ph:'e.g. The sick day guide helped us feel calm at 2am...'}
+};
+function shareMode(m,btn){
+  _shareMode=m;
+  document.querySelectorAll('#shareType .mb').forEach(b=>b.classList.remove('sel'));
+  if(btn)btn.classList.add('sel');
+  document.getElementById('shareHelp').textContent=SHARE_TXT[m].help;
+  document.getElementById('shareTxt').placeholder=SHARE_TXT[m].ph;
+  document.getElementById('shareConsentRow').style.display=(m==='thanks')?'block':'none';
+  document.getElementById('shareErr').classList.remove('show');
+  document.getElementById('shareNote').textContent='';
+}
+function shareBuild(){
+  const msg=document.getElementById('shareTxt').value.trim();
+  const nm=document.getElementById('shareName').value.trim();
+  const err=document.getElementById('shareErr');
+  err.classList.remove('show');
+  if(msg.length<5){err.textContent='Please write a short message first.';err.classList.add('show');return null;}
+  const thanks=_shareMode==='thanks';
+  const ok=document.getElementById('shareConsent').checked;
+  const subject=thanks?'DiabetesHub thank you':'DiabetesHub suggestion';
+  const body=(thanks?'Thank you message':'Suggestion')+'\n\n'+msg+'\n\nName: '+(nm||'(not given)')+
+    (thanks?'\nPermission to share on the site (first name or initials only): '+(ok?'YES':'NO'):'');
+  return {subject,body};
+}
+function shareSend(){
+  const m=shareBuild();if(!m)return;
+  window.location.href='mailto:diabeteshub.ie@gmail.com?subject='+encodeURIComponent(m.subject)+'&body='+encodeURIComponent(m.body);
+  document.getElementById('shareNote').textContent='If your email app did not open, tap Copy message and send it to diabeteshub.ie@gmail.com from any email.';
+}
+function shareCopy(){
+  const m=shareBuild();if(!m)return;
+  const note=document.getElementById('shareNote');
+  const t=m.body;
+  const done=()=>{note.textContent='Copied. Paste it into an email to diabeteshub.ie@gmail.com.';};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,()=>{note.textContent='Could not copy automatically. Please select the text in the box and copy it.';});}
+  else{note.textContent='Could not copy automatically. Please select the text in the box and copy it.';}
+}
+document.addEventListener('DOMContentLoaded',()=>shareMode('suggest',null));
+
+/* THANK-YOU CAROUSEL
+   To add a message: paste a new line at the TOP of THANKS (newest first), in the form
+   {t:"Message text", n:"First name or initials"},
+   Only the newest 8 show on the site. Older ones stay in this list, hidden, as your archive.
+   Only add messages you have permission to share. */
+const THANKS=[
+];
+const THANKS_MAX=8;
+(function(){
+  const list=THANKS.slice(0,THANKS_MAX);
+  const wrap=document.getElementById('thxWrap');
+  if(!wrap||!list.length)return;
+  wrap.hidden=false;
+  const q=document.getElementById('thxQ'),n=document.getElementById('thxN'),f=q.parentNode,dots=document.getElementById('thxDots');
+  let i=0,timer=null,paused=false;
+  const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  list.forEach((_,k)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Message '+(k+1));b.onclick=()=>{go(k);};dots.appendChild(b);});
+  function show(k){
+    i=(k+list.length)%list.length;
+    q.textContent='\u201C'+list[i].t+'\u201D';
+    n.textContent=list[i].n?'\u2014 '+list[i].n:'';
+    [...dots.children].forEach((d,j)=>d.classList.toggle('on',j===i));
+  }
+  function go(k){f.classList.add('fade');setTimeout(()=>{show(k);f.classList.remove('fade');},reduce?0:300);restart();}
+  function restart(){clearInterval(timer);if(!reduce&&list.length>1)timer=setInterval(()=>{if(!paused)go(i+1);},7000);}
+  document.getElementById('thxPrev').onclick=()=>go(i-1);
+  document.getElementById('thxNext').onclick=()=>go(i+1);
+  ['mouseenter','focusin','touchstart'].forEach(e=>wrap.addEventListener(e,()=>{paused=true;},{passive:true}));
+  ['mouseleave','focusout'].forEach(e=>wrap.addEventListener(e,()=>{paused=false;}));
+  if(list.length<2){document.getElementById('thxPrev').style.visibility='hidden';document.getElementById('thxNext').style.visibility='hidden';dots.style.display='none';}
+  show(0);restart();
+})();
 </script>
 
 <div id="installBanner" style="display:none;position:fixed;bottom:80px;left:12px;right:12px;z-index:400;background:linear-gradient(135deg,#1E3A8A,#1D4ED8);color:#fff;border-radius:14px;padding:14px 16px;box-shadow:0 8px 32px rgba(29,78,216,.35);align-items:center;gap:12px;">
