@@ -2,41 +2,32 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#1D4ED8">
-  <script defer src="https://umami.erasmus.works/script.js" data-website-id="dcaf759e-dd51-4889-8a38-24ae02e2d7a1"></script>
 <meta name="description" content="DiabetesHub Ireland — The complete support space for everyone living with diabetes in Ireland.">
 <meta name="application-name" content="DiabetesHub Ireland">
 <meta name="apple-mobile-web-app-title" content="DiabetesHub">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="mobile-web-app-capable" content="yes">
-<link rel="icon" href="/favicon.ico" sizes="48x48">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%231E3A8A'/%3E%3Cpath d='M19 50 L28 50 L31 50 L35 39 L39 61 L43 45 L47 50 L50 50 L60 50 L75 50' stroke='%2386EFAC' stroke-width='3' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
 <meta name="keywords" content="diabetes Ireland, Type 1 diabetes, Type 2 diabetes, HSE diabetes, diabetes support Ireland, blood sugar, insulin, CGM, carb counting, HbA1c">
 <meta property="og:title" content="DiabetesHub Ireland">
 <meta property="og:description" content="Your complete diabetes support space — for every person in Ireland living with diabetes, from age 1 to 100.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://diabeteshub.erasmus.works/">
-<meta property="og:site_name" content="DiabetesHub Ireland">
-<meta property="og:locale" content="en_IE">
-<meta property="og:image" content="https://diabeteshub.erasmus.works/og-image.jpg">
-<meta property="og:image:secure_url" content="https://diabeteshub.erasmus.works/og-image.jpg">
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="DiabetesHub Ireland — your complete diabetes support space">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DiabetesHub Ireland">
 <meta name="twitter:description" content="Your complete diabetes support space — for every person in Ireland living with diabetes.">
-<meta name="twitter:image" content="https://diabeteshub.erasmus.works/og-image.jpg">
 <title>DiabetesHub Ireland</title>
-<link rel="manifest" href="/manifest.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22DiabetesHub%20Ireland%22%2C%22short_name%22%3A%22DiabetesHub%22%2C%22start_url%22%3A%22%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23F0F6FF%22%2C%22theme_color%22%3A%22%231D4ED8%22%2C%22orientation%22%3A%22portrait%22%2C%22description%22%3A%22Your%20complete%20diabetes%20support%20space%20for%20Ireland%22%2C%22categories%22%3A%5B%22health%22%2C%22medical%22%2C%22lifestyle%22%5D%7D">
+
+<script>
+(function(){try{var t=localStorage.getItem('dhub_theme');if(t==='dark'||t==='light'||t==='system')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
 <style>
 :root{
+  color-scheme:light;
+  --ink-b:#1E3A8A;--ink-l:#1D4ED8;--ink-g:#14532D;
   --blue:#1D4ED8;
   --blue-d:#1E3A8A;
   --blue-m:#2563EB;
@@ -70,8 +61,8 @@
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;font-size:15px;}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;}
-a{color:var(--blue);text-decoration:none;}
+body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;}
+a{color:var(--ink-l);text-decoration:none;}
 img{max-width:100%;}
 .ebar{background:var(--rose);color:#fff;text-align:center;padding:7px 14px;font-size:11.5px;font-weight:500;line-height:1.4;}
 .ebar a{color:#FFE4E6;font-weight:700;}
@@ -80,23 +71,23 @@ header{background:linear-gradient(135deg,var(--blue-d) 0%,var(--blue) 55%,var(--
 .logo-w{display:flex;align-items:center;gap:11px;flex-shrink:0;cursor:pointer;text-decoration:none;}
 .logo-mark{width:46px;height:46px;flex-shrink:0;}
 .logo-txt{display:flex;flex-direction:column;line-height:1.05;}
-.logo-name{font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:#fff;letter-spacing:-.4px;}
+.logo-name{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:20px;font-weight:700;color:#fff;letter-spacing:-.4px;}
 .logo-name em{font-style:italic;}
 .logo-name .acc{color:#86EFAC;}
-.logo-tag{font-size:9px;color:rgba(255,255,255,.45);letter-spacing:.22em;text-transform:uppercase;margin-top:3px;}
+.logo-tag{font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.22em;text-transform:uppercase;margin-top:3px;}
 nav{display:flex;gap:3px;flex-wrap:wrap;justify-content:flex-end;}
-nav button{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.85);padding:5px 9px;border-radius:20px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:10.5px;font-weight:500;transition:all .18s;white-space:nowrap;}
+nav button{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.85);padding:5px 9px;border-radius:20px;cursor:pointer;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:11px;font-weight:500;transition:all .18s;white-space:nowrap;}
 nav button:hover,nav button.active{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.5);color:#fff;}
 .bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:300;background:#fff;border-top:1px solid var(--border);box-shadow:0 -4px 20px rgba(0,0,0,.08);}
 .bn-inner{display:flex;overflow-x:auto;padding:6px 4px 8px;gap:0;scrollbar-width:none;}
 .bn-inner::-webkit-scrollbar{display:none;}
-.bnb{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 10px;border:none;background:none;cursor:pointer;font-family:'DM Sans',sans-serif;border-radius:10px;transition:all .18s;}
+.bnb{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 10px;border:none;background:none;cursor:pointer;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;border-radius:10px;transition:all .18s;}
 .bnb.active{background:var(--blue-pp);}
 .bnb .bni{font-size:18px;line-height:1;}
-.bnb .bnl{font-size:9.5px;font-weight:600;color:var(--muted);}
-.bnb.active .bnl{color:var(--blue-d);}
+.bnb .bnl{font-size:11px;font-weight:600;color:var(--muted);}
+.bnb.active .bnl{color:var(--ink-b);}
 .bnb-home .bni{background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:21px;box-shadow:0 6px 14px rgba(29,78,216,.45);border:3px solid #fff;transform:translateY(-9px);}
-.bnb-home .bnl{margin-top:-5px;font-weight:700;color:var(--blue-d);}
+.bnb-home .bnl{margin-top:-5px;font-weight:700;color:var(--ink-b);}
 .bnb-home.active .bni{background:linear-gradient(135deg,var(--blue-d),var(--blue));}
 main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
 .section{display:none;animation:fadeUp .26s ease;}
@@ -105,35 +96,35 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
 .hero{background:linear-gradient(140deg,var(--blue-d) 0%,var(--blue) 55%,var(--blue-l) 100%);border-radius:var(--r);padding:46px 28px 38px;color:#fff;text-align:center;margin-bottom:24px;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;top:-70px;right:-70px;width:220px;height:220px;background:rgba(255,255,255,.05);border-radius:50%;}
 .hero::after{content:'';position:absolute;bottom:-45px;left:-45px;width:160px;height:160px;background:rgba(134,239,172,.07);border-radius:50%;}
-.hero h1{font-family:'Fraunces',serif;font-size:clamp(22px,5vw,42px);font-weight:700;line-height:1.18;margin-bottom:11px;}
+.hero h1{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:clamp(22px,5vw,42px);font-weight:700;line-height:1.18;margin-bottom:11px;}
 .hero h1 span{color:#86EFAC;}
 .hero p{font-size:14.5px;opacity:.9;max-width:560px;margin:0 auto 20px;line-height:1.7;}
 .hero-stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 .hst{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.28);border-radius:12px;padding:12px 16px;text-align:center;cursor:pointer;transition:all .2s;position:relative;-webkit-tap-highlight-color:transparent;}
 .hst:hover,.hst:focus{background:rgba(255,255,255,.22);border-color:rgba(134,239,172,.7);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.18);outline:none;}
 .hst:active{transform:translateY(-1px);}
-.hst-n{font-family:'Fraunces',serif;font-size:22px;font-weight:700;display:block;line-height:1;color:#fff;}
-.hst-l{font-size:9.5px;opacity:.82;text-transform:uppercase;letter-spacing:.06em;margin-top:4px;display:block;color:#fff;}
-.hst-tap{font-size:8px;color:rgba(134,239,172,.9);margin-top:5px;display:block;letter-spacing:.06em;text-transform:uppercase;font-weight:600;}
+.hst-n{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:22px;font-weight:700;display:block;line-height:1;color:#fff;}
+.hst-l{font-size:11px;opacity:.82;text-transform:uppercase;letter-spacing:.06em;margin-top:4px;display:block;color:#fff;}
+.hst-tap{font-size:11px;color:rgba(134,239,172,.9);margin-top:5px;display:block;letter-spacing:.06em;text-transform:uppercase;font-weight:600;}
 .sh2{display:flex;align-items:center;gap:11px;margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid var(--border);}
-.sh2 h2{font-family:'Fraunces',serif;font-size:25px;font-weight:700;color:var(--blue-d);}
+.sh2 h2{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:25px;font-weight:700;color:var(--ink-b);}
 .sh2 .ic{font-size:26px;}
 .stat-modal-backdrop{display:none;position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:600;align-items:center;justify-content:center;padding:16px;}
 .stat-modal-backdrop.open{display:flex;}
 .stat-modal{background:#fff;border-radius:20px;padding:0;max-width:520px;width:100%;box-shadow:0 20px 60px rgba(29,78,216,.2);position:relative;animation:smIn .28s cubic-bezier(.34,1.3,.64,1);overflow:hidden;}
 @keyframes smIn{from{opacity:0;transform:scale(.88) translateY(12px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .sm-header{background:linear-gradient(135deg,var(--blue-d),var(--blue));padding:22px 24px 18px;color:#fff;position:relative;}
-.sm-eyebrow{font-size:10px;opacity:.7;text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px;}
-.sm-title{font-family:'Fraunces',serif;font-size:clamp(17px,3vw,22px);font-weight:700;line-height:1.3;color:#fff;}
+.sm-eyebrow{font-size:11px;opacity:.7;text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px;}
+.sm-title{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:clamp(17px,3vw,22px);font-weight:700;line-height:1.3;color:#fff;}
 .sm-close{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.18);border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;color:#fff;display:flex;align-items:center;justify-content:center;transition:background .18s;}
 .sm-close:hover{background:rgba(255,255,255,.32);}
 .sm-body{padding:20px 24px 24px;max-height:60vh;overflow-y:auto;}
 .sm-body p{font-size:13.5px;color:var(--muted);line-height:1.7;margin-bottom:10px;}
 .sm-body strong{color:var(--text);}
-.sm-fact{background:var(--blue-pp);border-radius:10px;padding:12px 14px;margin:12px 0;font-size:12.5px;color:var(--blue-d);line-height:1.6;}
-.sm-fact strong{color:var(--blue-d);}
-.sm-source{background:var(--green-pp);border-radius:10px;padding:10px 14px;margin:10px 0;font-size:11.5px;color:var(--green-d);line-height:1.6;}
-.sm-source strong{color:var(--green-d);}
+.sm-fact{background:var(--blue-pp);border-radius:10px;padding:12px 14px;margin:12px 0;font-size:12.5px;color:var(--ink-b);line-height:1.6;}
+.sm-fact strong{color:var(--ink-b);}
+.sm-source{background:var(--green-pp);border-radius:10px;padding:10px 14px;margin:10px 0;font-size:11.5px;color:var(--ink-g);line-height:1.6;}
+.sm-source strong{color:var(--ink-g);}
 .sm-list{list-style:none;margin:8px 0;}
 .sm-list li{font-size:13px;color:var(--muted);padding:5px 0;padding-left:16px;position:relative;line-height:1.55;}
 .sm-list li::before{content:'▸';position:absolute;left:0;color:var(--green);font-size:11px;top:6px;}
@@ -141,13 +132,13 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
 .card{background:var(--surface);border-radius:14px;padding:19px 20px;box-shadow:var(--sh);border:1px solid var(--border);transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;align-items:flex-start;}
 .card:hover{transform:translateY(-3px);box-shadow:var(--sh-lg);}
 .ci{font-size:26px;margin-bottom:10px;display:block;}
-.card h3{font-family:'Fraunces',serif;font-size:16px;font-weight:700;margin-bottom:8px;color:var(--blue-d);letter-spacing:-.1px;}
+.card h3{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:16px;font-weight:700;margin-bottom:8px;color:var(--ink-b);letter-spacing:-.1px;}
 .card p{color:var(--muted);font-size:12.5px;line-height:1.7;}
 .cg-tight{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:13px;margin-top:14px;margin-bottom:8px;}
 .card br{display:none;}
 .card .pill{margin-top:auto;}
-.card h3 a{color:var(--blue);text-decoration:underline;text-underline-offset:2px;}
-.card h3 a:hover{color:var(--blue-d);}
+.card h3 a{color:var(--ink-l);text-decoration:underline;text-underline-offset:2px;}
+.card h3 a:hover{color:var(--ink-b);}
 .card p a{text-decoration:underline;text-underline-offset:2px;}
 .il a{text-decoration:underline;text-underline-offset:2px;}
 .sm-list a{text-decoration:underline;text-underline-offset:2px;}
@@ -157,83 +148,83 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
 .cr{border-top:4px solid var(--rose);}
 .cp{border-top:4px solid var(--purple);}
 .cgrey{border-top:4px solid var(--grey);}
-.pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;text-align:center;}
+.pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;text-align:center;}
 .pb{background:#BFDBFE;color:#1E3A8A;}
-.pg{background:var(--green-pp);color:var(--green-d);}
+.pg{background:var(--green-pp);color:var(--ink-g);}
 .pa{background:#FEF3C7;color:#92400E;}
 .pr{background:var(--rose-l);color:#9F1239;}
 .pp{background:var(--purple-l);color:#4C1D95;}
 .pgrey{background:var(--grey-m);color:var(--grey-d);}
 .pgold{background:#FEF3C7;color:#78350F;}
-.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .18s;}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:9px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .18s;}
 .btn-b{background:var(--blue);color:#fff;}
 .btn-b:hover{background:var(--blue-d);transform:translateY(-1px);}
 .btn-g{background:var(--green);color:#fff;}
 .btn-g:hover{background:var(--green-d);}
-.btn-o{background:none;border:2px solid var(--blue);color:var(--blue);}
+.btn-o{background:none;border:2px solid var(--blue);color:var(--ink-l);}
 .btn-o:hover{background:var(--blue-pp);}
 .btn-gold{background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;}
 .btn-rose{background:var(--rose);color:#fff;}
 .btn-grey{background:var(--grey-l);border:1px solid var(--border);color:var(--grey-d);}
 .ip{background:var(--surface);border-radius:var(--r);padding:20px;box-shadow:var(--sh);border:1px solid var(--border);margin-bottom:14px;}
-.ip h3{font-family:'Fraunces',serif;font-size:17px;margin-bottom:12px;display:flex;align-items:center;gap:7px;color:var(--blue-d);}
+.ip h3{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:17px;margin-bottom:12px;display:flex;align-items:center;gap:7px;color:var(--ink-b);}
 .il{list-style:none;display:flex;flex-direction:column;gap:8px;}
 .il li{display:flex;gap:9px;align-items:flex-start;font-size:13px;line-height:1.55;padding-bottom:8px;border-bottom:1px solid var(--border);}
 .il li:last-child{border-bottom:none;padding-bottom:0;}
 .il li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px;}
 .qn{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-bottom:24px;}
-.qnb{background:var(--surface);border:2px solid var(--border);border-radius:12px;padding:13px 9px;cursor:pointer;text-align:center;font-family:'DM Sans',sans-serif;transition:all .18s;display:flex;flex-direction:column;align-items:center;gap:5px;}
+.qnb{background:var(--surface);border:2px solid var(--border);border-radius:12px;padding:13px 9px;cursor:pointer;text-align:center;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;transition:all .18s;display:flex;flex-direction:column;align-items:center;gap:5px;}
 .qnb:hover{border-color:var(--blue);background:var(--blue-pp);transform:translateY(-2px);}
 .qnb .qi{font-size:22px;}
-.qnb .ql{font-size:10.5px;font-weight:600;color:var(--text);}
+.qnb .ql{font-size:12.5px;font-weight:600;color:var(--text);}
 .tb{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;}
-.tbtn{padding:6px 12px;border:2px solid var(--border);border-radius:20px;background:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:11.5px;font-weight:500;color:var(--muted);transition:all .18s;}
-.tbtn:hover{border-color:var(--blue);color:var(--blue);}
+.tbtn{padding:6px 12px;border:2px solid var(--border);border-radius:20px;background:none;cursor:pointer;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;font-weight:500;color:var(--muted);transition:all .18s;}
+.tbtn:hover{border-color:var(--blue);color:var(--ink-l);}
 .tbtn.active{background:var(--blue);border-color:var(--blue);color:#fff;}
 .tc{display:none;}
 .tc.active{display:block;}
 .ja{background:var(--surface);border-radius:var(--r);padding:22px;box-shadow:var(--sh);border:1px solid var(--border);margin-bottom:16px;}
 .mr{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0;}
-.mb{padding:7px 12px;border:2px solid var(--border);border-radius:30px;background:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;transition:all .15s;display:flex;align-items:center;gap:5px;}
+.mb{padding:7px 12px;border:2px solid var(--border);border-radius:30px;background:none;cursor:pointer;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;font-weight:500;transition:all .15s;display:flex;align-items:center;gap:5px;}
 .mb:hover{border-color:var(--blue);background:var(--blue-pp);}
 .mb.sel{border-color:var(--blue);background:var(--blue);color:#fff;}
-.jta{width:100%;min-height:95px;padding:12px;border:2px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13.5px;resize:vertical;color:var(--text);background:#FAFAFA;transition:border-color .2s;}
+.jta{width:100%;min-height:95px;padding:12px;border:2px solid var(--border);border-radius:10px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13.5px;resize:vertical;color:var(--text);background:#FAFAFA;transition:border-color .2s;}
 .jta:focus{outline:none;border-color:var(--blue);background:#fff;}
 .month-card{position:relative;background:var(--surface);border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--sh);margin-bottom:14px;overflow:hidden;}
 .mhdr{display:flex;align-items:center;justify-content:space-between;padding:15px 18px;cursor:pointer;user-select:none;transition:background .18s;}
 .mhdr:hover{background:var(--grey-l);}
 .mbadge{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;}
-.mlabel{font-family:'Fraunces',serif;font-size:15.5px;font-weight:700;color:var(--blue-d);}
+.mlabel{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:15.5px;font-weight:700;color:var(--ink-b);}
 .mbar{display:flex;height:8px;border-radius:20px;overflow:hidden;gap:2px;margin:9px 0 5px;}
 .mbar-seg{border-radius:20px;}
 .wb-outer{padding:18px 18px 22px;background:linear-gradient(135deg,#EFF6FF,#F0FDF4);border-top:1px solid var(--blue-pp);}
-.wb-title{font-family:'Fraunces',serif;font-size:13px;font-style:italic;color:var(--blue-d);margin-bottom:13px;display:flex;align-items:center;gap:7px;}
+.wb-title{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:13px;font-style:italic;color:var(--ink-b);margin-bottom:13px;display:flex;align-items:center;gap:7px;}
 .cel-bubble{position:relative;background:#fff;border:2px solid var(--blue-l);border-radius:20px 20px 20px 4px;padding:16px 20px 14px;box-shadow:var(--sh);margin-bottom:16px;animation:bubIn .5s cubic-bezier(.34,1.56,.64,1);}
 @keyframes bubIn{from{opacity:0;transform:scale(.85) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .cel-bubble::after{content:'';position:absolute;bottom:-10px;left:18px;width:16px;height:10px;background:#fff;border-right:2px solid var(--blue-l);border-bottom:2px solid var(--blue-l);border-radius:0 0 6px 0;clip-path:polygon(0 0,100% 0,100% 100%);}
 .bav{position:absolute;top:-13px;right:16px;font-size:28px;filter:drop-shadow(0 2px 5px rgba(0,0,0,.15));}
-.bub-msg{font-family:'Fraunces',serif;font-size:clamp(14px,2.8vw,18px);font-style:italic;font-weight:600;color:var(--blue-d);line-height:1.45;margin-bottom:8px;}
+.bub-msg{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:clamp(14px,2.8vw,18px);font-style:italic;font-weight:600;color:var(--ink-b);line-height:1.45;margin-bottom:8px;}
 .bub-sub{font-size:12.5px;color:var(--muted);line-height:1.6;}
 .wcloud{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
 .wbub{background:#fff;border:1.5px solid;border-radius:30px;padding:5px 13px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:4px;box-shadow:var(--sh);animation:floatIn .4s ease forwards;opacity:0;}
 @keyframes floatIn{from{opacity:0;transform:translateY(5px) scale(.93)}to{opacity:1;transform:translateY(0) scale(1)}}
 .wh{border-color:#F59E0B;color:#92400E;background:#FFFBEB;}
 .wg{border-color:#16A34A;color:#14532D;background:#F0FDF4;}
-.ws{border-color:var(--blue);color:var(--blue-d);background:var(--blue-pp);}
+.ws{border-color:var(--blue);color:var(--ink-b);background:var(--blue-pp);}
 .wp{border-color:#7C3AED;color:#4C1D95;background:#F5F3FF;}
-.wgr{border-color:var(--green);color:var(--green-d);background:var(--green-pp);}
+.wgr{border-color:var(--green);color:var(--ink-g);background:var(--green-pp);}
 .wn{border-color:#9CA3AF;color:#4B5563;background:#F9FAFB;}
 .mstat-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px dashed var(--blue-pp);}
 .mstat{background:#fff;border:1px solid var(--border);border-radius:9px;padding:9px 12px;text-align:center;flex:1;min-width:76px;}
-.mstat-n{font-family:'Fraunces',serif;font-size:19px;font-weight:700;display:block;line-height:1;}
-.mstat-l{font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:2px;display:block;}
+.mstat-n{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:19px;font-weight:700;display:block;line-height:1;}
+.mstat-l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:2px;display:block;}
 .conf-wrap{position:absolute;top:0;left:0;right:0;height:50px;pointer-events:none;overflow:hidden;}
 .cdot{position:absolute;border-radius:50%;animation:cfall linear forwards;opacity:0;}
 @keyframes cfall{0%{opacity:1;transform:translateY(-10px) rotate(0)}100%{opacity:0;transform:translateY(60px) rotate(360deg)}}
 .out-month .mhdr{background:linear-gradient(135deg,#FFFBEB,#FEF3C7);}
 .qcard{background:linear-gradient(135deg,var(--blue-d),var(--blue),var(--blue-l));color:#fff;border-radius:var(--r);padding:36px 28px;text-align:center;margin-bottom:18px;position:relative;overflow:hidden;}
-.qcard::before{content:'"';position:absolute;top:-18px;left:12px;font-family:'Fraunces',serif;font-size:140px;opacity:.07;line-height:1;}
-.qcard blockquote{font-family:'Fraunces',serif;font-size:clamp(15px,2.8vw,21px);font-style:italic;line-height:1.55;margin-bottom:11px;position:relative;}
+.qcard::before{content:'"';position:absolute;top:-18px;left:12px;font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:140px;opacity:.07;line-height:1;}
+.qcard blockquote{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:clamp(15px,2.8vw,21px);font-style:italic;line-height:1.55;margin-bottom:11px;position:relative;}
 .qcard cite{font-size:11.5px;opacity:.7;}
 .gi{display:flex;gap:10px;align-items:center;background:var(--surface);border-radius:10px;padding:12px 15px;box-shadow:var(--sh);border:2px solid var(--border);cursor:pointer;transition:all .18s;margin-bottom:7px;}
 .gi:hover{border-color:var(--blue);}
@@ -241,9 +232,9 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
 .gchk{width:20px;height:20px;border:2px solid var(--border);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;transition:all .18s;}
 .gi.done .gchk{background:var(--blue);border-color:var(--blue);color:#fff;}
 .gp-search{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px;}
-.gp-input{flex:1;min-width:180px;padding:10px 14px;border:2px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13.5px;color:var(--text);}
+.gp-input{flex:1;min-width:180px;padding:10px 14px;border:2px solid var(--border);border-radius:10px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13.5px;color:var(--text);}
 .gp-input:focus{outline:none;border-color:var(--blue);}
-.sel-inp{padding:10px 13px;border:2px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);background:#fff;cursor:pointer;}
+.sel-inp{padding:10px 13px;border:2px solid var(--border);border-radius:10px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;color:var(--text);background:#fff;cursor:pointer;}
 .sel-inp:focus{outline:none;border-color:var(--blue);}
 .gp-card{background:var(--surface);border-radius:11px;padding:14px 16px;box-shadow:var(--sh);border:1px solid var(--border);margin-bottom:10px;display:flex;gap:12px;align-items:flex-start;transition:all .2s;border-left:4px solid var(--blue);}
 .gp-card:hover{border-color:var(--blue);transform:translateX(3px);}
@@ -252,81 +243,81 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
 .hosp-card:hover{transform:translateX(3px);}
 .hosp-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;}
 .hba-scale{display:flex;height:26px;border-radius:20px;overflow:hidden;margin:14px 0;box-shadow:inset 0 2px 4px rgba(0,0,0,.08);}
-.hba-seg{display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;color:#fff;}
+.hba-seg{display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;}
 .hba-tip{background:var(--surface);border:1.5px solid var(--border);border-radius:11px;padding:12px 14px;margin-bottom:9px;display:flex;gap:11px;align-items:flex-start;}
-.hba-num{font-family:'Fraunces',serif;font-size:20px;font-weight:700;flex-shrink:0;width:52px;}
+.hba-num{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:20px;font-weight:700;flex-shrink:0;width:52px;}
 .sc{background:var(--surface);border-radius:10px;padding:14px 16px;box-shadow:var(--sh);border:1px solid var(--border);display:flex;gap:12px;margin-bottom:10px;}
 .sic{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
-.sc h4{font-weight:700;font-size:13.5px;margin-bottom:2px;color:var(--blue-d);}
+.sc h4{font-weight:700;font-size:13.5px;margin-bottom:2px;color:var(--ink-b);}
 .sc p{font-size:12.5px;color:var(--muted);margin-bottom:5px;}
-.sl{font-size:11px;color:var(--blue);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
+.sl{font-size:11px;color:var(--ink-l);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
 .fund-card{background:var(--surface);border-radius:11px;padding:16px 18px;box-shadow:var(--sh);border:1px solid var(--border);margin-bottom:10px;}
-.fund-card h4{font-weight:700;font-size:14px;margin-bottom:4px;color:var(--blue-d);}
+.fund-card h4{font-weight:700;font-size:14px;margin-bottom:4px;color:var(--ink-b);}
 .fund-card p{font-size:12.5px;color:var(--muted);line-height:1.65;}
-.fund-amt{font-family:'Fraunces',serif;font-size:17px;font-weight:700;color:var(--green);display:block;margin-bottom:5px;}
+.fund-amt{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:17px;font-weight:700;color:var(--green);display:block;margin-bottom:5px;}
 .tl{position:relative;padding-left:26px;display:flex;flex-direction:column;gap:14px;}
 .tl::before{content:'';position:absolute;left:7px;top:6px;bottom:6px;width:3px;background:linear-gradient(to bottom,var(--blue),var(--blue-l));border-radius:2px;}
 .tli{position:relative;background:var(--surface);border-radius:10px;padding:13px 14px;box-shadow:var(--sh);border:1px solid var(--border);}
 .tli::before{content:'';position:absolute;left:-21px;top:17px;width:11px;height:11px;border-radius:50%;background:var(--blue);border:3px solid #fff;box-shadow:0 0 0 2px var(--blue);}
-.tli h4{font-weight:700;font-size:12.5px;margin-bottom:3px;color:var(--blue-d);}
+.tli h4{font-weight:700;font-size:12.5px;margin-bottom:3px;color:var(--ink-b);}
 .tli p{font-size:12px;color:var(--muted);}
 .ps{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start;}
 .pn{width:27px;height:27px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11.5px;flex-shrink:0;}
-.pc h4{font-weight:700;font-size:13px;margin-bottom:2px;color:var(--blue-d);}
+.pc h4{font-weight:700;font-size:13px;margin-bottom:2px;color:var(--ink-b);}
 .pc p{font-size:12px;color:var(--muted);}
 .mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:12px;}
 .mc{background:var(--surface);border-radius:12px;padding:16px;text-align:center;box-shadow:var(--sh);border:1px solid var(--border);transition:transform .2s;}
 .mc:hover{transform:scale(1.03);}
 .mic{font-size:38px;display:block;margin-bottom:8px;}
-.mc h4{font-family:'Fraunces',serif;font-size:13.5px;margin-bottom:4px;color:var(--blue-d);}
+.mc h4{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:13.5px;margin-bottom:4px;color:var(--ink-b);}
 .mc p{font-size:11px;color:var(--muted);line-height:1.5;}
 .sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:11px;}
 .si{background:var(--surface);border-radius:10px;padding:13px;box-shadow:var(--sh);border:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;}
-.si h4{font-weight:600;font-size:12.5px;margin-bottom:2px;color:var(--blue-d);}
+.si h4{font-weight:600;font-size:12.5px;margin-bottom:2px;color:var(--ink-b);}
 .si p{font-size:11.5px;color:var(--muted);}
 .ccg{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:13px;}
 .cc{background:var(--surface);border-radius:var(--r);padding:16px;box-shadow:var(--sh);border:1px solid var(--border);}
-.cn{font-family:'Fraunces',serif;font-size:15px;font-weight:700;color:var(--blue-d);}
-.ct2{font-size:10.5px;color:var(--muted);margin-bottom:6px;}
+.cn{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:15px;font-weight:700;color:var(--ink-b);}
+.ct2{font-size:11px;color:var(--muted);margin-bottom:6px;}
 .cq{font-size:12px;color:var(--muted);border-left:3px solid var(--green);padding-left:9px;font-style:italic;line-height:1.5;}
 .mhc{background:linear-gradient(135deg,#EFF6FF,#F0F9FF);border:1px solid var(--blue-pp);border-radius:var(--r);padding:18px;margin-bottom:13px;}
-.mhc h3{font-family:'Fraunces',serif;font-size:16px;color:var(--blue-d);margin-bottom:8px;}
+.mhc h3{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:16px;color:var(--ink-b);margin-bottom:8px;}
 .mhc p{font-size:13px;color:var(--grey-d);line-height:1.7;}
 .edu-card{background:var(--surface);border-radius:var(--r);padding:20px;box-shadow:var(--sh);border:1px solid var(--border);margin-bottom:13px;}
-.edu-card h3{font-family:'Fraunces',serif;font-size:17px;color:var(--blue-d);margin-bottom:9px;display:flex;align-items:center;gap:8px;}
-.edu-q{background:linear-gradient(135deg,var(--blue-pp),var(--green-pp));border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:12px 16px;font-style:italic;font-family:'Fraunces',serif;font-size:14.5px;color:var(--blue-d);margin:12px 0;line-height:1.5;}
+.edu-card h3{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:17px;color:var(--ink-b);margin-bottom:9px;display:flex;align-items:center;gap:8px;}
+.edu-q{background:linear-gradient(135deg,var(--blue-pp),var(--green-pp));border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:12px 16px;font-style:italic;font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:14.5px;color:var(--ink-b);margin:12px 0;line-height:1.5;}
 .acr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:11px;}
 .acr-item{background:var(--surface);border-radius:10px;padding:13px 16px;box-shadow:var(--sh);border:1px solid var(--border);border-left:4px solid var(--blue);}
-.acr-abbr{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:var(--blue-d);margin-bottom:2px;}
+.acr-abbr{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:18px;font-weight:700;color:var(--ink-b);margin-bottom:2px;}
 .acr-full{font-size:12.5px;font-weight:600;color:#166534;margin-bottom:4px;}
 .acr-desc{font-size:12px;color:var(--muted);line-height:1.5;}
 .art-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;}
 .art-card{background:var(--surface);border-radius:12px;overflow:hidden;box-shadow:var(--sh);border:1px solid var(--border);transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;}
 .art-card:hover{transform:translateY(-2px);box-shadow:var(--sh-lg);}
 .art-header{padding:16px;background:linear-gradient(135deg,var(--blue-d),var(--blue));color:#fff;position:relative;}
-.art-date{font-size:10px;opacity:.7;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px;}
-.art-source{font-size:10.5px;color:#86EFAC;font-weight:700;margin-bottom:7px;}
-.art-title{font-family:'Fraunces',serif;font-size:15px;font-weight:700;line-height:1.35;}
+.art-date{font-size:11px;opacity:.7;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px;}
+.art-source{font-size:11px;color:#86EFAC;font-weight:700;margin-bottom:7px;}
+.art-title{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:15px;font-weight:700;line-height:1.35;}
 .art-body{padding:14px 16px;flex:1;}
 .art-body p{font-size:12.5px;color:var(--muted);line-height:1.65;}
 .art-footer{padding:10px 16px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
-.art-tag{font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;background:var(--green-pp);color:var(--green-d);}
-.art-link{font-size:11px;color:var(--blue);font-weight:700;}
-.update-badge{background:var(--green);color:#fff;font-size:10.5px;font-weight:600;padding:4px 10px;border-radius:20px;display:inline-flex;align-items:center;gap:5px;margin-bottom:16px;}
+.art-tag{font-size:11px;font-weight:600;padding:3px 8px;border-radius:20px;background:var(--green-pp);color:var(--ink-g);}
+.art-link{font-size:11px;color:var(--ink-l);font-weight:700;}
+.update-badge{background:var(--green);color:#fff;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;display:inline-flex;align-items:center;gap:5px;margin-bottom:16px;}
 .awareness-hero{background:linear-gradient(135deg,var(--blue-d),var(--blue),var(--blue-l));border-radius:var(--r);padding:36px 26px;color:#fff;text-align:center;margin-bottom:18px;}
-.awareness-hero h2{font-family:'Fraunces',serif;font-size:clamp(22px,4vw,36px);font-weight:700;margin-bottom:10px;}
+.awareness-hero h2{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:clamp(22px,4vw,36px);font-weight:700;margin-bottom:10px;}
 .awareness-hero .date-badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:30px;padding:8px 20px;display:inline-block;font-size:14px;font-weight:700;margin-bottom:14px;letter-spacing:.04em;}
 .hbox{background:linear-gradient(135deg,var(--amber-l),#FDE68A);border:1px solid var(--amber);border-radius:10px;padding:12px 15px;margin-bottom:14px;font-size:13px;line-height:1.6;}
 .hbox strong{color:#92400E;}
-.gbox{background:var(--green-pp);border:1px solid var(--green);border-radius:10px;padding:12px 15px;margin-bottom:14px;font-size:13px;line-height:1.6;color:var(--green-d);}
+.gbox{background:var(--green-pp);border:1px solid var(--green);border-radius:10px;padding:12px 15px;margin-bottom:14px;font-size:13px;line-height:1.6;color:var(--ink-g);}
 .bluebox{background:var(--blue-pp);border:1px solid var(--blue-l);border-radius:10px;padding:12px 15px;margin-bottom:14px;font-size:13px;line-height:1.6;color:#1E3A8A;}
 .bluebox strong{color:#1E3A8A;}
 .pinkbox{background:#F5F3FF;border:1px solid #DDD6FE;border-radius:10px;padding:16px 18px;margin-bottom:14px;font-size:13px;line-height:1.7;color:#4C1D95;}
-.pinkbox h4{font-family:'Fraunces',serif;font-size:17px;margin-bottom:8px;color:#4C1D95;}
+.pinkbox h4{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:17px;margin-bottom:8px;color:#4C1D95;}
 .welcome-hero{background:linear-gradient(135deg,#4C1D95 0%,#7C3AED 45%,#1D4ED8 100%);border-radius:var(--r);padding:42px 26px 36px;color:#fff;text-align:center;margin-bottom:22px;position:relative;overflow:hidden;box-shadow:0 10px 40px rgba(76,29,149,.25);}
 .welcome-hero::before{content:'';position:absolute;top:-60px;left:-60px;width:200px;height:200px;background:rgba(255,255,255,.08);border-radius:50%;}
 .welcome-hero::after{content:'';position:absolute;bottom:-50px;right:-50px;width:180px;height:180px;background:rgba(134,239,172,.1);border-radius:50%;}
-.welcome-hero h1{font-family:'Fraunces',serif;font-size:clamp(22px,4.5vw,34px);font-weight:700;line-height:1.25;margin-bottom:12px;position:relative;}
+.welcome-hero h1{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:clamp(22px,4.5vw,34px);font-weight:700;line-height:1.25;margin-bottom:12px;position:relative;}
 .welcome-hero p.lead{font-size:14.5px;opacity:.95;max-width:620px;margin:0 auto 20px;line-height:1.75;position:relative;}
 .welcome-hero .navguide{background:rgba(255,255,255,.13);border:1.5px solid rgba(255,255,255,.28);border-radius:14px;padding:16px 20px;max-width:680px;margin:0 auto 22px;font-size:13px;line-height:1.7;text-align:left;position:relative;}
 .welcome-hero .navguide strong{color:#C4B5FD;}
@@ -336,18 +327,18 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
 .btn-outline-white{background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.6);color:#fff;font-weight:700;}
 .btn-outline-white:hover{background:rgba(255,255,255,.22);}
 .stats-band{background:linear-gradient(135deg,var(--blue-d) 0%,var(--blue) 55%,var(--blue-l) 100%);border-radius:var(--r);padding:28px 24px 24px;margin-bottom:22px;}
-.stats-band h3{font-family:'Fraunces',serif;color:#fff;text-align:center;font-size:16px;margin-bottom:16px;opacity:.9;}
+.stats-band h3{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;color:#fff;text-align:center;font-size:16px;margin-bottom:16px;opacity:.9;}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 @media(max-width:560px){.two{grid-template-columns:1fr;}}
 .bsgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px;}
 @media(max-width:440px){.bsgrid{grid-template-columns:repeat(2,1fr);}}
 .bsc{border-radius:9px;padding:10px;text-align:center;}
 .bsc-n{font-size:14px;font-weight:700;display:block;}
-.bsc-l{font-size:9.5px;font-weight:600;margin-top:2px;display:block;}
+.bsc-l{font-size:11px;font-weight:600;margin-top:2px;display:block;}
 .cpc{background:var(--surface);border-radius:var(--r);padding:18px;box-shadow:var(--sh);border:1px solid var(--border);margin-bottom:12px;}
-.cpc h3{font-family:'Fraunces',serif;font-size:16px;margin-bottom:7px;color:var(--blue-d);}
+.cpc h3{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:16px;margin-bottom:7px;color:var(--ink-b);}
 .foot{text-align:center;font-size:12px;color:var(--muted);margin-top:40px;padding-top:16px;border-top:1px solid var(--border);line-height:1.7;}
-.foot a{color:var(--blue);}
+.foot a{color:var(--ink-l);}
 @media(max-width:768px){
   .hi{flex-direction:column;align-items:flex-start;gap:8px;}
   nav{display:none;}
@@ -365,6 +356,153 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
   .mg{grid-template-columns:repeat(2,1fr);}
   .acr-grid{grid-template-columns:1fr;}
 }
+
+/* ─── LAWS OF UX UPDATES ─── */
+nav button{min-height:36px;padding:7px 12px;}
+.bnb{min-height:48px;min-width:56px;}
+.qnb{min-height:84px;}
+.tbtn,.mb{min-height:40px;}
+.btn{min-height:44px;}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #F59E0B;outline-offset:2px;}
+.qn-more{display:none;margin-top:-10px;}
+.qn-more.open{display:grid;}
+.qn-toggle{display:block;margin:-8px auto 22px;background:none;border:2px solid var(--border);border-radius:30px;padding:10px 20px;min-height:44px;font-weight:600;font-size:13px;color:var(--ink-b);cursor:pointer;font-family:inherit;}
+.qn-toggle:hover{border-color:var(--blue);background:var(--blue-pp);}
+.hsearch{position:relative;margin:0 0 18px;}
+.hsearch input{width:100%;padding:14px 16px;border:2px solid var(--border);border-radius:14px;font-size:15px;font-family:inherit;background:#fff;color:var(--text);}
+.hsearch input:focus{border-color:var(--blue);}
+.hs-res{display:none;margin-top:8px;background:#fff;border:2px solid var(--border);border-radius:14px;overflow:hidden;}
+.hs-res.open{display:block;}
+.hs-res button{display:flex;gap:10px;align-items:center;width:100%;text-align:left;padding:12px 14px;min-height:48px;border:none;border-bottom:1px solid var(--border);background:none;font-family:inherit;font-size:14px;cursor:pointer;color:var(--text);}
+.hs-res button:last-child{border-bottom:none;}
+.hs-res button:hover{background:var(--blue-pp);}
+.hs-none{padding:14px;font-size:14px;color:var(--muted);}
+.ndprog{background:#fff;border:2px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:14px;}
+.ndprog .pt{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-b);margin-bottom:7px;}
+.ndprog .pbar{height:8px;border-radius:8px;background:#E5E7EB;overflow:hidden;}
+.ndprog .pfill{height:100%;width:0;background:linear-gradient(90deg,#7C3AED,#1D4ED8);border-radius:8px;transition:width .4s;}
+.tbtn.done::after{content:' ✓';color:var(--green);font-weight:700;}
+.ferr{color:#B91C1C;font-size:13px;font-weight:600;margin:-4px 0 10px;display:none;}
+.ferr.show{display:block;}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important;}}
+.theme-opt{width:100%;display:flex;align-items:center;gap:13px;text-align:left;background:var(--grey-l);border:2px solid var(--border);border-radius:12px;padding:13px 14px;margin-bottom:9px;cursor:pointer;font-family:inherit;color:var(--text);min-height:60px;}
+.theme-opt:hover{border-color:var(--blue);}
+.theme-opt.sel{border-color:var(--blue);background:var(--blue-pp);}
+.theme-opt .to-ic{font-size:26px;flex-shrink:0;}
+.theme-opt .to-tx{display:flex;flex-direction:column;gap:2px;font-size:13px;color:var(--muted);}
+.theme-opt .to-tx strong{font-size:15px;color:var(--text);}
+.theme-opt .to-tx em{font-style:normal;font-size:11px;font-weight:700;background:var(--green-pp);color:var(--ink-g);border-radius:20px;padding:1px 8px;margin-left:4px;}
+#bsIn,#hbIn{min-width:0;}
+/* ─── DARK MODE ─── */
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ink-b:#BFDBFE;--ink-l:#93C5FD;--ink-g:#86EFAC;
+  --bg:#0B1220;--surface:#151E2E;--text:#E5E7EB;--muted:#A3AEBF;--border:#2A3648;
+  --blue-pp:#1E3A5F;--blue-p:#14243D;--green-pp:#14432B;--green-p:#10291D;
+  --grey-l:#1B2535;--grey-m:#334155;--grey-d:#CBD5E1;--grey:#9CA3AF;
+  --sh:0 2px 12px rgba(0,0,0,.35);--sh-lg:0 8px 36px rgba(0,0,0,.5);
+}
+:root[data-theme="dark"] .bottom-nav,:root[data-theme="dark"] .stat-modal,:root[data-theme="dark"] .cel-bubble,:root[data-theme="dark"] .wbub,:root[data-theme="dark"] .mstat,:root[data-theme="dark"] .ndprog,:root[data-theme="dark"] .hs-res,:root[data-theme="dark"] .hsearch input{background:var(--surface);}
+:root[data-theme="dark"] .cel-bubble::after{background:var(--surface);}
+:root[data-theme="dark"] .jta,:root[data-theme="dark"] .jta:focus,:root[data-theme="dark"] .gp-input,:root[data-theme="dark"] .sel-inp{background:var(--grey-l);color:var(--text);}
+:root[data-theme="dark"] .mb,:root[data-theme="dark"] .tbtn{color:var(--text);}
+:root[data-theme="dark"] .tbtn{color:var(--muted);}
+:root[data-theme="dark"] .tbtn.active,:root[data-theme="dark"] .mb.sel{color:#fff;}
+:root[data-theme="dark"] .tbtn:hover{color:var(--ink-l);}
+:root[data-theme="dark"] .hbox{background:#3A2E0E!important;border-color:#B45309!important;color:#FDE68A;}
+:root[data-theme="dark"] .hbox strong,:root[data-theme="dark"] .hbox a{color:#FCD34D!important;}
+:root[data-theme="dark"] .gbox{background:#12301F;border-color:#15803D;color:#BBF7D0;}
+:root[data-theme="dark"] .bluebox{background:#13294B;border-color:#1D4ED8;color:#DBEAFE;}
+:root[data-theme="dark"] .bluebox strong{color:#DBEAFE;}
+:root[data-theme="dark"] .pinkbox{background:#2A1F55;border-color:#5B3FB0;color:#DDD6FE;}
+:root[data-theme="dark"] .pinkbox h4{color:#EDE9FE;}
+:root[data-theme="dark"] .ip h3[style*="color"],:root[data-theme="dark"] .ip>h3{color:#F3F4F6!important;}
+:root[data-theme="dark"] .ip[style*="background:#FFF8F8"]{background:#2A1620!important;}
+:root[data-theme="dark"] .wh,:root[data-theme="dark"] .wg,:root[data-theme="dark"] .ws,:root[data-theme="dark"] .wp,:root[data-theme="dark"] .wgr,:root[data-theme="dark"] .wn{filter:none;}
+:root[data-theme="dark"] .out-month .mhdr{background:linear-gradient(135deg,#3A2E0E,#2B2410);}
+:root[data-theme="dark"] .wb-outer,:root[data-theme="dark"] .mhc,:root[data-theme="dark"] .edu-q{background:linear-gradient(135deg,#13294B,#12301F);}
+:root[data-theme="dark"] .wb-outer{border-top-color:var(--border);}
+:root[data-theme="dark"] .sm-fact{background:#13294B;color:#DBEAFE;}
+:root[data-theme="dark"] .sm-source{background:#12301F;color:#BBF7D0;}
+:root[data-theme="dark"] .sm-fact strong,:root[data-theme="dark"] .sm-source strong{color:inherit;}
+:root[data-theme="dark"] .mhc p,:root[data-theme="dark"] .sm-body p,:root[data-theme="dark"] .il li{color:var(--text);}
+:root[data-theme="dark"] .btn-grey{background:var(--grey-l);color:var(--text);border-color:var(--border);}
+:root[data-theme="dark"] .btn-g:hover{background:#15803D;}
+:root[data-theme="dark"] .btn-o{color:var(--ink-l);border-color:var(--ink-l);}
+:root[data-theme="dark"] .btn-o:hover{background:var(--blue-pp);}
+:root[data-theme="dark"] .card h3 a,:root[data-theme="dark"] .card p a,:root[data-theme="dark"] .il a,:root[data-theme="dark"] .sm-list a{color:var(--ink-l);}
+:root[data-theme="dark"] .ebar a{color:#FFE4E6;}
+:root[data-theme="dark"] .logo-name .acc,:root[data-theme="dark"] .hero h1 span{color:#86EFAC;}
+:root[data-theme="dark"] .hba-tip,:root[data-theme="dark"] .gi,:root[data-theme="dark"] .gp-card,:root[data-theme="dark"] .hosp-card,:root[data-theme="dark"] .sc,:root[data-theme="dark"] .fund-card,:root[data-theme="dark"] .mc,:root[data-theme="dark"] .si,:root[data-theme="dark"] .cc,:root[data-theme="dark"] .cpc,:root[data-theme="dark"] .acr-item,:root[data-theme="dark"] .art-card,:root[data-theme="dark"] .edu-card,:root[data-theme="dark"] .ip,:root[data-theme="dark"] .ja,:root[data-theme="dark"] .month-card,:root[data-theme="dark"] .card,:root[data-theme="dark"] .qnb{border-color:var(--border);}
+:root[data-theme="dark"] .hba-tip div[style*="font-weight:700"]{color:var(--text);}
+:root[data-theme="dark"] .acr-full{color:#86EFAC;}
+:root[data-theme="dark"] .sl{color:var(--ink-l);}
+:root[data-theme="dark"] .sc h4,:root[data-theme="dark"] .si h4,:root[data-theme="dark"] .tli h4,:root[data-theme="dark"] .pc h4,:root[data-theme="dark"] .fund-card h4,:root[data-theme="dark"] .mc h4,:root[data-theme="dark"] .cn,:root[data-theme="dark"] .acr-abbr{color:var(--ink-b);}
+:root[data-theme="dark"] .hsearch input::placeholder,:root[data-theme="dark"] .jta::placeholder,:root[data-theme="dark"] .gp-input::placeholder{color:var(--muted);}
+:root[data-theme="dark"] .bnb-home .bnl{color:var(--ink-b);}
+:root[data-theme="dark"] .bnb.active .bnl{color:var(--ink-b);}
+:root[data-theme="dark"] .bnb .bni{filter:none;}
+:root[data-theme="dark"] .qnb:hover{background:var(--blue-pp);}
+:root[data-theme="dark"] .mbadge{filter:brightness(.55);}
+:root[data-theme="dark"] .tbtn.done::after{color:#86EFAC;}
+:root[data-theme="dark"] img{filter:brightness(.9);}
+@media (prefers-color-scheme:dark){
+:root[data-theme="system"]{
+  color-scheme:dark;
+  --ink-b:#BFDBFE;--ink-l:#93C5FD;--ink-g:#86EFAC;
+  --bg:#0B1220;--surface:#151E2E;--text:#E5E7EB;--muted:#A3AEBF;--border:#2A3648;
+  --blue-pp:#1E3A5F;--blue-p:#14243D;--green-pp:#14432B;--green-p:#10291D;
+  --grey-l:#1B2535;--grey-m:#334155;--grey-d:#CBD5E1;--grey:#9CA3AF;
+  --sh:0 2px 12px rgba(0,0,0,.35);--sh-lg:0 8px 36px rgba(0,0,0,.5);
+}
+:root[data-theme="system"] .bottom-nav,:root[data-theme="system"] .stat-modal,:root[data-theme="system"] .cel-bubble,:root[data-theme="system"] .wbub,:root[data-theme="system"] .mstat,:root[data-theme="system"] .ndprog,:root[data-theme="system"] .hs-res,:root[data-theme="system"] .hsearch input{background:var(--surface);}
+:root[data-theme="system"] .cel-bubble::after{background:var(--surface);}
+:root[data-theme="system"] .jta,:root[data-theme="system"] .jta:focus,:root[data-theme="system"] .gp-input,:root[data-theme="system"] .sel-inp{background:var(--grey-l);color:var(--text);}
+:root[data-theme="system"] .mb,:root[data-theme="system"] .tbtn{color:var(--text);}
+:root[data-theme="system"] .tbtn{color:var(--muted);}
+:root[data-theme="system"] .tbtn.active,:root[data-theme="system"] .mb.sel{color:#fff;}
+:root[data-theme="system"] .tbtn:hover{color:var(--ink-l);}
+:root[data-theme="system"] .hbox{background:#3A2E0E!important;border-color:#B45309!important;color:#FDE68A;}
+:root[data-theme="system"] .hbox strong,:root[data-theme="system"] .hbox a{color:#FCD34D!important;}
+:root[data-theme="system"] .gbox{background:#12301F;border-color:#15803D;color:#BBF7D0;}
+:root[data-theme="system"] .bluebox{background:#13294B;border-color:#1D4ED8;color:#DBEAFE;}
+:root[data-theme="system"] .bluebox strong{color:#DBEAFE;}
+:root[data-theme="system"] .pinkbox{background:#2A1F55;border-color:#5B3FB0;color:#DDD6FE;}
+:root[data-theme="system"] .pinkbox h4{color:#EDE9FE;}
+:root[data-theme="system"] .ip h3[style*="color"],:root[data-theme="system"] .ip>h3{color:#F3F4F6!important;}
+:root[data-theme="system"] .ip[style*="background:#FFF8F8"]{background:#2A1620!important;}
+:root[data-theme="system"] .wh,:root[data-theme="system"] .wg,:root[data-theme="system"] .ws,:root[data-theme="system"] .wp,:root[data-theme="system"] .wgr,:root[data-theme="system"] .wn{filter:none;}
+:root[data-theme="system"] .out-month .mhdr{background:linear-gradient(135deg,#3A2E0E,#2B2410);}
+:root[data-theme="system"] .wb-outer,:root[data-theme="system"] .mhc,:root[data-theme="system"] .edu-q{background:linear-gradient(135deg,#13294B,#12301F);}
+:root[data-theme="system"] .wb-outer{border-top-color:var(--border);}
+:root[data-theme="system"] .sm-fact{background:#13294B;color:#DBEAFE;}
+:root[data-theme="system"] .sm-source{background:#12301F;color:#BBF7D0;}
+:root[data-theme="system"] .sm-fact strong,:root[data-theme="system"] .sm-source strong{color:inherit;}
+:root[data-theme="system"] .mhc p,:root[data-theme="system"] .sm-body p,:root[data-theme="system"] .il li{color:var(--text);}
+:root[data-theme="system"] .btn-grey{background:var(--grey-l);color:var(--text);border-color:var(--border);}
+:root[data-theme="system"] .btn-g:hover{background:#15803D;}
+:root[data-theme="system"] .btn-o{color:var(--ink-l);border-color:var(--ink-l);}
+:root[data-theme="system"] .btn-o:hover{background:var(--blue-pp);}
+:root[data-theme="system"] .card h3 a,:root[data-theme="system"] .card p a,:root[data-theme="system"] .il a,:root[data-theme="system"] .sm-list a{color:var(--ink-l);}
+:root[data-theme="system"] .ebar a{color:#FFE4E6;}
+:root[data-theme="system"] .logo-name .acc,:root[data-theme="system"] .hero h1 span{color:#86EFAC;}
+:root[data-theme="system"] .hba-tip,:root[data-theme="system"] .gi,:root[data-theme="system"] .gp-card,:root[data-theme="system"] .hosp-card,:root[data-theme="system"] .sc,:root[data-theme="system"] .fund-card,:root[data-theme="system"] .mc,:root[data-theme="system"] .si,:root[data-theme="system"] .cc,:root[data-theme="system"] .cpc,:root[data-theme="system"] .acr-item,:root[data-theme="system"] .art-card,:root[data-theme="system"] .edu-card,:root[data-theme="system"] .ip,:root[data-theme="system"] .ja,:root[data-theme="system"] .month-card,:root[data-theme="system"] .card,:root[data-theme="system"] .qnb{border-color:var(--border);}
+:root[data-theme="system"] .hba-tip div[style*="font-weight:700"]{color:var(--text);}
+:root[data-theme="system"] .acr-full{color:#86EFAC;}
+:root[data-theme="system"] .sl{color:var(--ink-l);}
+:root[data-theme="system"] .sc h4,:root[data-theme="system"] .si h4,:root[data-theme="system"] .tli h4,:root[data-theme="system"] .pc h4,:root[data-theme="system"] .fund-card h4,:root[data-theme="system"] .mc h4,:root[data-theme="system"] .cn,:root[data-theme="system"] .acr-abbr{color:var(--ink-b);}
+:root[data-theme="system"] .hsearch input::placeholder,:root[data-theme="system"] .jta::placeholder,:root[data-theme="system"] .gp-input::placeholder{color:var(--muted);}
+:root[data-theme="system"] .bnb-home .bnl{color:var(--ink-b);}
+:root[data-theme="system"] .bnb.active .bnl{color:var(--ink-b);}
+:root[data-theme="system"] .bnb .bni{filter:none;}
+:root[data-theme="system"] .qnb:hover{background:var(--blue-pp);}
+:root[data-theme="system"] .mbadge{filter:brightness(.55);}
+:root[data-theme="system"] .tbtn.done::after{color:#86EFAC;}
+:root[data-theme="system"] img{filter:brightness(.9);}
+}
+#themeBtn{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:18px;line-height:1;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+#themeBtn:hover{background:rgba(255,255,255,.26);}
+@media(max-width:768px){#themeBtn{position:absolute;top:10px;right:14px;}}
 </style>
 </head>
 <body>
@@ -406,32 +544,19 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
         <div class="logo-tag">Ireland</div>
       </div>
     </a>
-    <nav id="desknav">
+    <nav id="desknav" aria-label="Main navigation">
       <button class="active" onclick="showS('home',this)">🏠 Home</button>
       <button onclick="showS('signs',this)">👀 See The Signs</button>
       <button onclick="showS('newlydiag',this)">🌱 Newly Diagnosed</button>
       <button onclick="showS('journal',this)">📔 Journal</button>
-      <button onclick="showS('wellness',this)">🌸 Wellness</button>
-      <button onclick="showS('hba1c',this)">📉 HbA1c</button>
-      <button onclick="showS('nutrition',this)">🍏 Nutrition</button>
-      <button onclick="showS('acronyms',this)">🔤 Acronyms</button>
-      <button onclick="showS('devices',this)">📡 Devices</button>
-      <button onclick="showS('family',this)">👨‍👩‍👧 Family</button>
-      <button onclick="showS('gpfinder',this)">🗺️ GP Finder</button>
-      <button onclick="showS('hospitals',this)">🏥 Hospitals</button>
-      <button onclick="showS('funding',this)">💶 Funding</button>
-      <button onclick="showS('medals',this)">🏅 Medals</button>
-      <button onclick="showS('heroes',this)">🌟 Role Models</button>
-      <button onclick="showS('awareness',this)">💙 Awareness</button>
-      <button onclick="showS('breakthroughs',this)">🔬 Breakthroughs</button>
-      <button onclick="showS('services',this)">🤝 Services</button>
-      <button onclick="showS('campaigns',this)">📢 Campaigns</button>
-      <button onclick="showS('factors',this)">📊 42 Factors</button>
+      <button onclick="showS('emergency',this)">🚨 Emergency</button>
+      <button onclick="openMoreMenu()" aria-haspopup="dialog">☰ All Sections</button>
     </nav>
+    <button id="themeBtn" onclick="openThemeChooser()" aria-haspopup="dialog" aria-label="Choose light or dark appearance" title="Appearance">🌙</button>
   </div>
 </header>
 
-<div class="bottom-nav">
+<div class="bottom-nav" role="navigation" aria-label="Main navigation">
   <div class="bn-inner" style="justify-content:space-around;">
     <button class="bnb" onclick="showS('signs',this)"><span class="bni">👀</span><span class="bnl">Signs</span></button>
     <button class="bnb" onclick="showS('newlydiag',this)"><span class="bni">🌱</span><span class="bnl">New</span></button>
@@ -468,19 +593,25 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
     <p>From age 1 to 100 — newly diagnosed to decades living with it. Your safe space, information hub, GP finder, hospital guide, and community. Every person on this island managing diabetes belongs here.</p>
   </div>
 
+  <div class="hsearch" role="search">
+    <input type="search" id="hSearch" placeholder="🔍  What do you need? Try “hypo”, “insulin”, “school”…" aria-label="Search DiabetesHub" oninput="homeSearch(this.value)" autocomplete="off">
+    <div class="hs-res" id="hsRes" aria-live="polite"></div>
+  </div>
   <div class="qn">
     <button class="qnb" onclick="showS('signs',null)"><span class="qi">👀</span><span class="ql">See The Signs</span></button>
     <button class="qnb" onclick="showS('newlydiag',null)"><span class="qi">🌱</span><span class="ql">Newly Diagnosed</span></button>
     <button class="qnb" onclick="showS('journal',null)"><span class="qi">📔</span><span class="ql">My Journal</span></button>
+    <button class="qnb" onclick="showS('nutrition',null)"><span class="qi">🍏</span><span class="ql">Nutrition</span></button>
+    <button class="qnb" onclick="showS('devices',null)"><span class="qi">📡</span><span class="ql">Devices</span></button>
+    <button class="qnb" onclick="showS('funding',null)"><span class="qi">💶</span><span class="ql">Funding</span></button>
+  </div>
+  <div class="qn qn-more" id="qnMore">
     <button class="qnb" onclick="showS('wellness',null)"><span class="qi">🌸</span><span class="ql">Wellness</span></button>
     <button class="qnb" onclick="showS('hba1c',null)"><span class="qi">📉</span><span class="ql">Lower HbA1c</span></button>
-    <button class="qnb" onclick="showS('nutrition',null)"><span class="qi">🍏</span><span class="ql">Nutrition</span></button>
     <button class="qnb" onclick="showS('acronyms',null)"><span class="qi">🔤</span><span class="ql">Acronyms</span></button>
-    <button class="qnb" onclick="showS('devices',null)"><span class="qi">📡</span><span class="ql">Devices</span></button>
     <button class="qnb" onclick="showS('family',null)"><span class="qi">👨‍👩‍👧</span><span class="ql">Family Ed</span></button>
     <button class="qnb" onclick="showS('gpfinder',null)"><span class="qi">🗺️</span><span class="ql">Find a GP</span></button>
     <button class="qnb" onclick="showS('hospitals',null)"><span class="qi">🏥</span><span class="ql">Hospitals</span></button>
-    <button class="qnb" onclick="showS('funding',null)"><span class="qi">💶</span><span class="ql">Funding</span></button>
     <button class="qnb" onclick="showS('medals',null)"><span class="qi">🏅</span><span class="ql">Medals</span></button>
     <button class="qnb" onclick="showS('heroes',null)"><span class="qi">🌟</span><span class="ql">Role Models</span></button>
     <button class="qnb" onclick="showS('awareness',null)"><span class="qi">💙</span><span class="ql">Awareness</span></button>
@@ -489,6 +620,7 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
     <button class="qnb" onclick="showS('campaigns',null)"><span class="qi">📢</span><span class="ql">Campaigns</span></button>
     <button class="qnb" onclick="showS('factors',null)"><span class="qi">📊</span><span class="ql">42 Factors</span></button>
   </div>
+  <button class="qn-toggle" id="qnToggle" onclick="toggleQn()" aria-expanded="false">Show all sections ▾</button>
 
   <div class="stats-band">
     <h3>📊 Diabetes in Ireland — By the Numbers</h3>
@@ -630,6 +762,7 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
     <p>If you are reading this in a hospital car park, or at 3am unable to sleep, or googling frantically — this message is for you. What you are feeling right now — the shock, the grief, the fear, the guilt — is completely normal. And it is not your fault. Not even a little bit. Type 1 diabetes is an autoimmune condition. It was not caused by anything you fed your child, anything you did, or anything you didn't do. You could not have prevented it. And you are not alone — thousands of families in Ireland are on this exact journey with you right now.</p>
   </div>
 
+  <div class="ndprog" id="ndProg"><div class="pt"><span>Your reading progress</span><span id="ndProgTxt">0 of 9 read</span></div><div class="pbar"><div class="pfill" id="ndProgFill"></div></div></div>
   <div class="tb">
     <button class="tbtn active" onclick="showT('newlydiag','nd1',this)">For Parents</button>
     <button class="tbtn" onclick="showT('newlydiag','nd2',this)">For Adults</button>
@@ -690,13 +823,13 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
   <div id="nd4" class="tc">
     <div class="edu-card">
       <h3>💉 MDI vs Insulin Pumps — What's the Difference?</h3>
-      <h4 style="font-size:13px;color:var(--blue-d);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">MDI — Multiple Daily Injections</h4>
+      <h4 style="font-size:13px;color:var(--ink-b);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">MDI — Multiple Daily Injections</h4>
       <div class="cg">
         <div class="card cb"><h3>What It Is</h3><p>Pen injections — a long-acting basal insulin once or twice daily, plus fast-acting bolus insulin at every meal. Typically 4–6 injections a day.</p></div>
         <div class="card cg2"><h3>Advantages</h3><p>Simple, no device to wear, no tubing, gentler learning curve, fully covered on the LTI scheme.</p></div>
         <div class="card cgrey"><h3>Best For</h3><p>Those newly diagnosed and starting out, older adults, or anyone who prefers simplicity.</p></div>
       </div>
-      <h4 style="font-size:13px;color:var(--blue-d);text-transform:uppercase;letter-spacing:.05em;margin:18px 0 6px;">Insulin Pump (CSII)</h4>
+      <h4 style="font-size:13px;color:var(--ink-b);text-transform:uppercase;letter-spacing:.05em;margin:18px 0 6px;">Insulin Pump (CSII)</h4>
       <div class="cg">
         <div class="card cp"><h3>What It Is</h3><p>A small device delivering a continuous micro-dose of fast-acting insulin 24/7 through a cannula, changed roughly every 3 days.</p></div>
         <div class="card ca"><h3>Advantages</h3><p>More precise dosing, adjustable for exercise/illness/sleep, fewer needle-sticks, often better HbA1c. <a href="https://www.omnipod.com" target="_blank">Omnipod</a> is tubeless, licensed from age 2.</p></div>
@@ -811,9 +944,10 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
       <button class="mb" onclick="selMood(this,'😐 Neutral')">😐 Neutral</button>
     </div>
     <div style="display:flex;gap:11px;flex-wrap:wrap;margin-bottom:12px;">
-      <div style="flex:1;min-width:115px;"><label style="font-weight:600;font-size:11.5px;display:block;margin-bottom:5px;">Blood Sugar (mmol/L)</label><input type="number" id="bsIn" placeholder="e.g. 5.6" step="0.1" class="gp-input" style="width:100%;padding:9px 11px;"></div>
-      <div style="flex:1;min-width:115px;"><label style="font-weight:600;font-size:11.5px;display:block;margin-bottom:5px;">HbA1c (%)</label><input type="number" id="hbIn" placeholder="e.g. 7.2" step="0.1" class="gp-input" style="width:100%;padding:9px 11px;"></div>
+      <div style="flex:1;min-width:115px;"><label style="font-weight:600;font-size:11.5px;display:block;margin-bottom:5px;">Blood Sugar (mmol/L)</label><input type="text" inputmode="decimal" id="bsIn" placeholder="e.g. 5.6" aria-label="Blood sugar in mmol/L" class="gp-input" style="width:100%;padding:9px 11px;"></div>
+      <div style="flex:1;min-width:115px;"><label style="font-weight:600;font-size:11.5px;display:block;margin-bottom:5px;">HbA1c (%)</label><input type="text" inputmode="decimal" id="hbIn" placeholder="e.g. 7.2" aria-label="HbA1c percent" class="gp-input" style="width:100%;padding:9px 11px;"></div>
     </div>
+    <div class="ferr" id="jErr" role="alert"></div>
     <label style="font-weight:600;font-size:12px;display:block;margin-bottom:6px;">Your entry</label>
     <textarea class="jta" id="jTxt" placeholder="Write anything — how your day went, what was hard, what you're proud of, a question for your next appointment…"></textarea>
     <div style="display:flex;gap:8px;margin-top:11px;flex-wrap:wrap;">
@@ -827,7 +961,7 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
       <div class="bsc" style="background:#DCFCE7;"><span class="bsc-n" style="color:#16A34A;">3.9–5.6</span><span class="bsc-l" style="color:#14532D;">Normal fasting</span></div>
       <div class="bsc" style="background:#FEF3C7;"><span class="bsc-n" style="color:#D97706;">5.7–6.9</span><span class="bsc-l" style="color:#92400E;">Pre-diabetes</span></div>
       <div class="bsc" style="background:#FFE4E6;"><span class="bsc-n" style="color:#E11D48;">7.0+</span><span class="bsc-l" style="color:#9F1239;">Diabetes range</span></div>
-      <div class="bsc" style="background:var(--blue-pp);"><span class="bsc-n" style="color:var(--blue-d);">Below 3.9</span><span class="bsc-l" style="color:var(--blue-d);">Hypo — act now</span></div>
+      <div class="bsc" style="background:var(--blue-pp);"><span class="bsc-n" style="color:var(--ink-b);">Below 3.9</span><span class="bsc-l" style="color:var(--ink-b);">Hypo — act now</span></div>
     </div>
   </div>
 </div>
@@ -835,7 +969,7 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
 <div id="wellness" class="section">
   <div class="sh2"><span class="ic">🌸</span><h2>Monthly Wellness Review</h2></div>
   <p style="color:var(--muted);font-size:13px;margin-bottom:6px;">At the end of each month, DiabetesHub celebrates <em>everything you felt</em> — the good, the hard, and the in-between. Your wellness is more than your numbers.</p>
-  <p style="color:var(--blue);font-size:12.5px;font-weight:600;margin-bottom:20px;">✨ The word bubbles below celebrate every positive moment you recorded. They are yours.</p>
+  <p style="color:var(--ink-l);font-size:12.5px;font-weight:600;margin-bottom:20px;">✨ The word bubbles below celebrate every positive moment you recorded. They are yours.</p>
   <div id="wellnessContainer"></div>
   <div class="ip"><h3>💡 About Your Wellness Score</h3>
     <div class="cg">
@@ -1156,7 +1290,7 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
       <option value="Pump">Pump Therapy</option>
     </select>
   </div>
-  <div class="hbox"><strong>💡 Tip:</strong> All HSE Cycle of Care GPs provide twice-yearly structured reviews, HbA1c testing, retinal screening referrals, and foot assessment. Call <strong>HSE Live: 1800 700 700</strong> or visit <a href="https://www2.hse.ie/services/find-a-gp/" target="_blank" style="color:var(--blue-d);font-weight:700;">hse.ie/find-a-gp</a> for the national finder.</div>
+  <div class="hbox"><strong>💡 Tip:</strong> All HSE Cycle of Care GPs provide twice-yearly structured reviews, HbA1c testing, retinal screening referrals, and foot assessment. Call <strong>HSE Live: 1800 700 700</strong> or visit <a href="https://www2.hse.ie/services/find-a-gp/" target="_blank" style="color:var(--ink-b);font-weight:700;">hse.ie/find-a-gp</a> for the national finder.</div>
   <div id="gpList"></div>
 </div>
 
@@ -1599,6 +1733,8 @@ function showS(id,btn){
     if(btn.tagName==='BUTTON'&&btn.closest('#desknav'))btn.classList.add('active');
   }
   window.scrollTo({top:0,behavior:'smooth'});
+  document.querySelectorAll('.bnb,#desknav button').forEach(b=>b.removeAttribute('aria-current'));
+  document.querySelectorAll('.bnb.active,#desknav button.active').forEach(b=>b.setAttribute('aria-current','page'));
   if(id==='wellness')renderWellness();
   if(id==='gpfinder'){renderGPs();filterGPs();}
   if(id==='hospitals')renderH('all');
@@ -1642,7 +1778,7 @@ function showSectionTip(id){
   const banner = document.createElement('div');
   banner.className = 'bluebox';
   banner.style.cssText = 'display:flex;align-items:center;justify-content:space-between;gap:10px;animation:fadeUp .3s ease;';
-  banner.innerHTML = `<span>${tip}</span><button onclick="this.parentElement.remove()" style="background:none;border:none;color:var(--blue-d);font-weight:700;cursor:pointer;font-size:16px;flex-shrink:0;line-height:1;">✕</button>`;
+  banner.innerHTML = `<span>${tip}</span><button onclick="this.parentElement.remove()" style="background:none;border:none;color:var(--ink-b);font-weight:700;cursor:pointer;font-size:16px;flex-shrink:0;line-height:1;" aria-label="Close">✕</button>`;
   const firstChild = sec.firstElementChild;
   sec.insertBefore(banner, firstChild);
 }
@@ -1655,6 +1791,7 @@ function showT(sec,tab,btn){
   const el=document.getElementById(tab);
   if(el)el.classList.add('active');
   if(btn)btn.classList.add('active');
+  if(sec==='newlydiag')ndMark(tab);
 }
 
 function renderAcronyms(){
@@ -1707,11 +1844,11 @@ function filterGPs(){
     <div class="gp-card">
       <div class="gp-icon">🏥</div>
       <div style="flex:1;">
-        <div style="font-weight:700;font-size:13.5px;color:var(--blue-d);margin-bottom:2px;">${g.name}</div>
-        <div style="font-size:12px;color:var(--muted);margin-bottom:5px;">📍 ${g.addr} &nbsp;|&nbsp; 📞 <a href="tel:${g.phone.replace(/\s/g,'')}" style="color:var(--blue);font-weight:600;">${g.phone}</a></div>
+        <div style="font-weight:700;font-size:13.5px;color:var(--ink-b);margin-bottom:2px;">${g.name}</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:5px;">📍 ${g.addr} &nbsp;|&nbsp; 📞 <a href="tel:${g.phone.replace(/\s/g,'')}" style="color:var(--ink-l);font-weight:600;">${g.phone}</a></div>
         <div style="display:flex;gap:5px;flex-wrap:wrap;">${g.services.map(s=>`<span class="pill pb">${s}</span>`).join('')}</div>
       </div>
-      <a href="https://www.google.com/maps/search/${encodeURIComponent(g.name+' '+g.addr)}" target="_blank" style="color:var(--blue);font-size:11.5px;font-weight:700;flex-shrink:0;">Map →</a>
+      <a href="https://www.google.com/maps/search/${encodeURIComponent(g.name+' '+g.addr)}" target="_blank" style="color:var(--ink-l);font-size:11.5px;font-weight:700;flex-shrink:0;">Map →</a>
     </div>`).join('');
 }
 
@@ -1732,12 +1869,12 @@ function renderH(type){
     <div class="hosp-card" style="border-left:4px solid ${h.type==='children'?'var(--rose)':'var(--blue)'};">
       <div class="hosp-icon" style="background:${h.type==='children'?'var(--rose-l)':'var(--blue-pp)'};">${h.type==='children'?'👶':'👨'}</div>
       <div style="flex:1;">
-        <div style="font-weight:700;font-size:13.5px;color:var(--blue-d);margin-bottom:2px;">${h.name}</div>
-        <div style="font-size:12px;color:var(--muted);margin-bottom:5px;">📍 ${h.addr} &nbsp;|&nbsp; 📞 <a href="tel:${h.phone.replace(/\s/g,'')}" style="color:var(--blue);font-weight:600;">${h.phone}</a></div>
-        <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:6px;">${h.services.map(s=>`<span class="pill ${h.type==='children'?'pr':'pb'}" style="font-size:9.5px;">${s}</span>`).join('')}</div>
+        <div style="font-weight:700;font-size:13.5px;color:var(--ink-b);margin-bottom:2px;">${h.name}</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:5px;">📍 ${h.addr} &nbsp;|&nbsp; 📞 <a href="tel:${h.phone.replace(/\s/g,'')}" style="color:var(--ink-l);font-weight:600;">${h.phone}</a></div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:6px;">${h.services.map(s=>`<span class="pill ${h.type==='children'?'pr':'pb'}" style="font-size:11px;">${s}</span>`).join('')}</div>
         <p style="font-size:12px;color:var(--muted);line-height:1.55;">${h.note}</p>
         <div style="display:flex;gap:9px;margin-top:7px;flex-wrap:wrap;">
-          ${h.url?`<a href="${h.url}" target="_blank" style="color:var(--blue);font-size:11px;font-weight:700;">Website →</a>`:''}
+          ${h.url?`<a href="${h.url}" target="_blank" style="color:var(--ink-l);font-size:11px;font-weight:700;">Website →</a>`:''}
           <a href="https://www.google.com/maps/search/${encodeURIComponent(h.name+' '+h.addr)}" target="_blank" style="color:var(--muted);font-size:11px;font-weight:600;">🗺️ Map →</a>
         </div>
       </div>
@@ -1747,11 +1884,17 @@ function renderH(type){
 let selMoodV='';
 let jData=JSON.parse(localStorage.getItem('dhub_jv2')||'[]');
 function selMood(btn,mood){document.querySelectorAll('.mb').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');selMoodV=mood;}
+function parseNum(v){return parseFloat(String(v).trim().replace(',','.'));}
 function saveE(){
   const txt=(document.getElementById('jTxt')||{}).value||'';
-  const bs=(document.getElementById('bsIn')||{}).value||'';
-  const hb=(document.getElementById('hbIn')||{}).value||'';
-  if(!txt.trim()&&!selMoodV){alert('Please write something or choose a mood!');return;}
+  let bs=((document.getElementById('bsIn')||{}).value||'').trim();
+  let hb=((document.getElementById('hbIn')||{}).value||'').trim();
+  const err=document.getElementById('jErr');
+  const fail=m=>{if(err){err.textContent=m;err.classList.add('show');}};
+  if(err){err.classList.remove('show');err.textContent='';}
+  if(!txt.trim()&&!selMoodV&&!bs&&!hb){fail('Please choose a mood, add a reading or write a few words.');return;}
+  if(bs){const n=parseNum(bs);if(isNaN(n)||n<0.5||n>40){fail('Blood sugar should be between 0.5 and 40 mmol/L. For example 5.6 or 5,6.');return;}bs=String(Math.round(n*10)/10);}
+  if(hb){const n=parseNum(hb);if(isNaN(n)||n<3||n>20){fail('HbA1c should be a percentage between 3 and 20. For example 7.2. If your result is in mmol/mol, ask your team for the % value.');return;}hb=String(Math.round(n*10)/10);}
   jData.unshift({id:Date.now(),date:new Date().toLocaleString('en-IE'),dk:new Date().toISOString().slice(0,7),mood:selMoodV,text:txt.trim(),bs:bs||null,hb:hb||null});
   localStorage.setItem('dhub_jv2',JSON.stringify(jData.slice(0,200)));
   renderEntries();
@@ -1771,7 +1914,7 @@ function renderEntries(){
         ${e.mood?`<span class="pill pb">${e.mood}</span>`:''}
         ${e.bs?`<span class="pill pg">🩸 ${e.bs} mmol/L</span>`:''}
         ${e.hb?`<span class="pill pa">📊 HbA1c ${e.hb}%</span>`:''}
-        <span style="font-size:10px;color:var(--muted);">${e.date}</span>
+        <span style="font-size:11px;color:var(--muted);">${e.date}</span>
       </div>
       ${e.text?`<p style="font-size:13px;line-height:1.55;">${e.text.replace(/\n/g,'<br>')}</p>`:''}</div>`
   ).join('');
@@ -1804,7 +1947,7 @@ function renderWellness(){
   if(!Object.keys(byM).length){
     c.innerHTML=`<div class="ip" style="text-align:center;padding:34px 20px;">
       <div style="font-size:36px;margin-bottom:10px;">🌱</div>
-      <h3 style="margin-bottom:8px;color:var(--blue-d);">No entries yet</h3>
+      <h3 style="margin-bottom:8px;color:var(--ink-b);">No entries yet</h3>
       <p style="color:var(--muted);font-size:13px;max-width:360px;margin:0 auto;">This page reflects exactly what you log in your <strong>Journal</strong> — nothing here is sample data. Add a mood entry and it'll show up right here.</p>
       <button class="btn btn-b" style="margin-top:16px;" onclick="showS('journal',null)">📔 Go to Journal</button>
     </div>`;
@@ -1840,20 +1983,20 @@ function renderWellness(){
       <div class="mhdr" onclick="togM('mb-${idx}','cv-${idx}')">
         <div style="display:flex;align-items:center;gap:10px;">
           <div class="mbadge" style="background:${mcbg};">${me}</div>
-          <div><div class="mlabel">${mn} ${yr}</div><div style="font-size:10.5px;color:var(--muted);">${total} entr${total===1?'y':'ies'} recorded</div></div>
+          <div><div class="mlabel">${mn} ${yr}</div><div style="font-size:11px;color:var(--muted);">${total} entr${total===1?'y':'ies'} recorded</div></div>
         </div>
         <div style="display:flex;gap:7px;align-items:center;flex-wrap:wrap;justify-content:flex-end;">
-          <span style="font-family:'Fraunces',serif;font-size:19px;font-weight:700;color:${scColor};">${score}%</span>
+          <span style="font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:19px;font-weight:700;color:${scColor};">${score}%</span>
           <span class="pill pb">Wellness</span>
           ${isOut?'<span class="pill pgold">✨ Outstanding</span>':''}
-          <span id="cv-${idx}" style="color:var(--blue);font-size:15px;transition:transform .25s;">▾</span>
+          <span id="cv-${idx}" style="color:var(--ink-l);font-size:15px;transition:transform .25s;">▾</span>
         </div>
       </div>
       <div id="mb-${idx}" style="display:${idx===0?'block':'none'}">
         <div style="padding:0 17px 14px;">
-          <div style="font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600;margin:11px 0 6px;">Mood Journey</div>
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600;margin:11px 0 6px;">Mood Journey</div>
           <div class="mbar">${barH||'<div style="width:100%;background:var(--grey-m);border-radius:20px;height:8px;"></div>'}</div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;">${barData.slice(0,5).map(d=>`<span style="font-size:10.5px;color:var(--muted);">${d.m.split(' ')[0]} ${d.cnt}×</span>`).join('')}</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;">${barData.slice(0,5).map(d=>`<span style="font-size:11px;color:var(--muted);">${d.m.split(' ')[0]} ${d.cnt}×</span>`).join('')}</div>
         </div>
         <div class="wb-outer">
           <div class="wb-title">💬 Your ${mn} Wellness Message</div>
@@ -1862,10 +2005,10 @@ function renderWellness(){
             <div class="bub-msg">"${msg}"</div>
             <div class="bub-sub">${posM.length?`You recorded <strong>${posC} positive mood moment${posC!==1?'s':''}</strong> this month — ${posC} times you noticed something good inside yourself.`:`Every entry you made — no matter the mood — showed that you kept going.`}</div>
           </div>
-          ${wBubs.length?`<div style="margin-top:2px;"><div style="font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600;margin-bottom:9px;">Words from your ${mn}</div><div class="wcloud">${wH}</div></div>`:''}
+          ${wBubs.length?`<div style="margin-top:2px;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600;margin-bottom:9px;">Words from your ${mn}</div><div class="wcloud">${wH}</div></div>`:''}
           <div class="mstat-row">
             <div class="mstat"><span class="mstat-n" style="color:${scColor};">${score}%</span><span class="mstat-l">Wellness</span></div>
-            <div class="mstat"><span class="mstat-n" style="color:var(--blue);">${total}</span><span class="mstat-l">Entries</span></div>
+            <div class="mstat"><span class="mstat-n" style="color:var(--ink-l);">${total}</span><span class="mstat-l">Entries</span></div>
             <div class="mstat"><span class="mstat-n" style="color:var(--green);">${posC}</span><span class="mstat-l">Positive</span></div>
             <div class="mstat"><span class="mstat-n" style="color:var(--purple);">${posM.length}</span><span class="mstat-l">Varieties</span></div>
           </div>
@@ -2061,6 +2204,7 @@ function closeStatModal() {
 }
 
 const MORE_ITEMS=[
+  {id:'hospitals',ic:'🏥',label:'Hospitals'},
   {id:'journal',ic:'📔',label:'My Journal'},
   {id:'wellness',ic:'🌸',label:'Monthly Wellness'},
   {id:'nutrition',ic:'🍏',label:'Nutrition & Carb Counting'},
@@ -2077,6 +2221,7 @@ const MORE_ITEMS=[
   {id:'awareness',ic:'💙',label:'World Diabetes Day & Awareness'},
   {id:'campaigns',ic:'📢',label:'Awareness Campaigns'},
   {id:'breakthroughs',ic:'🔬',label:'Research Breakthroughs'},
+  {id:'__theme',ic:'🎨',label:'Appearance: Light / Dark'},
 ];
 function openMoreMenu(){
   let backdrop = document.getElementById('moreMenuBackdrop');
@@ -2100,7 +2245,7 @@ function openMoreMenu(){
     });
     document.body.appendChild(backdrop);
     document.getElementById('moreMenuBody').innerHTML = MORE_ITEMS.map(m=>
-      `<button onclick="navFromMore('${m.id}')" style="width:100%;display:flex;align-items:center;gap:11px;background:var(--grey-l);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:8px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:600;color:var(--text);text-align:left;">
+      `<button onclick="navFromMore('${m.id}')" style="width:100%;display:flex;align-items:center;gap:11px;background:var(--grey-l);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:8px;cursor:pointer;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13.5px;font-weight:600;color:var(--text);text-align:left;">
         <span style="font-size:19px;">${m.ic}</span>${m.label}
       </button>`
     ).join('');
@@ -2114,11 +2259,12 @@ function closeMoreMenu(){
 }
 function navFromMore(id){
   closeMoreMenu();
+  if(id==='__theme'){openThemeChooser();return;}
   showS(id,null);
 }
 
 document.addEventListener('keydown', function(e){
-  if (e.key === 'Escape') { closeStatModal(); closeMoreMenu(); closeOnboarding(); }
+  if (e.key === 'Escape') { closeStatModal(); closeMoreMenu(); closeOnboarding(); closeThemeChooser(); }
 });
 
 function closeOnboarding(){
@@ -2158,8 +2304,10 @@ function checkFirstLaunch(){
 function dismissOnboarding(){
   try{ localStorage.setItem('dhub_onboarded_v1','1'); }catch(e){}
   closeOnboarding();
+  maybeAskTheme();
 }
 window.addEventListener('load', checkFirstLaunch);
+window.addEventListener('load', function(){ setTimeout(maybeAskTheme,400); });
 window.addEventListener('load', function(){ showSectionTip('home'); });
 
 if ('serviceWorker' in navigator) {
@@ -2201,6 +2349,111 @@ function dismissInstall() {
   var banner = document.getElementById('installBanner');
   if (banner) banner.style.display = 'none';
 }
+
+/* ─── Laws of UX additions ─── */
+function toggleQn(){
+  const m=document.getElementById('qnMore'),b=document.getElementById('qnToggle');
+  const o=m.classList.toggle('open');
+  b.textContent=o?'Show fewer ▴':'Show all sections ▾';
+  b.setAttribute('aria-expanded',o?'true':'false');
+}
+const SEARCH_LABELS={signs:'See The Signs',emergency:'Emergency Guide',newlydiag:'Newly Diagnosed',journal:'My Journal',wellness:'Wellness',hba1c:'Lower HbA1c',nutrition:'Nutrition & Carb Counting',acronyms:'Acronyms Explained',devices:'Devices & Technology',family:'Family, Teachers & SNAs',gpfinder:'Find a GP',hospitals:'Hospitals',funding:'Funding & Entitlements',medals:'Milestone Medals',heroes:'Role Models',awareness:'World Diabetes Day & Awareness',breakthroughs:'Research Breakthroughs',services:'Support Services',campaigns:'Awareness Campaigns',factors:'42 Factors Affecting Blood Sugar'};
+let _searchIdx=null;
+function homeSearch(q){
+  const box=document.getElementById('hsRes');
+  q=(q||'').trim().toLowerCase();
+  if(q.length<2){box.classList.remove('open');box.innerHTML='';return;}
+  if(!_searchIdx){_searchIdx=Object.keys(SEARCH_LABELS).map(id=>{const el=document.getElementById(id);return {id,label:SEARCH_LABELS[id],text:el?el.textContent.toLowerCase().replace(/\s+/g,' '):''};});}
+  const words=q.split(/\s+/);
+  const hits=_searchIdx.map(s=>{
+    const inLabel=words.every(w=>s.label.toLowerCase().includes(w));
+    const count=words.reduce((a,w)=>a+(s.text.split(w).length-1),0);
+    const all=words.every(w=>s.text.includes(w));
+    return {s,score:(inLabel?1000:0)+(all?count:0)};
+  }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,6);
+  box.innerHTML=hits.length?hits.map(x=>'<button onclick="searchGo(\''+x.s.id+'\')">'+x.s.label+'</button>').join(''):'<div class="hs-none">No match yet. Try a simpler word like “insulin” or “school”.</div>';
+  box.classList.add('open');
+}
+function searchGo(id){
+  const i=document.getElementById('hSearch');if(i)i.value='';
+  const b=document.getElementById('hsRes');if(b){b.classList.remove('open');b.innerHTML='';}
+  showS(id,null);
+}
+const ND_TABS=['nd1','nd2','nd3','nd4','nd5','nd6','nd7','nd8','nd9'];
+function ndRead(){try{return JSON.parse(localStorage.getItem('dhub_nd_read')||'[]');}catch(e){return [];}}
+function ndMark(tab){
+  if(!ND_TABS.includes(tab))return;
+  try{const r=ndRead();if(!r.includes(tab)){r.push(tab);localStorage.setItem('dhub_nd_read',JSON.stringify(r));}}catch(e){}
+  ndRender();
+}
+function ndRender(){
+  const r=ndRead();
+  const n=ND_TABS.filter(t=>r.includes(t)).length;
+  const t=document.getElementById('ndProgTxt'),f=document.getElementById('ndProgFill');
+  if(t)t.textContent=n>=9?'All 9 read. Well done!':n+' of 9 read';
+  if(f)f.style.width=Math.round(n/9*100)+'%';
+  document.querySelectorAll('#newlydiag .tbtn').forEach(b=>{
+    const m=(b.getAttribute('onclick')||'').match(/'(nd\d)'/);
+    if(m)b.classList.toggle('done',r.includes(m[1]));
+  });
+}
+document.addEventListener('DOMContentLoaded',function(){ndMark('nd1');});
+
+/* ─── Appearance: light (default), dark, or match device ─── */
+function themeChoice(){
+  try{var t=localStorage.getItem('dhub_theme');if(t==='dark'||t==='light'||t==='system')return t;}catch(e){}
+  return null;
+}
+function isDarkNow(){
+  var t=document.documentElement.getAttribute('data-theme');
+  if(t==='dark')return true;
+  if(t==='system')return !!(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);
+  return false;
+}
+function syncThemeUI(){
+  var d=isDarkNow();
+  var b=document.getElementById('themeBtn');
+  if(b){b.textContent=d?'🌙':'☀️';}
+  var m=document.querySelector('meta[name="theme-color"]');
+  if(m)m.setAttribute('content',d?'#0B1220':'#1D4ED8');
+}
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  try{localStorage.setItem('dhub_theme',t);}catch(e){}
+  syncThemeUI();
+  closeThemeChooser();
+}
+function openThemeChooser(){
+  closeThemeChooser();
+  var cur=themeChoice()||'light';
+  var opts=[
+    {k:'light',ic:'☀️',t:'Light',d:'Bright and clean. This is the standard look.',tag:'Standard'},
+    {k:'dark',ic:'🌙',t:'Dark',d:'Easier on the eyes at night or in low light.'},
+    {k:'system',ic:'📱',t:'Match my device',d:'Follow my phone or computer setting automatically.'}
+  ];
+  var bd=document.createElement('div');
+  bd.className='stat-modal-backdrop open';bd.id='themeBackdrop';
+  bd.setAttribute('role','dialog');bd.setAttribute('aria-modal','true');bd.setAttribute('aria-label','Choose appearance');
+  bd.innerHTML='<div class="stat-modal" style="max-width:440px;"><div class="sm-header"><div class="sm-eyebrow">Appearance</div><div class="sm-title">How would you like DiabetesHub to look?</div><button class="sm-close" onclick="closeThemeChooser()" aria-label="Close">✕</button></div><div class="sm-body" style="padding:14px 16px 18px;">'+
+    opts.map(function(o){return '<button class="theme-opt'+(o.k===cur?' sel':'')+'" onclick="setTheme(\''+o.k+'\')"><span class="to-ic">'+o.ic+'</span><span class="to-tx"><strong>'+o.t+(o.tag?' <em>'+o.tag+'</em>':'')+'</strong><span>'+o.d+'</span></span></button>';}).join('')+
+    '<p style="font-size:12px;color:var(--muted);margin:6px 0 0;">You can change this any time with the ☀️/🌙 button at the top.</p></div></div>';
+  bd.addEventListener('click',function(e){if(e.target===bd)closeThemeChooser();});
+  document.body.appendChild(bd);
+  document.body.style.overflow='hidden';
+}
+function closeThemeChooser(){
+  var bd=document.getElementById('themeBackdrop');
+  if(bd){bd.remove();}
+  if(!document.querySelector('.stat-modal-backdrop.open'))document.body.style.overflow='';
+  if(!themeChoice()){try{localStorage.setItem('dhub_theme','light');}catch(e){}}
+}
+function maybeAskTheme(){
+  if(themeChoice())return;
+  if(document.querySelector('#onboardBackdrop.open'))return;
+  openThemeChooser();
+}
+if(window.matchMedia){try{window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',syncThemeUI);}catch(e){}}
+document.addEventListener('DOMContentLoaded',syncThemeUI);
 </script>
 
 <div id="installBanner" style="display:none;position:fixed;bottom:80px;left:12px;right:12px;z-index:400;background:linear-gradient(135deg,#1E3A8A,#1D4ED8);color:#fff;border-radius:14px;padding:14px 16px;box-shadow:0 8px 32px rgba(29,78,216,.35);align-items:center;gap:12px;">
@@ -2209,8 +2462,8 @@ function dismissInstall() {
     <div style="font-weight:700;font-size:13.5px;margin-bottom:2px;">Add DiabetesHub to your home screen</div>
     <div style="font-size:11.5px;opacity:.82;">Access it instantly like a native app — works offline too</div>
   </div>
-  <button onclick="installApp()" style="background:#86EFAC;color:#14532D;border:none;padding:8px 14px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0;">Install</button>
-  <button onclick="dismissInstall()" style="background:rgba(255,255,255,.15);color:#fff;border:none;padding:8px 10px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;flex-shrink:0;">✕</button>
+  <button onclick="installApp()" style="background:#86EFAC;color:#14532D;border:none;padding:8px 14px;border-radius:8px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0;">Install</button>
+  <button onclick="dismissInstall()" style="background:rgba(255,255,255,.15);color:#fff;border:none;padding:8px 10px;border-radius:8px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;cursor:pointer;flex-shrink:0;" aria-label="Close">✕</button>
 </div>
 
 </body>
