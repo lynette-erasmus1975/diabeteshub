@@ -259,6 +259,14 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
 .hba-seg{display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;}
 .hba-tip{background:var(--surface);border:1.5px solid var(--border);border-radius:11px;padding:12px 14px;margin-bottom:9px;display:flex;gap:11px;align-items:flex-start;}
 .hba-num{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:20px;font-weight:700;flex-shrink:0;width:52px;}
+.fbc{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:rgba(24,119,242,.08);border:1.5px solid #1877F2;border-left-width:5px;border-radius:14px;padding:14px 16px;margin:18px 0;color:var(--text);text-decoration:none;transition:transform .18s,box-shadow .18s;}
+.fbc:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(24,119,242,.2);}
+.fbc-ic{font-size:26px;line-height:1;flex-shrink:0;}
+.fbc-tx{flex:1;min-width:200px;font-size:13px;line-height:1.55;color:var(--muted);}
+.fbc-tx strong{display:block;font-size:14.5px;color:var(--text);margin-bottom:2px;}
+.fbc-btn{background:#1877F2;color:#fff;font-size:12.5px;font-weight:700;padding:9px 15px;border-radius:9px;white-space:nowrap;}
+.fbc-mini{display:inline-block;margin-top:10px;background:#1877F2;color:#fff!important;font-size:12px;font-weight:700;padding:7px 13px;border-radius:8px;text-decoration:none!important;}
+.card h3 a.fbl{color:#1877F2;}
 .sc{background:var(--surface);border-radius:10px;padding:14px 16px;box-shadow:var(--sh);border:1px solid var(--border);display:flex;gap:12px;margin-bottom:10px;}
 .sic{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
 .sc h4{font-weight:700;font-size:13.5px;margin-bottom:2px;color:var(--ink-b);}
@@ -835,6 +843,8 @@ body{overflow-x:clip;}
 <div id="newlydiag" class="section">
   <div class="sh2"><span class="ic">🌱</span><h2>Newly Diagnosed, You Are Going to Be Okay</h2></div>
 
+  <a class="fbc" href="https://www.facebook.com/share/g/1EajccKckF/" target="_blank" rel="noopener"><span class="fbc-ic">📘</span><span class="fbc-tx"><strong>You don't have to figure this out alone</strong>"Families of Children with Type 1 Diabetes Ireland" on Facebook offers 24/7 peer support from parents who have been exactly where you are.</span><span class="fbc-btn">Join the group →</span></a>
+
   <div class="pinkbox">
     <h4>To Every Parent Who Just Got the Diagnosis</h4>
     <p>If you are reading this in a hospital car park, or at 3am unable to sleep, or googling frantically, this message is for you. What you are feeling right now, the shock, the grief, the fear, the guilt, is completely normal. And it is not your fault. Not even a little bit. Type 1 diabetes is an autoimmune condition. It was not caused by anything you fed your child, anything you did, or anything you didn't do. You could not have prevented it. And you are not alone, thousands of families in Ireland are on this exact journey with you right now.</p>
@@ -864,7 +874,7 @@ body{overflow-x:clip;}
         <div class="card cp"><h3>Your Child Is Still Your Child</h3><p>They will still play sport, go to school, have sleepovers, travel, fall in love, and build an extraordinary life. This is part of their story, not the whole story.</p></div>
         <div class="card ca"><h3>The Curve Gets Easier</h3><p>The first weeks are the hardest. Things that feel impossible now, carbs, doses, a CGM graph, will become second nature.</p></div>
         <div class="card cr"><h3>Ask for Support</h3><p>Request a social worker or psychologist referral, standard at <a href="https://www.childrenshealthireland.ie" target="_blank" rel="noopener noreferrer">Children's Health Ireland</a>. You don't have to process this alone.</p></div>
-        <div class="card cgrey"><h3>Connect With Other Parents</h3><p>The Facebook group "Families of Children with Type 1 Diabetes Ireland" is full of parents who've walked this exact road.</p></div>
+        <div class="card cgrey"><h3><a class="fbl" href="https://www.facebook.com/share/g/1EajccKckF/" target="_blank" rel="noopener">Connect With Other Parents</a></h3><p>The Facebook group "Families of Children with Type 1 Diabetes Ireland" is full of parents who've walked this exact road, with 24/7 peer support.</p><a class="fbc-mini" href="https://www.facebook.com/share/g/1EajccKckF/" target="_blank" rel="noopener">Join the group →</a></div>
         <div class="card cb"><h3>Make It Playful</h3><p><a href="https://sproutel.com" target="_blank" rel="noopener noreferrer"><strong>Jerry the Bear</strong></a> is an interactive teddy companion that teaches kids their routine through play. At home, try a "Diabetes Superhero" sticker chart for every check or dose.</p></div>
       </div>
     </div>
@@ -963,7 +973,7 @@ body{overflow-x:clip;}
         <div class="card cb"><h3>One Hour at a Time</h3><p>Narrow your focus, not "how do I manage this for 18 years?" but "what do I need to do in the next hour?"</p></div>
         <div class="card cg2"><h3>Celebrate Small Things</h3><p>A reading of 5.8 mmol/L. A night without a hypo alarm. A full week of CGM data. These are real victories.</p></div>
         <div class="card ca"><h3>Talk to Your Nurse</h3><p>They've seen every emotion and every struggle, and they're never there to judge.</p></div>
-        <div class="card cp"><h3>Connect With Other Parents</h3><p>"Families of Children with Type 1 Diabetes Ireland" on Facebook offers 24/7 peer support.</p></div>
+        <div class="card cp"><h3><a class="fbl" href="https://www.facebook.com/share/g/1EajccKckF/" target="_blank" rel="noopener">Connect With Other Parents</a></h3><p>"Families of Children with Type 1 Diabetes Ireland" on Facebook offers 24/7 peer support.</p><a class="fbc-mini" href="https://www.facebook.com/share/g/1EajccKckF/" target="_blank" rel="noopener">Join the group →</a></div>
         <div class="card cr"><h3>Diabetes Ireland</h3><p>Free counselling referral, peer support groups, family education, and children's camps at diabetes.ie.</p></div>
         <div class="card cgrey"><h3>It Will Get Easier</h3><p>Not perfect, easier. The first three months are the steepest part of the curve.</p></div>
       </div>
@@ -1106,6 +1116,8 @@ body{overflow-x:clip;}
       <div class="bsc" style="background:var(--blue-pp);"><span class="bsc-n" style="color:var(--ink-b);">Below 3.9</span><span class="bsc-l" style="color:var(--ink-b);">Hypo, act now</span></div>
     </div>
   </div>
+
+  <a class="fbc" href="https://www.facebook.com/share/g/1EajccKckF/" target="_blank" rel="noopener"><span class="fbc-ic">📘</span><span class="fbc-tx"><strong>Got a question for someone who's been there?</strong>Parents of children with Type 1 can ask "Families of Children with Type 1 Diabetes Ireland" on Facebook, with 24/7 peer support from families who get it.</span><span class="fbc-btn">Join the group →</span></a>
 </div>
 
 <div id="wellness" class="section">
@@ -1122,6 +1134,8 @@ body{overflow-x:clip;}
       <div class="card ca"><h3>Hard Months Deserve Compassion</h3><p><em>"You came back every day. That is everything."</em></p></div>
     </div>
   </div>
+
+  <a class="fbc" href="https://www.facebook.com/share/g/1EajccKckF/" target="_blank" rel="noopener"><span class="fbc-ic">📘</span><span class="fbc-tx"><strong>Need people who truly understand?</strong>Parents of children with Type 1 can ask "Families of Children with Type 1 Diabetes Ireland" on Facebook, with 24/7 peer support from families who get it.</span><span class="fbc-btn">Join the group →</span></a>
 </div>
 
 <div id="hba1c" class="section">
@@ -1202,6 +1216,8 @@ body{overflow-x:clip;}
       <div class="card cp"><h3>Celebrate Small Wins</h3><p>HbA1c from 9% to 8.5% is a significant achievement. Every fraction matters.</p></div>
     </div>
   </div></div>
+
+  <a class="fbc" href="https://www.facebook.com/share/g/1EajccKckF/" target="_blank" rel="noopener"><span class="fbc-ic">📘</span><span class="fbc-tx"><strong>Questions about readings or targets?</strong>Parents of children with Type 1 can ask "Families of Children with Type 1 Diabetes Ireland" on Facebook, with 24/7 peer support from families who get it. For anything about your own doses, check with your diabetes team.</span><span class="fbc-btn">Join the group →</span></a>
 </div>
 
 <div id="nutrition" class="section">
@@ -1314,6 +1330,8 @@ body{overflow-x:clip;}
       </div>
     </div>
   </div>
+
+  <a class="fbc" href="https://www.facebook.com/share/g/1EajccKckF/" target="_blank" rel="noopener"><span class="fbc-ic">📘</span><span class="fbc-tx"><strong>Stuck on carb counting or lunchbox ideas?</strong>Parents of children with Type 1 can ask "Families of Children with Type 1 Diabetes Ireland" on Facebook, with 24/7 peer support from families who get it.</span><span class="fbc-btn">Join the group →</span></a>
 </div>
 
 <div id="acronyms" class="section">
@@ -1398,6 +1416,8 @@ body{overflow-x:clip;}
       <div class="card cp"><h3>Non-Invasive CGM</h3><p>Glucose monitoring without breaking the skin, still years from clinical accuracy but actively in development.</p></div>
     </div>
   </div></div>
+
+  <a class="fbc" href="https://www.facebook.com/share/g/1EajccKckF/" target="_blank" rel="noopener"><span class="fbc-ic">📘</span><span class="fbc-tx"><strong>Weighing up a pump or CGM?</strong>Parents in "Families of Children with Type 1 Diabetes Ireland" on Facebook share real, day-to-day experience of every device, with 24/7 peer support.</span><span class="fbc-btn">Join the group →</span></a>
 </div>
 
 <div id="family" class="section">
@@ -1460,6 +1480,8 @@ body{overflow-x:clip;}
     <p style="font-size:13px;color:var(--muted);line-height:1.7;">For the full hypo, severe hypo, and DKA protocol with tap-to-call numbers, see the dedicated <strong>Emergency</strong> section, one tap away from the bottom menu on mobile, or in the top menu on desktop. It's worth printing a copy for the fridge and saving a photo to your phone.</p>
     <button class="btn btn-rose" onclick="showS('emergency',null)" style="margin-top:4px;">🚨 Open Full Emergency Guide</button>
   </div></div>
+
+  <a class="fbc" href="https://www.facebook.com/share/g/1EajccKckF/" target="_blank" rel="noopener"><span class="fbc-ic">📘</span><span class="fbc-tx"><strong>Looking for other families to talk to?</strong>Parents of children with Type 1 can ask "Families of Children with Type 1 Diabetes Ireland" on Facebook, with 24/7 peer support from families who get it.</span><span class="fbc-btn">Join the group →</span></a>
 </div>
 
 <div id="gpfinder" class="section">
@@ -1576,6 +1598,8 @@ body{overflow-x:clip;}
     <div class="fund-card"><h4>🏥 Statutory Sick Pay</h4><span class="fund-amt">Paid from Day 1</span><p>Statutory Sick Pay in Ireland provides paid sick leave from Day 1 of illness. Enhanced contractual entitlements may apply through your employer.</p></div>
     <div class="fund-card"><h4>💼 Partial Capacity Benefit</h4><span class="fund-amt">Based on restriction</span><p>If complications restrict your capacity to work but you can still work reduced hours, Partial Capacity Benefit allows you to return part-time while retaining some Illness Benefit.</p></div>
   </div>
+
+  <a class="fbc" href="https://www.facebook.com/share/g/1EajccKckF/" target="_blank" rel="noopener"><span class="fbc-ic">📘</span><span class="fbc-tx"><strong>Not sure what to claim?</strong>Parents in "Families of Children with Type 1 Diabetes Ireland" on Facebook have been through the forms and are happy to help, with 24/7 peer support.</span><span class="fbc-btn">Join the group →</span></a>
 </div>
 
 <div id="medals" class="section">
