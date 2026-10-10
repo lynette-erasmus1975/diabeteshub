@@ -1450,34 +1450,32 @@ body{overflow-x:clip;}
 <div id="hospitals" class="section">
   <div class="sh2"><span class="ic">🏥</span><h2>Children's &amp; Adult Diabetes Hospitals</h2></div>
   <div style="margin:0 0 12px;"><button type="button" class="btn btn-b" id="hospFindToggle" aria-expanded="false" aria-controls="hospFinder" onclick="hospToggleFinder()">📍 Find my nearest hospital</button></div>
-  <div id="hospFinder" style="display:none;">
-  <div class="gp-search" style="margin-bottom:10px;">
-    <input class="gp-input" type="text" id="hospSearch" placeholder="🔍  Search by area (e.g. Ennis or Clare)" aria-label="Search hospitals by area" autocomplete="off" oninput="hospSearchGo()" onkeydown="if(event.key==='Enter'){event.preventDefault();hospSearchGo();}">
-    <button type="button" class="btn btn-b" onclick="hospSearchGo(true)">🔍 Search</button>
-    <button type="button" class="btn btn-o" onclick="hospSearchClear()">Clear</button>
-  </div>
-  <div style="margin:0 0 8px;"><button type="button" class="btn btn-b" id="hospLocBtn" onclick="hospUseLocation()">📍 Use my location</button></div>
-  <div id="hospLocHelp" class="bluebox" style="display:none;margin:0 0 12px;">
-    <strong>📍 Location is turned off for this site.</strong> You can still type your area above and tap Search. To use your location, turn it on, then come back and tap <em>Use my location</em> again. Menu names can vary a little between phones.
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 6px;">
-      <button type="button" class="btn btn-o" id="locTabIos" onclick="hospLocTab('ios')">🍎 iPhone steps</button>
-      <button type="button" class="btn btn-o" id="locTabAnd" onclick="hospLocTab('and')">🤖 Android steps</button>
+  <div id="hospFinder" class="bluebox" style="display:none;margin:0 0 14px;">
+    <button type="button" class="btn btn-b" id="hospLocBtn" style="width:100%;justify-content:center;" onclick="hospUseLocation()">📍 Use my location</button>
+    <div style="text-align:center;font-size:12px;color:var(--muted);margin:8px 0;">or type your county or town</div>
+    <div style="display:flex;gap:8px;">
+      <input class="gp-input" type="text" id="hospSearch" style="flex:1;min-width:0;" placeholder="e.g. Clare or Ennis" aria-label="Search hospitals by county or town" autocomplete="off" onkeydown="if(event.key==='Enter'){event.preventDefault();hospSearchGo(true);}">
+      <button type="button" class="btn btn-b" onclick="hospSearchGo(true)">Search</button>
     </div>
-    <ol id="locStepsIos" style="display:none;margin:6px 0 0 18px;line-height:1.7;">
-      <li>Open <strong>Settings</strong>, then <strong>Privacy &amp; Security</strong>, then <strong>Location Services</strong>, and make sure it is <strong>On</strong>.</li>
-      <li>Scroll down and tap <strong>Safari Websites</strong> (or the name of your browser, for example Chrome).</li>
-      <li>Choose <strong>While Using the App</strong> or <strong>Ask Next Time</strong>.</li>
-      <li>Back in Safari, tap <strong>aA</strong> in the address bar, then <strong>Website Settings</strong>, then <strong>Location</strong>, and choose <strong>Allow</strong>.</li>
-      <li>Refresh this page and tap <strong>Use my location</strong>.</li>
-    </ol>
-    <ol id="locStepsAnd" style="display:none;margin:6px 0 0 18px;line-height:1.7;">
-      <li>Open <strong>Settings</strong>, then <strong>Location</strong>, and turn it <strong>On</strong>.</li>
-      <li>In <strong>Chrome</strong>, tap the <strong>lock</strong> (or settings) icon next to the address, then <strong>Permissions</strong>, then <strong>Location</strong>, and choose <strong>Allow</strong>. Or open Chrome's <strong>⋮ menu</strong>, then <strong>Settings</strong>, then <strong>Site settings</strong>, then <strong>Location</strong>.</li>
-      <li>If Chrome still cannot use it, open your phone's <strong>Settings</strong>, then <strong>Apps</strong>, then <strong>Chrome</strong>, then <strong>Permissions</strong>, then <strong>Location</strong>, and choose <strong>Allow only while using the app</strong>.</li>
-      <li>Refresh this page and tap <strong>Use my location</strong>.</li>
-    </ol>
-  </div>
-  <p id="hospSearchMsg" role="status" style="font-size:12.5px;color:var(--muted);margin:0 0 12px;"></p>
+    <p id="hospSearchMsg" role="status" style="font-size:12.5px;color:var(--muted);margin:10px 0 0;"></p>
+    <div id="hospLocHelp" style="display:none;margin-top:10px;">
+      <div style="font-size:12.5px;line-height:1.6;"><strong>Location is off for this site.</strong> You can still type your county or town above.</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 0;">
+        <button type="button" class="btn btn-o" id="locTabIos" onclick="hospLocTab('ios')">🍎 iPhone steps</button>
+        <button type="button" class="btn btn-o" id="locTabAnd" onclick="hospLocTab('and')">🤖 Android steps</button>
+      </div>
+      <ol id="locStepsIos" style="display:none;margin:8px 0 0 18px;line-height:1.7;font-size:12.5px;">
+        <li>Settings, Privacy &amp; Security, Location Services: turn <strong>On</strong>.</li>
+        <li>Tap <strong>Safari Websites</strong> and choose <strong>While Using</strong> or <strong>Ask Next Time</strong>.</li>
+        <li>In Safari tap <strong>aA</strong>, then <strong>Website Settings</strong>, then <strong>Location</strong>: <strong>Allow</strong>.</li>
+        <li>Refresh this page and tap <strong>Use my location</strong>.</li>
+      </ol>
+      <ol id="locStepsAnd" style="display:none;margin:8px 0 0 18px;line-height:1.7;font-size:12.5px;">
+        <li>Settings, Location: turn <strong>On</strong>.</li>
+        <li>In Chrome tap the <strong>lock</strong> icon by the address, then <strong>Permissions</strong>, then <strong>Location</strong>: <strong>Allow</strong>.</li>
+        <li>Refresh this page and tap <strong>Use my location</strong>.</li>
+      </ol>
+    </div>
   </div>
   <div class="tb" id="hospFilter">
     <button class="tbtn active" onclick="filterH('all',this)">All</button>
@@ -2103,7 +2101,8 @@ function hospLocate(raw){
   if(cp)return {ll:COUNTIES[cp],label:'Co. '+cp};
   m=places.find(x=>x.n.startsWith(n)&&n.length>=3)||places.find(x=>x.n.includes(n)&&n.length>=3);
   if(m)return {ll:[m.p[3],m.p[4]],label:m.p[1]+', Co. '+m.p[2]};
-  return {error:'I could not find "'+q.slice(0,40)+'". Try a county (for example Clare) or a town (for example Ennis), or tap Use my location.'};
+  if(/^[a-z]\d{2}\s?[a-z0-9]{4}$/i.test(q.replace(/\s/g,'')))return {error:'Eircodes are not supported here. Please type a county or town, for example Clare or Ennis.'};
+  return {error:'Could not find "'+q.slice(0,30)+'". Try a county or town, for example Clare or Ennis.'};
 }
 function hospSearchGo(force){
   const el=document.getElementById('hospSearch'),msg=document.getElementById('hospSearchMsg');
@@ -2114,7 +2113,7 @@ function hospSearchGo(force){
   const r=hospLocate(q);
   if(r.error){_hospOrigin=null;msg.textContent=r.error;renderH(_hospType);return;}
   _hospOrigin=r;
-  msg.textContent='Showing hospitals closest to '+r.label+', nearest first. Distances are approximate straight-line distances from the middle of your area, so real travel will be longer. This search happens on your device and nothing is sent anywhere. Always confirm your referral route with your GP or diabetes team.';
+  msg.innerHTML='Nearest first to <strong>'+r.label+'</strong>. Distances are approximate straight lines. <a href="#" onclick="hospSearchClear();return false;" style="font-weight:700;">Show all</a>';
   renderH(_hospType);
 }
 function hospUseLocation(){
@@ -2129,7 +2128,7 @@ function hospUseLocation(){
     document.getElementById('hospSearch').value='';
     document.getElementById('hospLocHelp').style.display='none';
     _hospOrigin={ll:ll,label:'your current location'};
-    msg.textContent='Showing hospitals closest to your current location, nearest first. Distances are approximate straight-line distances, so real travel will be longer. Your location is used on your device only. It is not stored or sent anywhere. Always confirm your referral route with your GP or diabetes team.';
+    msg.innerHTML='Nearest first to <strong>your location</strong> (used on your device only, never stored or sent). Distances are approximate. <a href="#" onclick="hospSearchClear();return false;" style="font-weight:700;">Show all</a>';
     renderH(_hospType);
   },function(err){
     btn.disabled=false;btn.textContent='📍 Use my location';
@@ -2152,7 +2151,7 @@ function hospFromEmergency(){
   showS('hospitals',null);
   const f=document.getElementById('hospFinder');
   if(f&&f.style.display==='none')hospToggleFinder();
-  const h=document.getElementById('hospitals');if(h)h.scrollIntoView();
+  window.scrollTo(0,0);
 }
 function hospToggleFinder(){
   const f=document.getElementById('hospFinder'),t=document.getElementById('hospFindToggle');
