@@ -1590,9 +1590,9 @@ body{overflow-x:clip;}
   <div class="ja">
     <label style="font-weight:600;font-size:12px;display:block;margin-bottom:7px;">What would you like to send?</label>
     <div class="mr" id="shareType">
-      <button type="button" class="mb sel" onclick="shareMode('suggest',this)">💡 A suggestion</button>
-      <button type="button" class="mb" onclick="shareMode('thanks',this)">🙏 A thank you</button>
-      <button type="button" class="mb" onclick="shareMode('bug',this)">🐞 Report a bug</button>
+      <button type="button" class="mb" data-m="suggest" onclick="shareMode('suggest',this)">💡 A suggestion</button>
+      <button type="button" class="mb" data-m="thanks" onclick="shareMode('thanks',this)">🙏 A thank you</button>
+      <button type="button" class="mb sel" data-m="bug" onclick="shareMode('bug',this)">🐞 Report a bug</button>
     </div>
     <p id="shareHelp" style="font-size:12.5px;color:var(--muted);margin:2px 0 12px;"></p>
     <div id="shareBugRow" style="display:none;margin-bottom:12px;">
@@ -1851,6 +1851,7 @@ body{overflow-x:clip;}
 
 <div class="foot" style="max-width:1240px;margin:0 auto;padding:0 16px 20px;">
   <p>💙 Built by a mom who learned all this the hard way, so you don't have to. Inspired by my warrior daughter, and for everyone in Ireland living with diabetes - whether you are 1 or 105 years old!</p>
+  <p style="font-size:11px;opacity:.7;margin-top:6px;">Site version: 10 Oct 2026, v2 (popups)</p>
   <p style="margin-top:4px;">Information and support only. Always consult your diabetes healthcare team for medical decisions.</p>
   <p style="margin-top:4px;"><strong>Emergency: <a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a></strong> &nbsp;|&nbsp; HSE Live: <a href="tel:18007007007" class="tcall">1800 700 700</a> &nbsp;|&nbsp; Samaritans: <a href="tel:116123" class="tcall">116 123</a> &nbsp;|&nbsp; <a href="https://www.diabetes.ie" rel="noopener noreferrer">diabetes.ie</a></p>
   <p style="margin-top:8px;font-size:12px;">© 2026 DiabetesHub Ireland. All rights reserved. &nbsp;|&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;|&nbsp; <a href="mailto:diabeteshub.ie@gmail.com">Contact</a></p>
@@ -1964,6 +1965,7 @@ function showS(id,btn){
   if(id==='acronyms')renderAcronyms();
   if(id==='breakthroughs')renderBreakthroughs();
   showSectionTip(id);
+  if(id==='share')openShareChooser();
 }
 
 const SECTION_TIPS={
@@ -2598,6 +2600,8 @@ function openMoreMenu(){
   }
   backdrop.classList.add('open');
   document.body.style.overflow = 'hidden';
+  ['moreMenuBackdrop','moreMenuBox','moreMenuBody'].forEach(function(i){const e=document.getElementById(i);if(e)e.scrollTop=0;});
+  setTimeout(function(){['moreMenuBackdrop','moreMenuBox','moreMenuBody'].forEach(function(i){const e=document.getElementById(i);if(e)e.scrollTop=0;});},0);
 }
 function closeMoreMenu(){
   const backdrop = document.getElementById('moreMenuBackdrop');
@@ -2610,7 +2614,7 @@ function navFromMore(id){
 }
 
 document.addEventListener('keydown', function(e){
-  if (e.key === 'Escape') { closeStatModal(); closeMoreMenu(); closeOnboarding(); closeThemeChooser(); }
+  if (e.key === 'Escape') { closeStatModal(); closeMoreMenu(); closeOnboarding(); closeThemeChooser(); dhubPopupClose('shareChooser'); dhubPopupClose('shareSent'); }
 });
 
 function closeOnboarding(){
@@ -2802,7 +2806,7 @@ if(window.matchMedia){try{window.matchMedia('(prefers-color-scheme: dark)').addE
 document.addEventListener('DOMContentLoaded',syncThemeUI);
 
 /* Feedback & Thanks: sends via Web3Forms; nothing is stored by the site */
-let _shareMode='suggest';
+let _shareMode='bug';
 const SHARE_TXT={
   suggest:{help:'Spotted something missing, unclear, or out of date? Tell me what would make DiabetesHub more useful.',ph:'e.g. It would help to have a section on... / The hospital number for... has changed...'},
   bug:{help:'Something not working, looking wrong, or confusing? Tell me what you did, what you expected, and what happened instead.',ph:'e.g. I tapped Hospitals, chose Cork, and the page went blank on my iPhone...'},
@@ -2811,7 +2815,7 @@ const SHARE_TXT={
 function shareMode(m,btn){
   _shareMode=m;
   document.querySelectorAll('#shareType .mb').forEach(b=>b.classList.remove('sel'));
-  if(btn)btn.classList.add('sel');
+  const sb=document.querySelector('#shareType .mb[data-m="'+m+'"]');if(sb)sb.classList.add('sel');
   document.getElementById('shareHelp').textContent=SHARE_TXT[m].help;
   document.getElementById('shareTxt').placeholder=SHARE_TXT[m].ph;
   document.getElementById('shareConsentRow').style.display=(m==='thanks')?'block':'none';
@@ -2850,6 +2854,35 @@ const FEEDBACK_KEY='d56da8b7-dbcc-4d19-ade6-6ba2075825f7';
 const FEEDBACK_ATTACH=false; /* set true only on a Web3Forms Pro plan, which allows file uploads */
 let _shareLast=0;
 function shareMailto(m){window.location.href='mailto:diabeteshub.ie@gmail.com?subject='+encodeURIComponent(m.subject)+'&body='+encodeURIComponent(m.body);}
+
+/* Popups for Feedback & Thanks: a chooser when the page opens, and a clear "Sent" confirmation */
+function dhubPopup(id,html){
+  let b=document.getElementById(id);
+  if(!b){b=document.createElement('div');b.className='stat-modal-backdrop';b.id=id;b.setAttribute('role','dialog');b.setAttribute('aria-modal','true');document.body.appendChild(b);}
+  b.innerHTML='<div class="stat-modal" style="max-width:400px;">'+html+'</div>';
+  b.classList.add('open');document.body.style.overflow='hidden';return b;
+}
+function dhubPopupClose(id){const b=document.getElementById(id);if(b){b.classList.remove('open');b.innerHTML='';}document.body.style.overflow='';}
+function openShareChooser(){
+  dhubPopup('shareChooser',
+   '<div class="sm-header"><div class="sm-eyebrow">Feedback &amp; Thanks</div><div class="sm-title">What would you like to send?</div><button class="sm-close" onclick="dhubPopupClose(\'shareChooser\')" aria-label="Close">\u2715</button></div>'+
+   '<div class="sm-body" style="padding:16px 18px 20px;display:flex;flex-direction:column;gap:10px;">'+
+   '<button type="button" class="btn btn-b" style="width:100%;justify-content:center;padding:13px;" onclick="shareChoose(\'bug\')">\ud83d\udc1e Report a bug</button>'+
+   '<button type="button" class="btn btn-o" style="width:100%;justify-content:center;padding:13px;" onclick="shareChoose(\'suggest\')">\ud83d\udca1 A suggestion</button>'+
+   '<button type="button" class="btn btn-o" style="width:100%;justify-content:center;padding:13px;" onclick="shareChoose(\'thanks\')">\ud83d\ude4f A thank you</button>'+
+   '</div>');
+}
+function shareChoose(m){dhubPopupClose('shareChooser');shareMode(m,null);window.scrollTo({top:0,behavior:'instant'});}
+function shareSentPopup(m){
+  window.scrollTo({top:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0;
+  const t=m==='thanks'?'Thank you, it means a lot.':(m==='bug'?'Thank you for reporting it.':'Thank you for the suggestion.');
+  dhubPopup('shareSent',
+   '<div class="sm-body" role="alert" style="padding:28px 22px 22px;text-align:center;">'+
+   '<div style="font-size:46px;line-height:1;">\u2705</div>'+
+   '<div style="font-family:Georgia,serif;font-size:22px;font-weight:700;margin:10px 0 6px;color:var(--ink-b);">Sent</div>'+
+   '<p style="font-size:14px;color:var(--muted);line-height:1.6;margin:0 0 18px;">'+t+' Your message is on its way to me.</p>'+
+   '<button type="button" class="btn btn-b" style="width:100%;justify-content:center;padding:12px;" onclick="dhubPopupClose(\'shareSent\')">OK</button></div>');
+}
 async function shareSend(){
   const m=shareBuild();if(!m)return;
   const note=document.getElementById('shareNote'),err=document.getElementById('shareErr'),btn=document.getElementById('shareBtn');
@@ -2872,14 +2905,15 @@ async function shareSend(){
     _shareLast=Date.now();
     ['shareTxt','shareName','shareEmail'].forEach(i=>{document.getElementById(i).value='';});document.getElementById('shareConsent').checked=false;document.getElementById('shareWhere').selectedIndex=0;
     const pic=document.getElementById('sharePic');if(pic)pic.value='';
-    note.textContent=_shareMode==='thanks'?'Thank you. Your message means a lot, and it has been sent.':'Thank you, your message has been sent.';
+    note.textContent='';
+    shareSentPopup(_shareMode);
   }catch(e){
     err.textContent='Sorry, that did not send. Please check your connection and try again, or ';
     const a=document.createElement('a');a.href='#';a.textContent='email us instead';a.onclick=function(ev){ev.preventDefault();shareMailto(m);};
     err.appendChild(a);err.appendChild(document.createTextNode('.'));err.classList.add('show');
   }finally{btn.disabled=false;btn.textContent='✉️ Send';}
 }
-document.addEventListener('DOMContentLoaded',()=>shareMode('suggest',null));
+document.addEventListener('DOMContentLoaded',()=>shareMode('bug',null));
 
 /* THANK-YOU CAROUSEL
    To add a message: paste a new line at the TOP of THANKS (newest first), in the form
