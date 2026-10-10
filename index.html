@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="mobile-web-app-capable" content="yes">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%231E3A8A'/%3E%3Cpath d='M19 50 L28 50 L31 50 L35 39 L39 61 L43 45 L47 50 L50 50 L60 50 L75 50' stroke='%2386EFAC' stroke-width='3' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231E3A8A'/%3E%3Cpath d='M50 10 C50 10 44 16.3 44 19.520000000000003 C44 22.6 47.0 24 50 24 C53.0 24 56 22.6 56 19.520000000000003 C56 16.3 50 10 50 10Z' fill='%2386EFAC'/%3E%3Cpath d='M50 84 C20 64 14 46 22 36 C30 27 43 30 50 40 C57 30 70 27 78 36 C86 46 80 64 50 84Z' fill='rgba(255,255,255,0.14)' stroke='%23fff' stroke-width='2.4' stroke-linejoin='round'/%3E%3Cpath d='M24 56 L38 56 L43 46 L50 68 L56 50 L60 56 L76 56' stroke='%2386EFAC' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <meta name="keywords" content="diabetes Ireland, Type 1 diabetes, Type 2 diabetes, HSE diabetes, diabetes support Ireland, blood sugar, insulin, CGM, carb counting, HbA1c">
 <meta property="og:title" content="DiabetesHub Ireland">
 <meta property="og:description" content="Your complete diabetes support space, for every person in Ireland living with diabetes, from age 1 to 105.">
@@ -592,6 +592,14 @@ body{overflow-x:clip;}
   input[type=checkbox],input[type=radio],input[type=file]{font-size:14px !important;}
   body.kbd-open .bottom-nav{display:none !important;}
 }
+.logo-i{flex-shrink:0;width:18px;height:18px;vertical-align:middle;border-radius:50%;border:1.5px solid rgba(255,255,255,.55);background:rgba(255,255,255,.12);color:#fff;font:italic 700 11px Georgia,serif;line-height:1;cursor:pointer;margin-left:6px;padding:0;display:inline-flex;align-items:center;justify-content:center;}
+.logo-i:hover{background:rgba(255,255,255,.25);}
+.ls-row{display:flex;gap:13px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--border);}
+.ls-row:last-of-type{border-bottom:none;}
+.ls-ic{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;}
+.ls-row h4{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:14.5px;color:var(--ink-b);margin:0 0 2px;}
+.ls-row p{font-size:12.8px;line-height:1.6;color:var(--muted);margin:0;}
+.ls-sign{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-style:italic;font-size:13.5px;color:var(--ink-b);text-align:center;margin-top:12px;line-height:1.6;}
 </style>
 </head>
 <body>
@@ -603,34 +611,10 @@ body{overflow-x:clip;}
 <header>
   <div class="hi">
     <a class="logo-w" onclick="showS('home',null)">
-      <svg class="logo-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="DiabetesHub Ireland logo">
-        <circle cx="50" cy="50" r="47" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
-        <path d="
-          M44 15 C40 14 36 15 33 17 C28 20 25 24 23 28
-          C20 33 19 38 19 43 C18 48 19 52 20 55
-          C21 59 23 62 24 65 C26 70 28 74 31 77
-          C34 80 37 82 41 83 C44 84 47 84 50 83
-          C53 82 56 80 59 78 C62 76 65 73 67 70
-          C70 66 72 62 73 58 C74 54 75 50 75 46
-          C75 41 74 36 72 32 C70 27 67 23 63 20
-          C60 17 57 15 53 14 C50 13 47 14 44 15Z
-        " fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.22)" stroke-width="1.3" stroke-linejoin="round"/>
-        <path d="M59 14 C61 13 63 13 65 14 C67 16 68 18 68 20 C68 22 67 24 65 25 C63 23 61 21 59 20 C59 18 59 16 59 14Z" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
-        <path d="M19 50 L28 50 L31 50 L35 38 L39 62 L43 44 L47 50 L50 50 L60 50 L75 50"
-          stroke="#86EFAC" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <path d="M49 24 C49 24 43.5 31.5 43.5 36.5 C43.5 39.7 46 42 49 42 C52 42 54.5 39.7 54.5 36.5 C54.5 31.5 49 24 49 24Z"
-          fill="#86EFAC" opacity=".95"/>
-        <ellipse cx="46.5" cy="34" rx="1.3" ry="2.1" fill="rgba(255,255,255,0.45)" transform="rotate(-15 46.5 34)"/>
-        <g opacity="0.55">
-          <circle cx="67" cy="72" r="2.8" fill="#22C55E"/>
-          <circle cx="72.8" cy="72" r="2.8" fill="#22C55E"/>
-          <circle cx="69.9" cy="67.5" r="2.8" fill="#22C55E"/>
-          <rect x="69.4" y="72" width="1" height="4.5" rx="0.5" fill="#22C55E"/>
-        </g>
-      </svg>
+      <svg class="logo-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="DiabetesHub Ireland logo"><circle cx="50" cy="50" r="47" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/><path d="M50 10 C50 10 44 16.3 44 19.520000000000003 C44 22.6 47.0 24 50 24 C53.0 24 56 22.6 56 19.520000000000003 C56 16.3 50 10 50 10Z" fill="#86EFAC"/><path d="M50 84 C20 64 14 46 22 36 C30 27 43 30 50 40 C57 30 70 27 78 36 C86 46 80 64 50 84Z" fill="rgba(255,255,255,0.14)" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/><path d="M24 56 L38 56 L43 46 L50 68 L56 50 L60 56 L76 56" stroke="#86EFAC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <div class="logo-txt">
         <div class="logo-name"><em>Diabetes</em><span class="acc">Hub</span></div>
-        <div class="logo-tag">Ireland</div>
+        <div class="logo-tag">Ireland <button type="button" class="logo-i" onclick="event.stopPropagation();openLogoStory()" aria-label="The story behind our logo">i</button></div>
       </div>
     </a>
     <nav id="desknav" aria-label="Main navigation">
@@ -670,14 +654,7 @@ body{overflow-x:clip;}
   </div>
 
   <div class="hero">
-    <svg width="58" height="58" viewBox="0 0 100 100" fill="none" style="margin:0 auto 14px;display:block;">
-      <circle cx="50" cy="50" r="47" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-      <path d="M44 15 C40 14 36 15 33 17 C28 20 25 24 23 28 C20 33 19 38 19 43 C18 48 19 52 20 55 C21 59 23 62 24 65 C26 70 28 74 31 77 C34 80 37 82 41 83 C44 84 47 84 50 83 C53 82 56 80 59 78 C62 76 65 73 67 70 C70 66 72 62 73 58 C74 54 75 50 75 46 C75 41 74 36 72 32 C70 27 67 23 63 20 C60 17 57 15 53 14 C50 13 47 14 44 15Z" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.25)" stroke-width="1.3"/>
-      <path d="M19 50 L28 50 L31 50 L35 38 L39 62 L43 44 L47 50 L50 50 L60 50 L75 50" stroke="#86EFAC" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <path d="M49 24 C49 24 43.5 31.5 43.5 36.5 C43.5 39.7 46 42 49 42 C52 42 54.5 39.7 54.5 36.5 C54.5 31.5 49 24 49 24Z" fill="#86EFAC"/>
-      <ellipse cx="46.5" cy="34" rx="1.3" ry="2.1" fill="rgba(255,255,255,0.45)" transform="rotate(-15 46.5 34)"/>
-      <g opacity="0.6"><circle cx="67" cy="72" r="2.8" fill="#22C55E"/><circle cx="72.8" cy="72" r="2.8" fill="#22C55E"/><circle cx="69.9" cy="67.5" r="2.8" fill="#22C55E"/><rect x="69.4" y="72" width="1" height="4.5" rx="0.5" fill="#22C55E"/></g>
-    </svg>
+    <svg width="58" height="58" style="margin:0 auto 14px;display:block;" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="47" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/><path d="M50 10 C50 10 44 16.3 44 19.520000000000003 C44 22.6 47.0 24 50 24 C53.0 24 56 22.6 56 19.520000000000003 C56 16.3 50 10 50 10Z" fill="#86EFAC"/><path d="M50 84 C20 64 14 46 22 36 C30 27 43 30 50 40 C57 30 70 27 78 36 C86 46 80 64 50 84Z" fill="rgba(255,255,255,0.14)" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/><path d="M24 56 L38 56 L43 46 L50 68 L56 50 L60 56 L76 56" stroke="#86EFAC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
     <h1>You Are Not Alone.<br><span>Ireland Has Your Back.</span></h1>
     <p>From age 1 to 105, newly diagnosed to decades living with it. Your safe space, information hub, GP finder, hospital guide, and community. Every person on this island managing diabetes belongs here.</p>
   </div>
@@ -1914,7 +1891,7 @@ body{overflow-x:clip;}
 
 <div class="foot" style="max-width:1240px;margin:0 auto;padding:0 16px 20px;">
   <p>💙 Built by a mom who learned all this the hard way, so you don't have to. Inspired by my warrior daughter, and for everyone in Ireland living with diabetes, whether you are 1 or 105 years old!</p>
-  <p style="font-size:11px;opacity:.7;margin-top:6px;">Site version: 10 Oct 2026, v8 (read ticks)</p>
+  <p style="font-size:11px;opacity:.7;margin-top:6px;">Site version: 10 Oct 2026, v9 (new logo)</p>
   <p style="margin-top:4px;">Information and support only. Always consult your diabetes healthcare team for medical decisions.</p>
   <p style="margin-top:4px;"><strong>Emergency: <a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a></strong> &nbsp;|&nbsp; HSE Live: <a href="tel:18007007007" class="tcall">1800 700 700</a> &nbsp;|&nbsp; Samaritans: <a href="tel:116123" class="tcall">116 123</a> &nbsp;|&nbsp; <a href="https://www.diabetes.ie" rel="noopener noreferrer">diabetes.ie</a></p>
   <p style="margin-top:8px;font-size:12px;">© 2026 DiabetesHub Ireland. All rights reserved. &nbsp;|&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;|&nbsp; <a href="mailto:diabeteshub.ie@gmail.com">Contact</a></p>
@@ -2946,6 +2923,21 @@ function shareSentPopup(m){
    '<p style="font-size:14px;color:var(--muted);line-height:1.6;margin:0 0 18px;">'+t+' Your message is on its way to me.</p>'+
    '<button type="button" class="btn btn-b" style="width:100%;justify-content:center;padding:12px;" onclick="dhubPopupClose(\'shareSent\')">OK</button></div>');
 }
+
+function openLogoStory(){
+  if(typeof dhubPopup!=='function')return;
+  const mk=document.querySelector('.logo-mark').outerHTML.replace('class="logo-mark"','width="64" height="64"');
+  dhubPopup('logoStory',
+   '<div class="sm-header" style="text-align:center;padding:24px 22px 18px;"><div style="display:flex;justify-content:center;margin-bottom:8px;">'+mk+'</div><div class="sm-eyebrow">DiabetesHub Ireland</div><div class="sm-title">The Story Behind Our Logo</div><button class="sm-close" onclick="dhubPopupClose(\'logoStory\')" aria-label="Close">\u2715</button></div>'+
+   '<div class="sm-body" style="padding:8px 20px 20px;max-height:62vh;overflow:auto;">'+
+   '<div class="ls-row"><div class="ls-ic" style="background:#FFE4E6;">\u2764\ufe0f</div><div><h4>The heart is love</h4><p>It is every parent, partner, friend and nurse who held someone steady. It is the heart of this whole site.</p></div></div>'+
+   '<div class="ls-row"><div class="ls-ic" style="background:#DCFCE7;">\ud83d\udc9a</div><div><h4>The heartbeat is life carrying on</h4><p>That first night felt like the world had stopped. But the rhythm steadies, and so will yours.</p></div></div>'+
+   '<div class="ls-row"><div class="ls-ic" style="background:#DBEAFE;">\ud83d\udca7</div><div><h4>The drop is blood, insulin and a tear</h4><p>It is the drop of blood behind every reading we check, and the insulin we respect and give thanks for every single day. For me it is also the tears I cried that first night. It sits above the heart because it is where everything began, and what we look after together.</p></div></div>'+
+   '<div class="ls-row"><div class="ls-ic" style="background:#EDE9FE;">\ud83d\udd35</div><div><h4>The circle is the blue circle</h4><p>The worldwide symbol of diabetes and unity. You are inside it now. You are not alone.</p></div></div>'+
+   '<div class="ls-row"><div class="ls-ic" style="background:#FEF3C7;">\ud83c\uddee\ud83c\uddea</div><div><h4>Green is for Ireland, and for growth</h4><p>It takes time to learn all of this, and you will grow into it, one step at a time.</p></div></div>'+
+   '<div class="ls-sign">Made with love, by someone who remembers that first night.</div>'+
+   '<button type="button" class="btn btn-b" style="width:100%;justify-content:center;margin-top:14px;" onclick="dhubPopupClose(\'logoStory\')">Thank you</button></div>');
+}
 async function shareSend(){
   const m=shareBuild();if(!m)return;
   const note=document.getElementById('shareNote'),err=document.getElementById('shareErr'),btn=document.getElementById('shareBtn');
@@ -3021,7 +3013,7 @@ const THANKS_MAX=8;
 </script>
 
 <div id="installBanner" style="display:none;position:fixed;bottom:80px;left:12px;right:12px;z-index:400;background:linear-gradient(135deg,#1E3A8A,#1D4ED8);color:#fff;border-radius:14px;padding:14px 16px;box-shadow:0 8px 32px rgba(29,78,216,.35);align-items:center;gap:12px;">
-  <svg width="36" height="36" viewBox="0 0 100 100" fill="none" style="flex-shrink:0;"><circle cx="50" cy="50" r="48" fill="rgba(255,255,255,0.15)"/><path d="M19 50L28 50L31 50L35 39L39 61L43 45L47 50L50 50L60 50L75 50" stroke="#86EFAC" stroke-width="3" stroke-linecap="round" fill="none"/></svg>
+  <svg width="36" height="36" style="flex-shrink:0;" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="47" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/><path d="M50 10 C50 10 44 16.3 44 19.520000000000003 C44 22.6 47.0 24 50 24 C53.0 24 56 22.6 56 19.520000000000003 C56 16.3 50 10 50 10Z" fill="#86EFAC"/><path d="M50 84 C20 64 14 46 22 36 C30 27 43 30 50 40 C57 30 70 27 78 36 C86 46 80 64 50 84Z" fill="rgba(255,255,255,0.14)" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/><path d="M24 56 L38 56 L43 46 L50 68 L56 50 L60 56 L76 56" stroke="#86EFAC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
   <div style="flex:1;">
     <div style="font-weight:700;font-size:13.5px;margin-bottom:2px;">Add DiabetesHub to your home screen</div>
     <div style="font-size:11.5px;opacity:.82;">Access it instantly like a native app, works offline too</div>
