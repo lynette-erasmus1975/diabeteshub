@@ -37,6 +37,7 @@
 </script>
 <style>
 :root{
+  --sc-hi:#15803D;--sc-mid:#B45309;--sc-lo:#E11D48;
   color-scheme:light;
   --ink-b:#1E3A8A;--ink-l:#1D4ED8;--ink-g:#14532D;
   --blue:#1D4ED8;
@@ -170,8 +171,8 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
 .btn{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:9px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .18s;}
 .btn-b{background:var(--blue);color:#fff;}
 .btn-b:hover{background:var(--blue-d);transform:translateY(-1px);}
-.btn-g{background:var(--green);color:#fff;}
-.btn-g:hover{background:var(--green-d);}
+.btn-g{background:#15803D;color:#fff;}
+.btn-g:hover{background:#166534;}
 .btn-o{background:none;border:2px solid var(--blue);color:var(--ink-l);}
 .btn-o:hover{background:var(--blue-pp);}
 .btn-gold{background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;}
@@ -210,10 +211,10 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
 .mbar-seg{border-radius:20px;}
 .wb-outer{padding:18px 18px 22px;background:linear-gradient(135deg,#EFF6FF,#F0FDF4);border-top:1px solid var(--blue-pp);}
 .wb-title{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:13px;font-style:italic;color:var(--ink-b);margin-bottom:13px;display:flex;align-items:center;gap:7px;}
-.cel-bubble{position:relative;background:#fff;border:2px solid var(--blue-l);border-radius:20px 20px 20px 4px;padding:16px 20px 14px;box-shadow:var(--sh);margin-bottom:16px;animation:bubIn .5s cubic-bezier(.34,1.56,.64,1);}
+.cel-bubble{position:relative;background:#fff;border:2px solid var(--blue-l);border-radius:20px;padding:16px 18px 14px;box-shadow:var(--sh);margin-bottom:16px;animation:bubIn .5s cubic-bezier(.34,1.56,.64,1);}
 @keyframes bubIn{from{opacity:0;transform:scale(.85) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.cel-bubble::after{content:'';position:absolute;bottom:-10px;left:18px;width:16px;height:10px;background:#fff;border-right:2px solid var(--blue-l);border-bottom:2px solid var(--blue-l);border-radius:0 0 6px 0;clip-path:polygon(0 0,100% 0,100% 100%);}
-.bav{position:absolute;top:-13px;right:16px;font-size:28px;filter:drop-shadow(0 2px 5px rgba(0,0,0,.15));}
+.cel-bubble::after{display:none;}
+.bav{display:block;font-size:26px;line-height:1;margin-bottom:8px;}
 .bub-msg{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:clamp(14px,2.8vw,18px);font-style:italic;font-weight:600;color:var(--ink-b);line-height:1.45;margin-bottom:8px;}
 .bub-sub{font-size:12.5px;color:var(--muted);line-height:1.6;}
 .wcloud{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
@@ -227,6 +228,7 @@ main{max-width:1240px;margin:0 auto;padding:22px 16px 90px;}
 .wn{border-color:#9CA3AF;color:#4B5563;background:#F9FAFB;}
 .mstat-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px dashed var(--blue-pp);}
 .mstat{background:#fff;border:1px solid var(--border);border-radius:9px;padding:9px 12px;text-align:center;flex:1;min-width:76px;}
+.mstat-n[style*="--green"]{color:#15803D!important;}
 .mstat-n{font-family:Georgia,'Iowan Old Style','Times New Roman',serif;font-size:19px;font-weight:700;display:block;line-height:1;}
 .mstat-l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:2px;display:block;}
 .conf-wrap{position:absolute;top:0;left:0;right:0;height:50px;pointer-events:none;overflow:hidden;}
@@ -433,6 +435,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 :root[data-theme="dark"] .out-month .mhdr{background:linear-gradient(135deg,#3A2E0E,#2B2410);}
 :root[data-theme="dark"] .wb-outer,:root[data-theme="dark"] .mhc,:root[data-theme="dark"] .edu-q{background:linear-gradient(135deg,#13294B,#12301F);}
 :root[data-theme="dark"] .wb-outer{border-top-color:var(--border);}
+:root[data-theme="dark"]{--sc-hi:#4ADE80;--sc-mid:#FBBF24;--sc-lo:#FB7185;}:root[data-theme="dark"] .mstat-n[style*="--purple"]{color:#A78BFA!important;}:root[data-theme="dark"] .mstat-n[style*="--green"]{color:#4ADE80!important;}
+:root[data-theme="dark"] .wh{color:#FDE68A;background:#3A2E0E;border-color:#F59E0B;}:root[data-theme="dark"] .wg{color:#BBF7D0;background:#12301F;border-color:#22C55E;}:root[data-theme="dark"] .ws{color:#BFDBFE;background:#13294B;border-color:#3B82F6;}:root[data-theme="dark"] .wp{color:#DDD6FE;background:#2A1F55;border-color:#8B5CF6;}:root[data-theme="dark"] .wgr{color:#BBF7D0;background:#12301F;border-color:#22C55E;}:root[data-theme="dark"] .wn{color:#E5E7EB;background:#2B3140;border-color:#6B7280;}:root[data-theme="dark"] .mstat-row{border-top-color:var(--border);}
 :root[data-theme="dark"] .sm-fact{background:#13294B;color:#DBEAFE;}
 :root[data-theme="dark"] .sm-source{background:#12301F;color:#BBF7D0;}
 :root[data-theme="dark"] .sm-fact strong,:root[data-theme="dark"] .sm-source strong{color:inherit;}
@@ -486,6 +490,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 :root[data-theme="system"] .out-month .mhdr{background:linear-gradient(135deg,#3A2E0E,#2B2410);}
 :root[data-theme="system"] .wb-outer,:root[data-theme="system"] .mhc,:root[data-theme="system"] .edu-q{background:linear-gradient(135deg,#13294B,#12301F);}
 :root[data-theme="system"] .wb-outer{border-top-color:var(--border);}
+:root[data-theme="system"]{--sc-hi:#4ADE80;--sc-mid:#FBBF24;--sc-lo:#FB7185;}:root[data-theme="system"] .mstat-n[style*="--purple"]{color:#A78BFA!important;}:root[data-theme="system"] .mstat-n[style*="--green"]{color:#4ADE80!important;}
+:root[data-theme="system"] .wh{color:#FDE68A;background:#3A2E0E;border-color:#F59E0B;}:root[data-theme="system"] .wg{color:#BBF7D0;background:#12301F;border-color:#22C55E;}:root[data-theme="system"] .ws{color:#BFDBFE;background:#13294B;border-color:#3B82F6;}:root[data-theme="system"] .wp{color:#DDD6FE;background:#2A1F55;border-color:#8B5CF6;}:root[data-theme="system"] .wgr{color:#BBF7D0;background:#12301F;border-color:#22C55E;}:root[data-theme="system"] .wn{color:#E5E7EB;background:#2B3140;border-color:#6B7280;}:root[data-theme="system"] .mstat-row{border-top-color:var(--border);}
 :root[data-theme="system"] .sm-fact{background:#13294B;color:#DBEAFE;}
 :root[data-theme="system"] .sm-source{background:#12301F;color:#BBF7D0;}
 :root[data-theme="system"] .sm-fact strong,:root[data-theme="system"] .sm-source strong{color:inherit;}
@@ -769,6 +775,7 @@ body{overflow-x:clip;}
   <div class="sh2"><span class="ic">🚨</span><h2>Emergency Guide</h2></div>
   <div class="hbox" style="background:linear-gradient(135deg,#FFE4E6,#FECDD3);border-color:var(--rose);"><strong style="color:#9F1239;">⏱️ If in doubt, call <a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a> now.</strong> Don't wait to see if it gets worse.</div>
   <div class="bluebox"><strong>📞 For urgent but non-112 or 999 concerns</strong> — dose questions, sick-day advice, equipment issues — contact your local hospital's endocrinology/diabetes team directly. See the card below to find your hospital's number.</div>
+  <div style="margin:0 0 14px;"><button type="button" class="btn btn-b" style="width:100%;justify-content:center;" onclick="hospFromEmergency()">📍 Find my nearest hospital</button></div>
 
   <div class="ip" style="border-left:5px solid #65A30D;margin-bottom:12px;">
     <h3 style="color:#3F6212;">🟢 Mild Hypo — Conscious &amp; Able to Swallow <span class="pill" style="background:#DCFCE7;color:#166534;margin-left:4px;">3.0–3.9 mmol/L</span></h3>
@@ -1053,8 +1060,8 @@ body{overflow-x:clip;}
   <div id="jEntries" style="display:flex;flex-direction:column;gap:9px;max-height:420px;overflow-y:auto;"></div>
   <div class="ip" style="margin-top:16px;"><h3>🌡️ Blood Sugar Reference (mmol/L)</h3>
     <div class="bsgrid">
-      <div class="bsc" style="background:#DCFCE7;"><span class="bsc-n" style="color:#16A34A;">3.9–5.6</span><span class="bsc-l" style="color:#14532D;">Normal fasting</span></div>
-      <div class="bsc" style="background:#FEF3C7;"><span class="bsc-n" style="color:#D97706;">5.7–6.9</span><span class="bsc-l" style="color:#92400E;">Pre-diabetes</span></div>
+      <div class="bsc" style="background:#DCFCE7;"><span class="bsc-n" style="color:#15803D;">3.9–5.6</span><span class="bsc-l" style="color:#14532D;">Normal fasting</span></div>
+      <div class="bsc" style="background:#FEF3C7;"><span class="bsc-n" style="color:#B45309;">5.7–6.9</span><span class="bsc-l" style="color:#92400E;">Pre-diabetes</span></div>
       <div class="bsc" style="background:#FFE4E6;"><span class="bsc-n" style="color:#E11D48;">7.0+</span><span class="bsc-l" style="color:#9F1239;">Diabetes range</span></div>
       <div class="bsc" style="background:var(--blue-pp);"><span class="bsc-n" style="color:var(--ink-b);">Below 3.9</span><span class="bsc-l" style="color:var(--ink-b);">Hypo — act now</span></div>
     </div>
@@ -1066,6 +1073,7 @@ body{overflow-x:clip;}
   <p style="color:var(--muted);font-size:13px;margin-bottom:6px;">At the end of each month, DiabetesHub celebrates <em>everything you felt</em> — the good, the hard, and the in-between. Your wellness is more than your numbers.</p>
   <p style="color:var(--ink-l);font-size:12.5px;font-weight:600;margin-bottom:20px;">✨ The word bubbles below celebrate every positive moment you recorded. They are yours.</p>
   <div id="wellnessContainer"></div>
+  <div style="margin:4px 0 18px;display:flex;gap:8px;flex-wrap:wrap;"><button type="button" class="btn btn-g" onclick="showS('journal',null)">📔 Add a feeling in My Diabetes Journal</button></div>
   <div class="ip"><h3>💡 About Your Wellness Score</h3>
     <div class="cg">
       <div class="card cb"><h3>Reflects More Than Numbers</h3><p>Your wellness score reflects mood entries and consistency — not blood sugar numbers alone.</p></div>
@@ -1441,12 +1449,36 @@ body{overflow-x:clip;}
 
 <div id="hospitals" class="section">
   <div class="sh2"><span class="ic">🏥</span><h2>Children's &amp; Adult Diabetes Hospitals</h2></div>
+  <div style="margin:0 0 12px;"><button type="button" class="btn btn-b" id="hospFindToggle" aria-expanded="false" aria-controls="hospFinder" onclick="hospToggleFinder()">📍 Find my nearest hospital</button></div>
+  <div id="hospFinder" style="display:none;">
   <div class="gp-search" style="margin-bottom:10px;">
     <input class="gp-input" type="text" id="hospSearch" placeholder="🔍  Search by area (e.g. Ennis or Clare)" aria-label="Search hospitals by area" autocomplete="off" oninput="hospSearchGo()" onkeydown="if(event.key==='Enter'){event.preventDefault();hospSearchGo();}">
+    <button type="button" class="btn btn-b" onclick="hospSearchGo(true)">🔍 Search</button>
     <button type="button" class="btn btn-o" onclick="hospSearchClear()">Clear</button>
   </div>
   <div style="margin:0 0 8px;"><button type="button" class="btn btn-b" id="hospLocBtn" onclick="hospUseLocation()">📍 Use my location</button></div>
+  <div id="hospLocHelp" class="bluebox" style="display:none;margin:0 0 12px;">
+    <strong>📍 Location is turned off for this site.</strong> You can still type your area above and tap Search. To use your location, turn it on, then come back and tap <em>Use my location</em> again. Menu names can vary a little between phones.
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 6px;">
+      <button type="button" class="btn btn-o" id="locTabIos" onclick="hospLocTab('ios')">🍎 iPhone steps</button>
+      <button type="button" class="btn btn-o" id="locTabAnd" onclick="hospLocTab('and')">🤖 Android steps</button>
+    </div>
+    <ol id="locStepsIos" style="display:none;margin:6px 0 0 18px;line-height:1.7;">
+      <li>Open <strong>Settings</strong>, then <strong>Privacy &amp; Security</strong>, then <strong>Location Services</strong>, and make sure it is <strong>On</strong>.</li>
+      <li>Scroll down and tap <strong>Safari Websites</strong> (or the name of your browser, for example Chrome).</li>
+      <li>Choose <strong>While Using the App</strong> or <strong>Ask Next Time</strong>.</li>
+      <li>Back in Safari, tap <strong>aA</strong> in the address bar, then <strong>Website Settings</strong>, then <strong>Location</strong>, and choose <strong>Allow</strong>.</li>
+      <li>Refresh this page and tap <strong>Use my location</strong>.</li>
+    </ol>
+    <ol id="locStepsAnd" style="display:none;margin:6px 0 0 18px;line-height:1.7;">
+      <li>Open <strong>Settings</strong>, then <strong>Location</strong>, and turn it <strong>On</strong>.</li>
+      <li>In <strong>Chrome</strong>, tap the <strong>lock</strong> (or settings) icon next to the address, then <strong>Permissions</strong>, then <strong>Location</strong>, and choose <strong>Allow</strong>. Or open Chrome's <strong>⋮ menu</strong>, then <strong>Settings</strong>, then <strong>Site settings</strong>, then <strong>Location</strong>.</li>
+      <li>If Chrome still cannot use it, open your phone's <strong>Settings</strong>, then <strong>Apps</strong>, then <strong>Chrome</strong>, then <strong>Permissions</strong>, then <strong>Location</strong>, and choose <strong>Allow only while using the app</strong>.</li>
+      <li>Refresh this page and tap <strong>Use my location</strong>.</li>
+    </ol>
+  </div>
   <p id="hospSearchMsg" role="status" style="font-size:12.5px;color:var(--muted);margin:0 0 12px;"></p>
+  </div>
   <div class="tb" id="hospFilter">
     <button class="tbtn active" onclick="filterH('all',this)">All</button>
     <button class="tbtn" onclick="filterH('children',this)">👶 Children's</button>
@@ -2073,11 +2105,12 @@ function hospLocate(raw){
   if(m)return {ll:[m.p[3],m.p[4]],label:m.p[1]+', Co. '+m.p[2]};
   return {error:'I could not find "'+q.slice(0,40)+'". Try a county (for example Clare) or a town (for example Ennis), or tap Use my location.'};
 }
-function hospSearchGo(){
+function hospSearchGo(force){
   const el=document.getElementById('hospSearch'),msg=document.getElementById('hospSearchMsg');
   if(!el||!msg)return;
   const q=el.value.trim();
-  if(q.length<2){_hospOrigin=null;msg.textContent='';renderH(_hospType);return;}
+  if(q.length<2){_hospOrigin=null;msg.textContent=force&&q.length?'Please type at least 2 letters of your area, for example Ennis or Clare.':'';renderH(_hospType);return;}
+  const hp=document.getElementById('hospLocHelp');if(hp)hp.style.display='none';
   const r=hospLocate(q);
   if(r.error){_hospOrigin=null;msg.textContent=r.error;renderH(_hospType);return;}
   _hospOrigin=r;
@@ -2094,17 +2127,52 @@ function hospUseLocation(){
     const nearest=Math.min.apply(null,HOSPITALS.map(h=>hospKm(ll,h.ll)));
     if(nearest>400){_hospOrigin=null;msg.textContent='Your location looks to be outside Ireland, so I cannot show nearby hospitals. Please search by area instead.';renderH(_hospType);return;}
     document.getElementById('hospSearch').value='';
+    document.getElementById('hospLocHelp').style.display='none';
     _hospOrigin={ll:ll,label:'your current location'};
     msg.textContent='Showing hospitals closest to your current location, nearest first. Distances are approximate straight-line distances, so real travel will be longer. Your location is used on your device only. It is not stored or sent anywhere. Always confirm your referral route with your GP or diabetes team.';
     renderH(_hospType);
   },function(err){
     btn.disabled=false;btn.textContent='📍 Use my location';
-    msg.textContent=err&&err.code===1?'Location is turned off for this site. You can allow it in your browser settings, or search by area instead.':'I could not work out your location. Please try again, or search by area instead.';
+    if(err&&(err.code===1||err.code===2)){
+      msg.textContent='';
+      document.getElementById('hospLocHelp').style.display='block';
+      const android=/Android/i.test(navigator.userAgent);
+      hospLocTab(android?'and':'ios');
+    }else{
+      msg.textContent='I could not work out your location. Please try again, or search by area instead.';
+    }
   },{enableHighAccuracy:false,timeout:12000,maximumAge:300000});
 }
-function hospSearchClear(){const el=document.getElementById('hospSearch');if(el)el.value='';_hospOrigin=null;const m=document.getElementById('hospSearchMsg');if(m)m.textContent='';renderH(_hospType);}
+function hospLocTab(w){
+  const ios=document.getElementById('locStepsIos'),and=document.getElementById('locStepsAnd');
+  if(!ios||!and)return;
+  ios.style.display=w==='ios'?'block':'none';and.style.display=w==='and'?'block':'none';
+}
+function hospFromEmergency(){
+  showS('hospitals',null);
+  const f=document.getElementById('hospFinder');
+  if(f&&f.style.display==='none')hospToggleFinder();
+  const h=document.getElementById('hospitals');if(h)h.scrollIntoView();
+}
+function hospToggleFinder(){
+  const f=document.getElementById('hospFinder'),t=document.getElementById('hospFindToggle');
+  if(!f||!t)return;
+  const open=f.style.display==='none';
+  f.style.display=open?'block':'none';
+  t.setAttribute('aria-expanded',open?'true':'false');
+  hospFindLabel();
+  if(open){const i=document.getElementById('hospSearch');if(i&&window.matchMedia&&!matchMedia('(pointer:coarse)').matches)i.focus();}
+}
+function hospFindLabel(){
+  const f=document.getElementById('hospFinder'),t=document.getElementById('hospFindToggle');
+  if(!f||!t)return;
+  const open=f.style.display!=='none';
+  t.textContent=open?'✕ Close':(_hospOrigin?'📍 Sorted nearest first · tap to change':'📍 Find my nearest hospital');
+}
+function hospSearchClear(){const hp=document.getElementById('hospLocHelp');if(hp)hp.style.display='none';const el=document.getElementById('hospSearch');if(el)el.value='';_hospOrigin=null;const m=document.getElementById('hospSearchMsg');if(m)m.textContent='';renderH(_hospType);}
 function renderH(type){
   _hospType=type||'all';
+  if(typeof hospFindLabel==='function')hospFindLabel();
   type=_hospType;
   let f=HOSPITALS.filter(h=>{
     if(type==='all')return true;
@@ -2241,7 +2309,7 @@ function renderWellness(){
     const total=entries.filter(e=>e.mood).length;
     const posC=posM.reduce((a,b)=>a+b.count,0);
     const score=total?Math.round(posC/total*100):0;
-    const scColor=score>=70?'#16A34A':score>=40?'#D97706':'#E11D48';
+    const scColor=score>=70?'var(--sc-hi)':score>=40?'var(--sc-mid)':'var(--sc-lo)';
     const isOut=score>=70&&total>=3;
     let msg='';
     if(!total)msg='No mood entries yet this month.';
