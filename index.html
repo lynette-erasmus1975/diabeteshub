@@ -863,7 +863,7 @@ body{overflow-x:clip;}
     <p>If you are reading this in a hospital car park, or at 3am unable to sleep, or googling frantically, this message is for you. What you are feeling right now, the shock, the grief, the fear, the guilt, is completely normal. And it is not your fault. Not even a little bit. Type 1 diabetes is an autoimmune condition. It was not caused by anything you fed your child, anything you did, or anything you didn't do. You could not have prevented it. And you are not alone, thousands of families in Ireland are on this exact journey with you right now.</p>
   </div>
 
-  <div class="ndprog" id="ndProg"><div class="pt"><span>Your reading progress</span><span id="ndProgTxt">0 of 9 read</span></div><div class="pbar"><div class="pfill" id="ndProgFill"></div></div></div>
+  <div class="ndprog" id="ndProg"><div class="pt"><span>Your reading progress</span><span id="ndProgTxt">0 of 10 read</span></div><div class="pbar"><div class="pfill" id="ndProgFill"></div></div></div>
   <div class="tb">
     <button class="tbtn active" onclick="showT('newlydiag','nd1',this)">For Parents</button>
     <button class="tbtn" onclick="showT('newlydiag','nd2',this)">For Adults</button>
@@ -1914,7 +1914,7 @@ body{overflow-x:clip;}
 
 <div class="foot" style="max-width:1240px;margin:0 auto;padding:0 16px 20px;">
   <p>💙 Built by a mom who learned all this the hard way, so you don't have to. Inspired by my warrior daughter, and for everyone in Ireland living with diabetes, whether you are 1 or 105 years old!</p>
-  <p style="font-size:11px;opacity:.7;margin-top:6px;">Site version: 10 Oct 2026, v7 (book colours)</p>
+  <p style="font-size:11px;opacity:.7;margin-top:6px;">Site version: 10 Oct 2026, v8 (read ticks)</p>
   <p style="margin-top:4px;">Information and support only. Always consult your diabetes healthcare team for medical decisions.</p>
   <p style="margin-top:4px;"><strong>Emergency: <a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a></strong> &nbsp;|&nbsp; HSE Live: <a href="tel:18007007007" class="tcall">1800 700 700</a> &nbsp;|&nbsp; Samaritans: <a href="tel:116123" class="tcall">116 123</a> &nbsp;|&nbsp; <a href="https://www.diabetes.ie" rel="noopener noreferrer">diabetes.ie</a></p>
   <p style="margin-top:8px;font-size:12px;">© 2026 DiabetesHub Ireland. All rights reserved. &nbsp;|&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;|&nbsp; <a href="mailto:diabeteshub.ie@gmail.com">Contact</a></p>
@@ -2792,7 +2792,7 @@ function searchGo(id){
   const b=document.getElementById('hsRes');if(b){b.classList.remove('open');b.innerHTML='';}
   showS(id,null);
 }
-const ND_TABS=['nd1','nd2','nd3','nd4','nd5','nd6','nd7','nd8','nd9'];
+const ND_TABS=['nd1','nd2','nd3','nd4','nd5','nd6','nd7','nd8','nd9','nd10'];
 function ndRead(){try{return JSON.parse(localStorage.getItem('dhub_nd_read')||'[]');}catch(e){return [];}}
 function ndMark(tab){
   if(!ND_TABS.includes(tab))return;
@@ -2803,10 +2803,10 @@ function ndRender(){
   const r=ndRead();
   const n=ND_TABS.filter(t=>r.includes(t)).length;
   const t=document.getElementById('ndProgTxt'),f=document.getElementById('ndProgFill');
-  if(t)t.textContent=n>=9?'All 9 read. Well done!':n+' of 9 read';
-  if(f)f.style.width=Math.round(n/9*100)+'%';
+  if(t)t.textContent=n>=ND_TABS.length?'All '+ND_TABS.length+' read. Well done!':n+' of '+ND_TABS.length+' read';
+  if(f)f.style.width=Math.round(n/ND_TABS.length*100)+'%';
   document.querySelectorAll('#newlydiag .tbtn').forEach(b=>{
-    const m=(b.getAttribute('onclick')||'').match(/'(nd\d)'/);
+    const m=(b.getAttribute('onclick')||'').match(/'(nd\d+)'/);
     if(m)b.classList.toggle('done',r.includes(m[1]));
   });
 }
