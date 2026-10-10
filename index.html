@@ -1555,7 +1555,7 @@ body{overflow-x:clip;}
     <div class="mr" id="shareType">
       <button type="button" class="mb sel" onclick="shareMode('suggest',this)">💡 A suggestion</button>
       <button type="button" class="mb" onclick="shareMode('thanks',this)">🙏 A thank you</button>
-      <button type="button" class="mb" onclick="shareMode('bug',this)">🐞 Report a problem</button>
+      <button type="button" class="mb" onclick="shareMode('bug',this)">🐞 Report a bug</button>
     </div>
     <p id="shareHelp" style="font-size:12.5px;color:var(--muted);margin:2px 0 12px;"></p>
     <div id="shareBugRow" style="display:none;margin-bottom:12px;">
@@ -1584,7 +1584,7 @@ body{overflow-x:clip;}
       <button type="button" class="btn btn-b" id="shareBtn" onclick="shareSend()">✉️ Send</button>
     </div>
     <p id="shareNote" style="font-size:12px;color:var(--muted);margin-top:11px;" role="status"></p>
-    <p style="font-size:11.5px;color:var(--muted);margin-top:11px;">🔒 This site does not store your message. When you tap Send, it goes through a secure form service (Web3Forms) which emails it to me. A problem report also includes your device and browser type so I can reproduce the issue. Please do not include surnames, hospital numbers, or other details that could identify you or your child. This is not a place for medical questions, so please speak to your diabetes team for those. In an emergency call <a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a>. See the <a href="/privacy.html">Privacy page</a>.</p>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:11px;">🔒 This site does not store your message. When you tap Send, it goes through a secure form service (Web3Forms) which emails it to me. A bug report also includes your device and browser type so I can reproduce the issue. Please do not include surnames, hospital numbers, or other details that could identify you or your child. This is not a place for medical questions, so please speak to your diabetes team for those. In an emergency call <a href="tel:112" class="tcall">112</a> or <a href="tel:999" class="tcall">999</a>. See the <a href="/privacy.html">Privacy page</a>.</p>
   </div>
 </div>
 
@@ -2680,10 +2680,10 @@ function shareBuild(){
   const em=document.getElementById('shareEmail').value.trim();
   if(!thanks&&em&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){err.textContent='That email address does not look right. Please check it or leave it blank.';err.classList.add('show');return null;}
   const ok=document.getElementById('shareConsent').checked;
-  const subject=thanks?'DiabetesHub thank you':(bug?'DiabetesHub problem report':'DiabetesHub suggestion');
+  const subject=thanks?'DiabetesHub thank you':(bug?'DiabetesHub bug report':'DiabetesHub suggestion');
   let tech='';
   if(bug){try{tech='\n\nWhere: '+document.getElementById('shareWhere').value+'\nDevice: '+navigator.userAgent+'\nScreen: '+screen.width+'x'+screen.height+', window '+innerWidth+'x'+innerHeight+'\nTheme: '+(localStorage.getItem('dhub_theme')||'light');}catch(e){tech='\n\nWhere: '+document.getElementById('shareWhere').value;}}
-  const body=(thanks?'Thank you message':(bug?'Problem report':'Suggestion'))+'\n\n'+msg+tech+'\n\nName: '+(nm||'(not given)')+(thanks?'':'\nEmail for follow up'+(bug?' and to test the fix':'')+': '+(em||'(not given)'))+
+  const body=(thanks?'Thank you message':(bug?'Bug report':'Suggestion'))+'\n\n'+msg+tech+'\n\nName: '+(nm||'(not given)')+(thanks?'':'\nEmail for follow up'+(bug?' and to test the fix':'')+': '+(em||'(not given)'))+
     (thanks?'\nPermission to share on the site (first name or initials only): '+(ok?'YES':'NO'):'');
   return {subject,body};
 }
@@ -2712,7 +2712,7 @@ async function shareSend(){
     const j=await r.json();
     if(!r.ok||!j.success)throw new Error('send failed');
     _shareLast=Date.now();
-    document.getElementById('shareTxt').value='';document.getElementById('shareConsent').checked=false;
+    ['shareTxt','shareName','shareEmail'].forEach(i=>{document.getElementById(i).value='';});document.getElementById('shareConsent').checked=false;document.getElementById('shareWhere').selectedIndex=0;
     const pic=document.getElementById('sharePic');if(pic)pic.value='';
     note.textContent=_shareMode==='thanks'?'Thank you. Your message means a lot, and it has been sent.':'Thank you, your message has been sent.';
   }catch(e){
