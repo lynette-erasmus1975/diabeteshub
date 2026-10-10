@@ -1048,6 +1048,7 @@ body{overflow-x:clip;}
       <button class="btn btn-b" onclick="saveE()">💾 Save Entry</button>
       <button class="btn btn-o" onclick="clearJ()">🗑 Clear</button>
     </div>
+    <div id="jSaved" class="gbox" style="display:none;margin-top:12px;margin-bottom:0;" role="status"></div>
   </div>
   <div id="jEntries" style="display:flex;flex-direction:column;gap:9px;max-height:420px;overflow-y:auto;"></div>
   <div class="ip" style="margin-top:16px;"><h3>🌡️ Blood Sugar Reference (mmol/L)</h3>
@@ -1440,6 +1441,12 @@ body{overflow-x:clip;}
 
 <div id="hospitals" class="section">
   <div class="sh2"><span class="ic">🏥</span><h2>Children's &amp; Adult Diabetes Hospitals</h2></div>
+  <div class="gp-search" style="margin-bottom:10px;">
+    <input class="gp-input" type="text" id="hospSearch" placeholder="🔍  Search by area (e.g. Ennis or Clare)" aria-label="Search hospitals by area" autocomplete="off" oninput="hospSearchGo()" onkeydown="if(event.key==='Enter'){event.preventDefault();hospSearchGo();}">
+    <button type="button" class="btn btn-o" onclick="hospSearchClear()">Clear</button>
+  </div>
+  <div style="margin:0 0 8px;"><button type="button" class="btn btn-b" id="hospLocBtn" onclick="hospUseLocation()">📍 Use my location</button></div>
+  <p id="hospSearchMsg" role="status" style="font-size:12.5px;color:var(--muted);margin:0 0 12px;"></p>
   <div class="tb" id="hospFilter">
     <button class="tbtn active" onclick="filterH('all',this)">All</button>
     <button class="tbtn" onclick="filterH('children',this)">👶 Children's</button>
@@ -1875,26 +1882,26 @@ const GPS=[
 ];
 
 const HOSPITALS=[
-  {name:"Children's Health Ireland at Crumlin",addr:"Our Lady's Children's Hospital, Crumlin, Dublin 12",type:"children",region:"leinster",phone:"01 409 6100",services:["Paediatric Diabetes","Endocrinology","CGM Clinic","Pump Therapy","Dietitian","DNS Team","SNA Training"],note:"Ireland's largest paediatric diabetes centre. Multidisciplinary team including consultant, DNSs, dietitian, and psychologist. Provides free SNA training for schools.",url:"https://www.childrenshealthireland.ie"},
-  {name:"Children's Health Ireland at Temple Street",addr:"Temple Street, Dublin 1",type:"children",region:"leinster",phone:"01 878 4200",services:["Paediatric Diabetes","Endocrinology","Emergency","Dietitian","SNA Training"],note:"Major paediatric centre with dedicated diabetes and endocrinology team. Provides school SNA training on request.",url:"https://www.childrenshealthireland.ie"},
-  {name:"Children's Health Ireland at Tallaght",addr:"Tallaght University Hospital, Dublin 24",type:"children",region:"leinster",phone:"01 414 2000",services:["Paediatric Diabetes","Endocrinology","CGM Support"],note:"Paediatric diabetes outpatient services for South Dublin.",url:"https://www.tuh.ie"},
-  {name:"Children's Health Ireland at Connolly",addr:"Connolly Hospital, Blanchardstown, Dublin 15",type:"children",region:"leinster",phone:"01 646 5000",services:["Paediatric Diabetes","Dietitian","CGM Support"],note:"Outpatient paediatric diabetes services. Integrated care hub — 58% reduction in new patient waiting lists.",url:"https://www.hse.ie"},
-  {name:"Cork University Hospital — Paediatric Diabetes",addr:"Wilton, Cork City",type:"children",region:"munster",phone:"021 492 2000",services:["Paediatric Diabetes","Endocrinology","CGM Clinic","Pump Support","Dietitian"],note:"Munster's primary paediatric diabetes centre covering the full Munster region.",url:"https://www.cuh.hse.ie"},
-  {name:"University Hospital Galway — Paediatric Diabetes",addr:"Newcastle Road, Galway",type:"children",region:"connacht",phone:"091 524 222",services:["Paediatric Diabetes","Endocrinology","Dietitian","DNS Team"],note:"Connacht's main paediatric diabetes service for the West of Ireland.",url:"https://www.saolta.ie"},
-  {name:"University Hospital Limerick — Paediatric Diabetes",addr:"Dooradoyle, Limerick",type:"children",region:"munster",phone:"061 301 111",services:["Paediatric Diabetes","Endocrinology","CGM Support"],note:"Midwest paediatric diabetes services covering Limerick, Tipperary, and Clare.",url:"https://www.uhg.ie"},
-  {name:"St Vincent's University Hospital",addr:"Elm Park, Dublin 4",type:"adult",region:"leinster",phone:"01 221 4000",services:["Adult Type 1 & 2","Endocrinology","Pump Clinic","Closed-Loop","Diabetic Foot","Renal","Dietitian"],note:"One of Ireland's leading adult diabetes centres. Nationally recognised endocrinology department. Full multidisciplinary team.",url:"https://www.svuh.ie"},
-  {name:"Beaumont Hospital",addr:"Beaumont Road, Dublin 9",type:"adult",region:"leinster",phone:"01 809 3000",services:["Adult Diabetes","Endocrinology","Renal Diabetes","Diabetic Foot","Ophthalmology"],note:"Major Dublin teaching hospital. Specialist renal-diabetes service for diabetic kidney disease.",url:"https://www.beaumont.ie"},
-  {name:"Mater Misericordiae University Hospital",addr:"Eccles Street, Dublin 7",type:"adult",region:"leinster",phone:"01 803 2000",services:["Adult Diabetes","Endocrinology","Type 1 Specialist","Dietitian","DNS Team"],note:"Dedicated Type 1 specialist clinic and full endocrinology department.",url:"https://www.mater.ie"},
-  {name:"St James's Hospital",addr:"James's Street, Dublin 8",type:"adult",region:"leinster",phone:"01 410 3000",services:["Adult Diabetes","Endocrinology","Diabetic Foot","Ophthalmology","Renal"],note:"National vascular and diabetic foot service. Full multidisciplinary team.",url:"https://www.stjames.ie"},
-  {name:"Tallaght University Hospital — Adult Diabetes",addr:"Tallaght, Dublin 24",type:"adult",region:"leinster",phone:"01 414 2000",services:["Adult Diabetes","Integrated Care Hub","CGM","Dietitian","Pump Therapy"],note:"First integrated care hub — 58% reduction in waiting lists achieved. South Dublin's main adult diabetes centre.",url:"https://www.tuh.ie"},
-  {name:"Cork University Hospital — Adult Diabetes",addr:"Wilton, Cork City",type:"adult",region:"munster",phone:"021 492 2000",services:["Adult Type 1 & 2","Endocrinology","Pump Clinic","Diabetic Foot","Renal","Dietitian"],note:"Munster's primary adult diabetes centre. Full multidisciplinary diabetes team.",url:"https://www.cuh.hse.ie"},
-  {name:"University Hospital Galway — Adult Diabetes",addr:"Newcastle Road, Galway",type:"adult",region:"connacht",phone:"091 524 222",services:["Adult Diabetes","Endocrinology","Type 1 Specialist","Pump Support","Dietitian"],note:"Connacht's main adult diabetes service for the West of Ireland.",url:"https://www.saolta.ie"},
-  {name:"University Hospital Limerick — Adult Diabetes",addr:"Dooradoyle, Limerick",type:"adult",region:"munster",phone:"061 301 111",services:["Adult Type 1 & 2","Endocrinology","Diabetic Foot","Dietitian"],note:"Midwest adult diabetes services covering Limerick, Tipperary, and Clare.",url:"https://www.uhg.ie"},
-  {name:"University Hospital Waterford",addr:"Dunmore Road, Waterford",type:"adult",region:"munster",phone:"051 848 000",services:["Adult Diabetes","Endocrinology","Dietitian","Diabetic Foot"],note:"Southeast diabetes centre covering Waterford, Kilkenny, Wexford, Carlow, and Tipperary.",url:"https://www.uhw.ie"},
-  {name:"Letterkenny University Hospital",addr:"Letterkenny, Co. Donegal",type:"adult",region:"ulster",phone:"074 912 5888",services:["Adult Diabetes","Endocrinology","DNS Team"],note:"Northwest diabetes service covering Donegal, Leitrim, and Sligo.",url:"https://www.hse.ie"},
-  {name:"Sligo University Hospital",addr:"The Mall, Sligo",type:"adult",region:"connacht",phone:"071 917 1111",services:["Adult Diabetes","Endocrinology","Dietitian"],note:"Adult diabetes for Sligo, Leitrim, Roscommon, and West Cavan.",url:"https://www.hse.ie"},
-  {name:"Mayo University Hospital",addr:"Castlebar, Co. Mayo",type:"adult",region:"connacht",phone:"094 902 1733",services:["Adult Diabetes","Endocrinology","Dietitian"],note:"Adult diabetes and endocrinology services for Mayo and surrounding areas.",url:"https://www.hse.ie"},
-  {name:"Our Lady of Lourdes Hospital, Drogheda",addr:"Drogheda, Co. Louth",type:"adult",region:"ulster",phone:"041 983 7601",services:["Adult Diabetes","Endocrinology","Diabetic Foot"],note:"Northeast adult diabetes services covering Louth, Meath, and Cavan.",url:"https://www.hse.ie"},
+  {name:"Children's Health Ireland at Crumlin",ll:[53.3239,-6.3198],addr:"Our Lady's Children's Hospital, Crumlin, Dublin 12",type:"children",region:"leinster",phone:"01 409 6100",services:["Paediatric Diabetes","Endocrinology","CGM Clinic","Pump Therapy","Dietitian","DNS Team","SNA Training"],note:"Ireland's largest paediatric diabetes centre. Multidisciplinary team including consultant, DNSs, dietitian, and psychologist. Provides free SNA training for schools.",url:"https://www.childrenshealthireland.ie"},
+  {name:"Children's Health Ireland at Temple Street",ll:[53.3571,-6.2579],addr:"Temple Street, Dublin 1",type:"children",region:"leinster",phone:"01 878 4200",services:["Paediatric Diabetes","Endocrinology","Emergency","Dietitian","SNA Training"],note:"Major paediatric centre with dedicated diabetes and endocrinology team. Provides school SNA training on request.",url:"https://www.childrenshealthireland.ie"},
+  {name:"Children's Health Ireland at Tallaght",ll:[53.2886,-6.3731],addr:"Tallaght University Hospital, Dublin 24",type:"children",region:"leinster",phone:"01 414 2000",services:["Paediatric Diabetes","Endocrinology","CGM Support"],note:"Paediatric diabetes outpatient services for South Dublin.",url:"https://www.tuh.ie"},
+  {name:"Children's Health Ireland at Connolly",ll:[53.3919,-6.3811],addr:"Connolly Hospital, Blanchardstown, Dublin 15",type:"children",region:"leinster",phone:"01 646 5000",services:["Paediatric Diabetes","Dietitian","CGM Support"],note:"Outpatient paediatric diabetes services. Integrated care hub — 58% reduction in new patient waiting lists.",url:"https://www.hse.ie"},
+  {name:"Cork University Hospital — Paediatric Diabetes",ll:[51.8854,-8.5099],addr:"Wilton, Cork City",type:"children",region:"munster",phone:"021 492 2000",services:["Paediatric Diabetes","Endocrinology","CGM Clinic","Pump Support","Dietitian"],note:"Munster's primary paediatric diabetes centre covering the full Munster region.",url:"https://www.cuh.hse.ie"},
+  {name:"University Hospital Galway — Paediatric Diabetes",ll:[53.2792,-9.0679],addr:"Newcastle Road, Galway",type:"children",region:"connacht",phone:"091 524 222",services:["Paediatric Diabetes","Endocrinology","Dietitian","DNS Team"],note:"Connacht's main paediatric diabetes service for the West of Ireland.",url:"https://www.saolta.ie"},
+  {name:"University Hospital Limerick — Paediatric Diabetes",ll:[52.6376,-8.6567],addr:"Dooradoyle, Limerick",type:"children",region:"munster",phone:"061 301 111",services:["Paediatric Diabetes","Endocrinology","CGM Support"],note:"Midwest paediatric diabetes services covering Limerick, Tipperary, and Clare.",url:"https://www.uhg.ie"},
+  {name:"St Vincent's University Hospital",ll:[53.317,-6.2162],addr:"Elm Park, Dublin 4",type:"adult",region:"leinster",phone:"01 221 4000",services:["Adult Type 1 & 2","Endocrinology","Pump Clinic","Closed-Loop","Diabetic Foot","Renal","Dietitian"],note:"One of Ireland's leading adult diabetes centres. Nationally recognised endocrinology department. Full multidisciplinary team.",url:"https://www.svuh.ie"},
+  {name:"Beaumont Hospital",ll:[53.43,-6.223],addr:"Beaumont Road, Dublin 9",type:"adult",region:"leinster",phone:"01 809 3000",services:["Adult Diabetes","Endocrinology","Renal Diabetes","Diabetic Foot","Ophthalmology"],note:"Major Dublin teaching hospital. Specialist renal-diabetes service for diabetic kidney disease.",url:"https://www.beaumont.ie"},
+  {name:"Mater Misericordiae University Hospital",ll:[53.3593,-6.2713],addr:"Eccles Street, Dublin 7",type:"adult",region:"leinster",phone:"01 803 2000",services:["Adult Diabetes","Endocrinology","Type 1 Specialist","Dietitian","DNS Team"],note:"Dedicated Type 1 specialist clinic and full endocrinology department.",url:"https://www.mater.ie"},
+  {name:"St James's Hospital",ll:[53.3395,-6.2954],addr:"James's Street, Dublin 8",type:"adult",region:"leinster",phone:"01 410 3000",services:["Adult Diabetes","Endocrinology","Diabetic Foot","Ophthalmology","Renal"],note:"National vascular and diabetic foot service. Full multidisciplinary team.",url:"https://www.stjames.ie"},
+  {name:"Tallaght University Hospital — Adult Diabetes",ll:[53.2886,-6.3731],addr:"Tallaght, Dublin 24",type:"adult",region:"leinster",phone:"01 414 2000",services:["Adult Diabetes","Integrated Care Hub","CGM","Dietitian","Pump Therapy"],note:"First integrated care hub — 58% reduction in waiting lists achieved. South Dublin's main adult diabetes centre.",url:"https://www.tuh.ie"},
+  {name:"Cork University Hospital — Adult Diabetes",ll:[51.8854,-8.5099],addr:"Wilton, Cork City",type:"adult",region:"munster",phone:"021 492 2000",services:["Adult Type 1 & 2","Endocrinology","Pump Clinic","Diabetic Foot","Renal","Dietitian"],note:"Munster's primary adult diabetes centre. Full multidisciplinary diabetes team.",url:"https://www.cuh.hse.ie"},
+  {name:"University Hospital Galway — Adult Diabetes",ll:[53.2792,-9.0679],addr:"Newcastle Road, Galway",type:"adult",region:"connacht",phone:"091 524 222",services:["Adult Diabetes","Endocrinology","Type 1 Specialist","Pump Support","Dietitian"],note:"Connacht's main adult diabetes service for the West of Ireland.",url:"https://www.saolta.ie"},
+  {name:"University Hospital Limerick — Adult Diabetes",ll:[52.6376,-8.6567],addr:"Dooradoyle, Limerick",type:"adult",region:"munster",phone:"061 301 111",services:["Adult Type 1 & 2","Endocrinology","Diabetic Foot","Dietitian"],note:"Midwest adult diabetes services covering Limerick, Tipperary, and Clare.",url:"https://www.uhg.ie"},
+  {name:"University Hospital Waterford",ll:[52.25,-7.087],addr:"Dunmore Road, Waterford",type:"adult",region:"munster",phone:"051 848 000",services:["Adult Diabetes","Endocrinology","Dietitian","Diabetic Foot"],note:"Southeast diabetes centre covering Waterford, Kilkenny, Wexford, Carlow, and Tipperary.",url:"https://www.uhw.ie"},
+  {name:"Letterkenny University Hospital",ll:[54.9557,-7.72],addr:"Letterkenny, Co. Donegal",type:"adult",region:"ulster",phone:"074 912 5888",services:["Adult Diabetes","Endocrinology","DNS Team"],note:"Northwest diabetes service covering Donegal, Leitrim, and Sligo.",url:"https://www.hse.ie"},
+  {name:"Sligo University Hospital",ll:[54.2765,-8.479],addr:"The Mall, Sligo",type:"adult",region:"connacht",phone:"071 917 1111",services:["Adult Diabetes","Endocrinology","Dietitian"],note:"Adult diabetes for Sligo, Leitrim, Roscommon, and West Cavan.",url:"https://www.hse.ie"},
+  {name:"Mayo University Hospital",ll:[53.847,-9.292],addr:"Castlebar, Co. Mayo",type:"adult",region:"connacht",phone:"094 902 1733",services:["Adult Diabetes","Endocrinology","Dietitian"],note:"Adult diabetes and endocrinology services for Mayo and surrounding areas.",url:"https://www.hse.ie"},
+  {name:"Our Lady of Lourdes Hospital, Drogheda",ll:[53.7185,-6.338],addr:"Drogheda, Co. Louth",type:"adult",region:"ulster",phone:"041 983 7601",services:["Adult Diabetes","Endocrinology","Diabetic Foot"],note:"Northeast adult diabetes services covering Louth, Meath, and Cavan.",url:"https://www.hse.ie"},
 ];
 
 const BREAKTHROUGHS=[
@@ -2038,23 +2045,86 @@ function filterGPs(){
     </div>`).join('');
 }
 
+const PLACES=[["A92","Drogheda","Louth",53.72,-6.35],["A92","Ardee","Louth",53.86,-6.54],["A92","Laytown","Meath",53.68,-6.24],["Y14","Arklow","Wicklow",52.8,-6.16],["A84","Ashbourne","Meath",53.51,-6.4],["H65","Athenry","Galway",53.3,-8.75],["N37","Athlone","Westmeath",53.42,-7.94],["R14","Athy","Kildare",52.99,-6.98],["K32","Balbriggan","Dublin",53.61,-6.18],["F26","Ballina","Mayo",54.12,-9.16],["H53","Ballinasloe","Galway",53.33,-8.22],["P31","Ballincollig","Cork",51.89,-8.59],["F31","Ballinrobe","Mayo",53.62,-9.22],["A75","Ballybay","Monaghan",54.13,-6.9],["A75","Castleblayney","Monaghan",54.12,-6.74],["A41","Ballyboughal","Dublin",53.51,-6.28],["F35","Ballyhaunis","Mayo",53.76,-8.76],["F56","Ballymote","Sligo",54.09,-8.52],["P72","Bandon","Cork",51.75,-8.74],["P75","Bantry","Cork",51.68,-9.45],["H14","Belturbet","Cavan",54.1,-7.45],["R42","Birr","Offaly",53.09,-7.91],["A94","Blackrock","Dublin",53.3,-6.18],["A94","Booterstown","Dublin",53.31,-6.2],["A94","Monkstown","Dublin",53.29,-6.15],["F52","Boyle","Roscommon",53.97,-8.3],["A98","Bray","Wicklow",53.2,-6.1],["V23","Caherciveen","Kerry",51.94,-10.22],["E21","Cahir","Tipperary",52.37,-7.93],["R93","Carlow","Carlow",52.84,-6.93],["A81","Carrickmacross","Monaghan",53.98,-6.72],["N41","Carrick-on-Shannon","Leitrim",53.95,-8.09],["E32","Carrick-on-Suir","Tipperary",52.35,-7.41],["P43","Carrigaline","Cork",51.81,-8.4],["E25","Cashel","Tipperary",52.52,-7.89],["F23","Castlebar","Mayo",53.85,-9.3],["F45","Castlerea","Roscommon",53.76,-8.49],["H12","Cavan","Cavan",53.99,-7.36],["P56","Charleville","Cork",52.36,-8.68],["F12","Claremorris","Mayo",53.72,-9.0],["H71","Clifden","Galway",53.49,-10.02],["P85","Clonakilty","Cork",51.62,-8.87],["H23","Clones","Monaghan",54.18,-7.23],["E91","Clonmel","Tipperary",52.35,-7.7],["P24","Cobh","Cork",51.85,-8.3],["H16","Cootehill","Cavan",53.98,-7.08],["T12","Cork","Cork",51.9,-8.47],["T23","Cork City North","Cork",51.91,-8.48],["P14","Crookstown","Cork",51.8,-8.88],["P32","Donoughmore","Cork",51.97,-8.75],["P47","Dunmanway","Cork",51.72,-9.11],["T56","Watergrasshill","Cork",52.0,-8.33],["T34","Whitechurch","Cork",51.93,-8.55],["R56","Curragh","Kildare",53.15,-6.84],["A63","Greystones","Wicklow",53.14,-6.06],["A63","Delgany","Wicklow",53.11,-6.07],["A63","Kilcoole","Wicklow",53.1,-6.07],["A63","Newtownmountkennedy","Wicklow",53.1,-6.11],["F94","Donegal","Donegal",54.65,-8.11],["A86","Dunboyne","Meath",53.42,-6.47],["A91","Dundalk","Louth",54.0,-6.4],["X35","Dungarvan","Waterford",52.09,-7.62],["A85","Dunshaughlin","Meath",53.51,-6.54],["A85","Ratoath","Meath",53.5,-6.45],["R45","Edenderry","Offaly",53.35,-7.05],["A83","Enfield","Meath",53.42,-6.83],["A83","Summerhill","Meath",53.47,-6.73],["V95","Ennis","Clare",52.84,-8.98],["Y21","Enniscorthy","Wexford",52.5,-6.56],["P61","Fermoy","Cork",52.14,-8.27],["H91","Galway","Galway",53.27,-9.05],["Y25","Gorey","Wexford",52.68,-6.29],["A96","Glenageary","Dublin",53.28,-6.13],["A96","Dun Laoghaire","Dublin",53.29,-6.13],["A82","Kells","Meath",53.73,-6.88],["A82","Kingscourt","Cavan",53.91,-6.8],["A82","Virginia","Cavan",53.83,-7.08],["R51","Kildare","Kildare",53.16,-6.91],["R95","Kilkenny","Kilkenny",52.65,-7.25],["X42","Kilmacthomas","Waterford",52.2,-7.42],["V35","Kilmallock","Limerick",52.4,-8.58],["V15","Kilrush","Clare",52.64,-9.49],["V93","Killarney","Kerry",52.06,-9.5],["P17","Kinsale","Cork",51.71,-8.53],["F92","Letterkenny","Donegal",54.95,-7.73],["F93","Lifford","Donegal",54.83,-7.48],["V94","Limerick","Limerick",52.66,-8.63],["V31","Listowel","Kerry",52.45,-9.48],["T45","Little Island","Cork",51.9,-8.35],["N39","Longford","Longford",53.73,-7.8],["H62","Loughrea","Galway",53.2,-8.57],["K78","Lucan","Dublin",53.36,-6.45],["K45","Lusk","Dublin",53.53,-6.17],["P12","Macroom","Cork",51.9,-8.96],["K36","Malahide","Dublin",53.45,-6.15],["P51","Mallow","Cork",52.63,-8.65],["W23","Maynooth","Kildare",53.38,-6.59],["P25","Midleton","Cork",51.92,-8.17],["P67","Mitchelstown","Cork",52.27,-8.27],["H18","Monaghan","Monaghan",54.25,-6.97],["W34","Monasterevin","Kildare",53.14,-7.06],["R21","Muine Bheag","Carlow",52.7,-6.96],["R21","Bagenalstown","Carlow",52.7,-6.96],["N91","Mullingar","Westmeath",53.52,-7.34],["W91","Naas","Kildare",53.22,-6.66],["C15","Navan","Meath",53.65,-6.68],["E45","Nenagh","Tipperary",52.86,-8.2],["Y34","New Ross","Wexford",52.4,-6.94],["W12","Newbridge","Kildare",53.18,-6.8],["V42","Newcastle West","Limerick",52.45,-9.06],["A45","Oldtown","Dublin",53.5,-6.3],["R32","Portlaoise","Laois",53.03,-7.3],["A67","Wicklow","Wicklow",52.98,-6.05],["A67","Rathnew","Wicklow",52.99,-6.07],["F42","Roscommon","Roscommon",53.63,-8.19],["E53","Roscrea","Tipperary",52.95,-7.8],["K56","Rush","Dublin",53.52,-6.09],["V14","Shannon","Clare",52.7,-8.87],["K34","Skerries","Dublin",53.58,-6.11],["P81","Skibbereen","Cork",51.55,-9.27],["F91","Sligo","Sligo",54.27,-8.47],["K67","Swords","Dublin",53.46,-6.22],["E41","Thurles","Tipperary",52.68,-7.82],["E34","Tipperary Town","Tipperary",52.47,-8.16],["V92","Tralee","Kerry",52.27,-9.7],["H54","Tuam","Galway",53.52,-8.85],["R35","Tullamore","Offaly",53.27,-7.49],["X91","Waterford","Waterford",52.26,-7.11],["F28","Westport","Mayo",53.8,-9.52],["Y35","Wexford","Wexford",52.33,-6.46],["P36","Youghal","Cork",51.95,-7.85],["D01","Dublin 1","Dublin",53.35,-6.26],["D02","Dublin 2","Dublin",53.339,-6.25],["D03","Dublin 3","Dublin",53.365,-6.23],["D04","Dublin 4","Dublin",53.325,-6.23],["D05","Dublin 5","Dublin",53.385,-6.2],["D06","Dublin 6","Dublin",53.315,-6.26],["D6W","Dublin 6W","Dublin",53.305,-6.32],["D07","Dublin 7","Dublin",53.355,-6.29],["D08","Dublin 8","Dublin",53.335,-6.29],["D09","Dublin 9","Dublin",53.385,-6.25],["D10","Dublin 10","Dublin",53.345,-6.36],["D11","Dublin 11","Dublin",53.395,-6.3],["D12","Dublin 12","Dublin",53.325,-6.32],["D13","Dublin 13","Dublin",53.395,-6.15],["D14","Dublin 14","Dublin",53.295,-6.25],["D15","Dublin 15","Dublin",53.39,-6.39],["D16","Dublin 16","Dublin",53.28,-6.28],["D17","Dublin 17","Dublin",53.395,-6.2],["D18","Dublin 18","Dublin",53.265,-6.2],["D20","Dublin 20","Dublin",53.345,-6.38],["D22","Dublin 22","Dublin",53.32,-6.43],["D24","Dublin 24","Dublin",53.29,-6.39],["","Tallaght","Dublin",53.288,-6.373],["","Blanchardstown","Dublin",53.388,-6.377],["","Clondalkin","Dublin",53.32,-6.397],["","Dundrum","Dublin",53.291,-6.245],["","Rathmines","Dublin",53.322,-6.265],["","Howth","Dublin",53.388,-6.065],["","Sandyford","Dublin",53.272,-6.22],["","Crumlin","Dublin",53.324,-6.32],["","Finglas","Dublin",53.39,-6.3],["","Ballymun","Dublin",53.4,-6.265],["","Coolock","Dublin",53.39,-6.2],["","Raheny","Dublin",53.383,-6.175],["","Clontarf","Dublin",53.365,-6.195],["","Terenure","Dublin",53.309,-6.285],["","Rathfarnham","Dublin",53.3,-6.28],["","Drumcondra","Dublin",53.37,-6.255],["","Stillorgan","Dublin",53.289,-6.198],["","Cabinteely","Dublin",53.262,-6.15],["","Dalkey","Dublin",53.278,-6.1],["","Sutton","Dublin",53.39,-6.11],["","Portmarnock","Dublin",53.424,-6.137],["","Castleknock","Dublin",53.372,-6.37],["","Leopardstown","Dublin",53.27,-6.21],["","Swords Village","Dublin",53.459,-6.218]];
+const COUNTIES={"Carlow":[52.72,-6.84],"Cavan":[53.98,-7.36],"Clare":[52.9,-8.98],"Cork":[51.95,-8.6],"Donegal":[54.9,-8.0],"Dublin":[53.35,-6.26],"Galway":[53.35,-8.9],"Kerry":[52.15,-9.55],"Kildare":[53.16,-6.8],"Kilkenny":[52.6,-7.25],"Laois":[53.0,-7.35],"Leitrim":[54.12,-8.0],"Limerick":[52.5,-8.75],"Longford":[53.73,-7.8],"Louth":[53.92,-6.5],"Mayo":[53.9,-9.3],"Meath":[53.65,-6.65],"Monaghan":[54.25,-6.97],"Offaly":[53.2,-7.55],"Roscommon":[53.75,-8.2],"Sligo":[54.15,-8.6],"Tipperary":[52.6,-7.9],"Waterford":[52.2,-7.55],"Westmeath":[53.55,-7.45],"Wexford":[52.45,-6.55],"Wicklow":[52.98,-6.35]};
+
+let _hospType='all',_hospOrigin=null;
 function filterH(type,btn){
   document.querySelectorAll('#hospFilter .tbtn').forEach(b=>b.classList.remove('active'));
   if(btn)btn.classList.add('active');
   renderH(type);
 }
+function hospNorm(t){return String(t).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/^co\.?\s+/,'').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();}
+function hospKm(a,b){const R=6371,r=Math.PI/180,dl=(b[0]-a[0])*r,dn=(b[1]-a[1])*r;const x=Math.sin(dl/2)**2+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dn/2)**2;return 2*R*Math.asin(Math.sqrt(x));}
+function hospLocate(raw){
+  const q=String(raw||'').trim();
+  if(!q)return {empty:true};
+  let n=hospNorm(q);
+  const dub=n.match(/^dublin (\d{1,2}|6w)$/);
+  if(dub){const k='D'+(dub[1]==='6w'?'6W':('0'+dub[1]).slice(-2));const h=PLACES.find(p=>p[0]===k);if(h)return {ll:[h[3],h[4]],label:h[1]};}
+  const places=PLACES.map(p=>({p,n:hospNorm(p[1])}));
+  const cx=Object.keys(COUNTIES).find(k=>hospNorm(k)===n);
+  if(cx)return {ll:COUNTIES[cx],label:'Co. '+cx};
+  let m=places.find(x=>x.n===n);
+  if(m)return {ll:[m.p[3],m.p[4]],label:m.p[1]+', Co. '+m.p[2]};
+  const cp=Object.keys(COUNTIES).find(k=>hospNorm(k).startsWith(n)&&n.length>=3);
+  if(cp)return {ll:COUNTIES[cp],label:'Co. '+cp};
+  m=places.find(x=>x.n.startsWith(n)&&n.length>=3)||places.find(x=>x.n.includes(n)&&n.length>=3);
+  if(m)return {ll:[m.p[3],m.p[4]],label:m.p[1]+', Co. '+m.p[2]};
+  return {error:'I could not find "'+q.slice(0,40)+'". Try a county (for example Clare) or a town (for example Ennis), or tap Use my location.'};
+}
+function hospSearchGo(){
+  const el=document.getElementById('hospSearch'),msg=document.getElementById('hospSearchMsg');
+  if(!el||!msg)return;
+  const q=el.value.trim();
+  if(q.length<2){_hospOrigin=null;msg.textContent='';renderH(_hospType);return;}
+  const r=hospLocate(q);
+  if(r.error){_hospOrigin=null;msg.textContent=r.error;renderH(_hospType);return;}
+  _hospOrigin=r;
+  msg.textContent='Showing hospitals closest to '+r.label+', nearest first. Distances are approximate straight-line distances from the middle of your area, so real travel will be longer. This search happens on your device and nothing is sent anywhere. Always confirm your referral route with your GP or diabetes team.';
+  renderH(_hospType);
+}
+function hospUseLocation(){
+  const msg=document.getElementById('hospSearchMsg'),btn=document.getElementById('hospLocBtn');
+  if(!navigator.geolocation){msg.textContent='Your browser cannot share your location. Please search by area instead.';return;}
+  btn.disabled=true;btn.textContent='Finding you...';msg.textContent='';
+  navigator.geolocation.getCurrentPosition(function(pos){
+    btn.disabled=false;btn.textContent='📍 Use my location';
+    const ll=[pos.coords.latitude,pos.coords.longitude];
+    const nearest=Math.min.apply(null,HOSPITALS.map(h=>hospKm(ll,h.ll)));
+    if(nearest>400){_hospOrigin=null;msg.textContent='Your location looks to be outside Ireland, so I cannot show nearby hospitals. Please search by area instead.';renderH(_hospType);return;}
+    document.getElementById('hospSearch').value='';
+    _hospOrigin={ll:ll,label:'your current location'};
+    msg.textContent='Showing hospitals closest to your current location, nearest first. Distances are approximate straight-line distances, so real travel will be longer. Your location is used on your device only. It is not stored or sent anywhere. Always confirm your referral route with your GP or diabetes team.';
+    renderH(_hospType);
+  },function(err){
+    btn.disabled=false;btn.textContent='📍 Use my location';
+    msg.textContent=err&&err.code===1?'Location is turned off for this site. You can allow it in your browser settings, or search by area instead.':'I could not work out your location. Please try again, or search by area instead.';
+  },{enableHighAccuracy:false,timeout:12000,maximumAge:300000});
+}
+function hospSearchClear(){const el=document.getElementById('hospSearch');if(el)el.value='';_hospOrigin=null;const m=document.getElementById('hospSearchMsg');if(m)m.textContent='';renderH(_hospType);}
 function renderH(type){
-  const f=HOSPITALS.filter(h=>{
+  _hospType=type||'all';
+  type=_hospType;
+  let f=HOSPITALS.filter(h=>{
     if(type==='all')return true;
     if(type==='children'||type==='adult')return h.type===type;
     return h.region===type;
   });
+  if(_hospOrigin){
+    f=f.map(h=>({h,d:hospKm(_hospOrigin.ll,h.ll)})).sort((a,b)=>a.d-b.d);
+  }else{
+    f=f.map(h=>({h,d:null}));
+  }
+  const firstOf={};
+  f.forEach(x=>{if(_hospOrigin&&!firstOf[x.h.type])firstOf[x.h.type]=x.h.name;});
   const el=document.getElementById('hospList');
   if(!el)return;
-  el.innerHTML=f.map(h=>`
+  el.innerHTML=f.map(({h,d})=>`
     <div class="hosp-card" style="border-left:4px solid ${h.type==='children'?'var(--rose)':'var(--blue)'};">
       <div class="hosp-icon" style="background:${h.type==='children'?'var(--rose-l)':'var(--blue-pp)'};">${h.type==='children'?'👶':'👨'}</div>
       <div style="flex:1;">
+        ${d!==null?`<div style="font-size:11.5px;font-weight:700;color:var(--ink-l);margin-bottom:3px;">${firstOf[h.type]===h.name?'📍 Closest '+(h.type==='children'?"children's":'adult')+' hospital · ':''}about ${Math.max(1,Math.round(d))} km away</div>`:''}
         <div style="font-weight:700;font-size:13.5px;color:var(--ink-b);margin-bottom:2px;">${h.name}</div>
         <div style="font-size:12px;color:var(--muted);margin-bottom:5px;">📍 ${h.addr} &nbsp;|&nbsp; 📞 <a href="tel:${h.phone.replace(/\s/g,'')}" style="color:var(--ink-l);font-weight:600;">${h.phone}</a></div>
         <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:6px;">${h.services.map(s=>`<span class="pill ${h.type==='children'?'pr':'pb'}" style="font-size:11px;">${s}</span>`).join('')}</div>
@@ -2087,9 +2157,30 @@ function saveE(){
   document.getElementById('jTxt').value='';
   document.getElementById('bsIn').value='';
   document.getElementById('hbIn').value='';
+  const hadMood=!!selMoodV;
   document.querySelectorAll('.mb').forEach(b=>b.classList.remove('sel'));selMoodV='';
+  jShowSaved(hadMood);
 }
-function clearJ(){document.getElementById('jTxt').value='';document.getElementById('bsIn').value='';document.getElementById('hbIn').value='';document.querySelectorAll('.mb').forEach(b=>b.classList.remove('sel'));selMoodV='';}
+function jShowSaved(hadMood){
+  const box=document.getElementById('jSaved');if(!box)return;
+  const mk=new Date().toISOString().slice(0,7);
+  const n=jData.filter(e=>e.mood&&(e.dk||mk)===mk).length;
+  box.textContent='';
+  const t=document.createElement('div');t.style.marginBottom='8px';
+  if(hadMood){
+    t.textContent='✅ Saved. Your feeling is now part of your Monthly Wellness. You have logged '+n+' mood'+(n===1?'':'s')+' this month.';
+    box.appendChild(t);
+    const b=document.createElement('button');b.type='button';b.className='btn btn-g';b.textContent='🌸 See my Monthly Wellness →';b.onclick=function(){showS('wellness',null);};
+    box.appendChild(b);
+  }else{
+    t.textContent='✅ Saved. Tip: choose a mood next time and it will appear in your Monthly Wellness.';
+    box.appendChild(t);
+    const b=document.createElement('button');b.type='button';b.className='btn btn-o';b.textContent='🌸 Open Monthly Wellness';b.onclick=function(){showS('wellness',null);};
+    box.appendChild(b);
+  }
+  box.style.display='block';
+}
+function clearJ(){var sv=document.getElementById('jSaved');if(sv)sv.style.display='none';document.getElementById('jTxt').value='';document.getElementById('bsIn').value='';document.getElementById('hbIn').value='';document.querySelectorAll('.mb').forEach(b=>b.classList.remove('sel'));selMoodV='';}
 function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
 function renderEntries(){
   const c=document.getElementById('jEntries');
@@ -2762,6 +2853,7 @@ const THANKS_MAX=8;
   document.addEventListener('focusin',e=>{if(isField(e.target))document.body.classList.add('kbd-open');});
   document.addEventListener('focusout',()=>{setTimeout(()=>{if(!isField(document.activeElement))document.body.classList.remove('kbd-open');},120);});
 })();
+
 </script>
 
 <div id="installBanner" style="display:none;position:fixed;bottom:80px;left:12px;right:12px;z-index:400;background:linear-gradient(135deg,#1E3A8A,#1D4ED8);color:#fff;border-radius:14px;padding:14px 16px;box-shadow:0 8px 32px rgba(29,78,216,.35);align-items:center;gap:12px;">
